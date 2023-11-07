@@ -169,6 +169,7 @@
                     var all = await teachers.GetAll();
                     int longestName = all.Max(x => (x.first_name + " " + x.last_name).Length) + 1;
                     int longestSubject = all.Max(x => x.subject.Length) + 1;
+                    int longestSalary = all.Max(x => x.salary.ToString().Length);
 
                     string header = $"ID  |{"Name".PadRight(longestName)}|{"Subject".PadRight(longestSubject)}|Salary";
                     Console.WriteLine(header);
@@ -176,7 +177,7 @@
 
                     foreach (var teacher in await teachers.GetAll())
                     {
-                        Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.subject.PadRight(longestSubject)}|{teacher.salary}");
+                        Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.subject.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
                     }
                 }
 
