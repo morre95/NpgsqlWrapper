@@ -1,14 +1,15 @@
 # NpgsqlWrapper
-A short description about the project and/or client.
+This is a wrapper for Npgsql: [Npgsql](https://github.com/npgsql/npgsql)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
 The things you need before installing the software.
 
+* PostgreSQL server and or PgAdmin
 * The nuget Npgsql
 
 ### Installation
@@ -48,7 +49,7 @@ CREATE TABLE teachers
 
 ## Example
 
-```c#
+```csharp
 # Init
 MyNpgsqlAsync pgsql = new(host, username, password, database);
 
@@ -85,22 +86,16 @@ foreach (Actor actor in actors)
 Film film = await pgsql.ExecuteOneAsync<Film>(); // Eqvivalent to SELECT * FROM film LIMIT 1
 Console.WriteLine($"id = {film.film_id}, title = {film.title},  +
 $"length = {TimeSpan.FromMinutes(film.length).ToString(@"hh\:mm")}");
+
+# Dump result set into list of Dictionary's
+foreach (var item in await pgsql.DumpAsync("SELECT * FROM teachers WHERE id > @id", new DbParams("id", 1)))
+{
+    Console.WriteLine(item["first_name"]);
+}
 ```
 
-## Deployment
-
-Additional notes on how to deploy this on a live or release system. Explaining the most important branches, what pipelines they trigger and how to update the database (if anything special).
-
-### Branches
-
-* Master:
-* Feature:
-* Bugfix:
-* etc...
 
 ## Additional Documentation and Acknowledgments
 
-* Project folder on server:
-* Confluence link:
-* Asana board:
+* Wiki under construction
 * etc...
