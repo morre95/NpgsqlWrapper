@@ -79,15 +79,7 @@ namespace NpgsqlWrapper
                     cmd.Transaction = tx;
                     cmd.CommandText = sql;
 
-                    if (GetSqlNumParams(sql) != parameters.Count)
-                    {
-                        throw new ArgumentException("List of arguments don't match the sql query");
-                    }
-
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                    }
+                    AddParameters(sql, parameters, cmd);
 
                     returnList = await ExecuteReaderMenyAsync<T>(propertyList, cmd);
                 }
@@ -152,18 +144,7 @@ namespace NpgsqlWrapper
 
                     cmd.CommandText = sql;
 
-                    if (GetSqlNumParams(sql) != parameters.Count)
-                    {
-                        throw new ArgumentException("List of arguments don't match the sql query");
-                    }
-
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                        /*kvp.Value is DateTime
-                        ? cmd.Parameters.AddWithValue(kvp.Key, NpgsqlDbType.TimestampTz, kvp.Value)
-                        : cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);*/
-                    }
+                    AddParameters(sql, parameters, cmd);
 
                     await using var reader = await cmd.ExecuteReaderAsync();
                     while (await reader.ReadAsync())
@@ -382,9 +363,9 @@ namespace NpgsqlWrapper
                     }
                 }
 
-                returnList = await ExecuteReaderMenyAsync(returnList, propertyList, cmd);
+                returnList = await ExecuteReaderMenyAsync<T>(propertyList, cmd);
             }
-            if (returnList.Count <= 0) return default;
+            if (returnList == null || returnList.Count <= 0) return default;
             return returnList;
         }
 
@@ -400,18 +381,7 @@ namespace NpgsqlWrapper
             List<Dictionary<string, object>> returnList = new();
             await using (var cmd = new NpgsqlCommand(sqlQuery, _conn))
             {
-                if (parameters != null)
-                {
-                    if (GetSqlNumParams(sqlQuery) != parameters.Count)
-                    {
-                        throw new ArgumentException("List of arguments don't match the sql query");
-                    }
-
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                    }
-                }
+                AddParameters(sqlQuery, parameters, cmd);
 
                 await using (var reader = await cmd.ExecuteReaderAsync())
                 {

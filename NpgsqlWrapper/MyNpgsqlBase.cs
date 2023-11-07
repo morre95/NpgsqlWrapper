@@ -191,5 +191,21 @@ namespace NpgsqlWrapper
 
         protected static string PrepareDeleteSql(string tableName, string? where) 
             => AddWhereToQuery(where, $"DELETE FROM {tableName}");
+
+        protected static void AddParameters(string sqlQuery, Dictionary<string, object>? parameters, NpgsqlCommand cmd)
+        {
+            if (parameters != null)
+            {
+                if (GetSqlNumParams(sqlQuery) != parameters.Count)
+                {
+                    throw new ArgumentException("List of arguments don't match the sql query");
+                }
+
+                foreach (KeyValuePair<string, object> kvp in parameters)
+                {
+                    cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
+                }
+            }
+        }
     }
 }

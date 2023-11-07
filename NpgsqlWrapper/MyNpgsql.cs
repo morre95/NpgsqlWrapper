@@ -41,15 +41,7 @@ namespace NpgsqlWrapper
                     cmd.Transaction = tx;
                     cmd.CommandText = sql;
 
-                    if (GetSqlNumParams(sql) != parameters.Count)
-                    {
-                        throw new ArgumentException("List of arguments don't match the sql query");
-                    }
-
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                    }
+                    AddParameters(sql, parameters, cmd);
 
                     return ExecuteRederMany<T>(propertyList, cmd);
                 }
@@ -199,18 +191,8 @@ namespace NpgsqlWrapper
         public IEnumerable<Dictionary<string, object>> Dump(string sqlQuery, Dictionary<string, object>? parameters = null)
         {
             using var cmd = new NpgsqlCommand(sqlQuery, _conn);
-            if (parameters != null)
-            {
-                if (GetSqlNumParams(sqlQuery) != parameters.Count)
-                {
-                    throw new ArgumentException("List of arguments don't match the sql query");
-                }
 
-                foreach (KeyValuePair<string, object> kvp in parameters)
-                {
-                    cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                }
-            }
+            AddParameters(sqlQuery, parameters, cmd);
 
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -223,5 +205,7 @@ namespace NpgsqlWrapper
                 yield return dict;
             }
         }
+
+        
     }
 }

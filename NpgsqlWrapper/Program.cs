@@ -29,8 +29,8 @@
 
         private static async Task TestTeachersAsync(string? host, string? username, string? password, string? database)
         {
-            Teachers teachers = new Teachers();
-            teachers.Connect(host, username, password, database);
+            School school = new School();
+            school.Connect(host, username, password, database);
 
             //MyNpgsqlAsync pgsql = new(host, username, password, "TestProject");
             //await pgsql.ConnectAsync();
@@ -59,7 +59,7 @@
                 }
                 else if (command == "list")
                 {
-                    foreach (var teacher in await teachers.GetAll())
+                    foreach (var teacher in await school.GetAll())
                     {
                         Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
                     }
@@ -89,7 +89,7 @@
                         subject = subject,
                         salary = salary
                     };
-                    await teachers.Insert(teacherToAdd);
+                    await school.Insert(teacherToAdd);
                 }
                 else if (command == "edit")
                 {
@@ -100,7 +100,7 @@
                         Console.Write("Id> ");
                         diryId = Console.ReadLine();
                     } while (!int.TryParse(diryId, out id));
-                    var teacher = await teachers.GetById(id);
+                    var teacher = await school.GetById(id);
                     Console.WriteLine($"First name: {teacher.first_name}");
                     Console.WriteLine($"Last name: {teacher.last_name}");
                     Console.WriteLine($"Subject: {teacher.subject}");
@@ -132,7 +132,7 @@
                         subject = subject,
                         salary = salary
                     };
-                    await teachers.EditById(id, teacherToEdit);
+                    await school.EditById(id, teacherToEdit);
                 }
                 else if (command == "delete")
                 {
@@ -143,13 +143,13 @@
                         Console.Write("Id> ");
                         dirtyId = Console.ReadLine();
                     } while (!int.TryParse(dirtyId, out id));
-                    await teachers.DeleteById(id);
+                    await school.DeleteById(id);
                 }
                 else if (command == "subject")
                 {
                     int i = 0;
                     List<string> list = new List<string>();
-                    var all = await teachers.GetAll();
+                    var all = await school.GetAll();
                     foreach (var subject in all.Select(x => x.subject).Distinct())
                     {
                         Console.WriteLine($"#{++i} {subject}");
@@ -164,14 +164,14 @@
                         dirtyId = Console.ReadLine();
                     } while (!int.TryParse(dirtyId, out id));
 
-                    foreach (var teacher in await teachers.GetBySubject(list[id - 1]))
+                    foreach (var teacher in await school.GetBySubject(list[id - 1]))
                     {
                         Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
                     }
                 }
                 else if (command == "table")
                 {
-                    var all = await teachers.GetAll();
+                    var all = await school.GetAll();
                     int longestName = all.Max(x => (x.first_name + " " + x.last_name).Length) + 1;
                     int longestSubject = all.Max(x => x.subject.Length) + 1;
                     int longestSalary = all.Max(x => x.salary.ToString().Length);
@@ -180,14 +180,14 @@
                     Console.WriteLine(header);
                     Console.WriteLine(new string('-', header.Length));
 
-                    foreach (var teacher in await teachers.GetAll())
+                    foreach (var teacher in await school.GetAll())
                     {
                         Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.subject.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
                     }
                 }
                 else if ( command == "exit")
                 {
-                    teachers.Close();
+                    school.Close();
                 }
 
             } while (command != "exit");
@@ -238,7 +238,10 @@ CREATE TABLE teachers
         public string? last_name { get; set; }
         public string? subject { get; set; }
         public int? salary { get; set; }
+    }
 
+    public class School
+    {
         MyNpgsqlAsync? pgsql = null;
         public async void Connect(string? host, string? username, string? password, string? database)
         {
