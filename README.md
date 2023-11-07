@@ -94,20 +94,8 @@ foreach (var item in await pgsql.DumpAsync("SELECT * FROM teachers WHERE id > @i
 }
 ```
 
-## Deployment
-
-Additional notes on how to deploy this on a live or release system. Explaining the most important branches, what pipelines they trigger and how to update the database (if anything special).
-
-### Branches
-
-* Master:
-* Feature:
-* Bugfix:
-* etc...
 
 ## Additional Documentation and Acknowledgments
 
-* Project folder on server:
-* Confluence link:
-* Asana board:
+* Wiki under construction
 * etc...
