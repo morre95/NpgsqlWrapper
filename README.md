@@ -48,7 +48,7 @@ CREATE TABLE teachers
 
 ## Example
 
-```c#
+```csharp
 # Init
 MyNpgsqlAsync pgsql = new(host, username, password, database);
 
