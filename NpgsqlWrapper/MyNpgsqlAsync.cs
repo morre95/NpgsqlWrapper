@@ -35,13 +35,6 @@ namespace NpgsqlWrapper
             _conn = await dataSource.OpenConnectionAsync();
         }
 
-        public async Task CloseAsync()
-        {
-            if (_conn == null) throw new ArgumentNullException();
-
-            await _conn.CloseAsync();
-        }
-
         /// <summary>
         /// Close connection to database, asynchronously.
         /// </summary>
