@@ -33,6 +33,19 @@ dbDatabase=database
 
 A few examples of useful code snipets.
 
+```sql
+# Sql create statment for running the example
+CREATE TABLE teachers
+(
+    id serial NOT NULL,
+    first_name character varying(25),
+    last_name character varying(25),
+    subject character varying(20),
+    salary integer,
+    PRIMARY KEY (id)
+);
+```
+
 ```c#
 MyNpgsqlAsync pgsql = new(host, username, password, database);
 DbParams p = new("id", id);
