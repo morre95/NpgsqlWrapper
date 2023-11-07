@@ -18,6 +18,13 @@ namespace NpgsqlWrapper
             _conn = dataSource.OpenConnection();
         }
 
+        public void Close()
+        {
+            if (_conn == null) throw new ArgumentNullException();
+
+            _conn.Close();
+        }
+
         public IEnumerable<T> Fetch<T>(string? sql = null)
         {
             if (sql == null) sql = $"SELECT * FROM {typeof(T).Name}";
