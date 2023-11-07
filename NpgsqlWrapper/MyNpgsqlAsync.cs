@@ -77,15 +77,22 @@ namespace NpgsqlWrapper
                     {
                         cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
                     }
-                    await using var reader = await cmd.ExecuteReaderAsync();
-                    while (await reader.ReadAsync())
-                    {
-                        T item = Activator.CreateInstance<T>();
-                        item = SetObjectValues(propertyList, item, reader);
-                        returnList.Add(item);
-                    }
+
+                    returnList = await ExecuteReaderMenyAsync(returnList, propertyList, cmd);
                 }
 
+            }
+            return returnList;
+        }
+
+        private static async Task<List<T>> ExecuteReaderMenyAsync<T>(List<T> returnList, List<PropertyInfo> propertyList, NpgsqlCommand cmd)
+        {
+            await using var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                T item = Activator.CreateInstance<T>();
+                item = SetObjectValues(propertyList, item, reader);
+                returnList.Add(item);
             }
             return returnList;
         }
@@ -343,13 +350,7 @@ namespace NpgsqlWrapper
                     }
                 }
 
-                await using var reader = await cmd.ExecuteReaderAsync();
-                while (await reader.ReadAsync())
-                {
-                    T item = Activator.CreateInstance<T>();
-                    item = SetObjectValues(propertyList, item, reader);
-                    returnList.Add(item);
-                }
+                returnList = await ExecuteReaderMenyAsync(returnList, propertyList, cmd);
             }
             //if (returnList.Count <= 0) return default;
             return returnList;
