@@ -61,7 +61,7 @@ namespace NpgsqlWrapper
         /// </summary>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string.</param>
-        /// <param name="parameters">Arguments for the query.</param>
+        /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <returns>List of objects with data from the database.</returns>
         /// <exception cref="ArgumentNullException">Throws if no DB connection is made.</exception>
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of arguments.</exception>
@@ -124,7 +124,7 @@ namespace NpgsqlWrapper
         /// </summary>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string.</param>
-        /// <param name="parameters">Arguments for the query.</param>
+        /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <returns>List of objects with data from the database.</returns>
         /// <exception cref="ArgumentNullException">Throws if no DB connection is made.</exception>
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of arguments.</exception>

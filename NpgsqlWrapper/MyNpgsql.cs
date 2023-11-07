@@ -58,7 +58,7 @@ namespace NpgsqlWrapper
         /// </summary>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string.</param>
-        /// <param name="parameters">Arguments for the query.</param>
+        /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <returns>A <see cref="IEnumerable{T}"/> mapped with data set from database</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public IEnumerable<T> Fetch<T>(string sql, Dictionary<string, object> parameters)
