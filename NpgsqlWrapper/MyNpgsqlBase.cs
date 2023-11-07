@@ -4,17 +4,35 @@ using System.Text.RegularExpressions;
 
 namespace NpgsqlWrapper
 {
+    /// <summary>
+    /// Wrapper for Npgsql: https://github.com/npgsql/npgsql
+    /// </summary>
     internal class MyNpgsqlBase
     {
-
+        /// <summary>
+        /// The connection string provided by the user, including the password.
+        /// </summary>
         protected readonly string? _connectionString;
+        /// <summary>
+        /// Connection object
+        /// </summary>
         protected NpgsqlConnection? _conn = null;
 
+        /// <summary>
+        /// Constructor, building connection string with parameter provided by the user
+        /// </summary>
+        /// <param name="host">Host for server</param>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <param name="database">Database</param>
         public MyNpgsqlBase(string host, string username, string password, string database)
         {
             _connectionString = $"Host={host};Username={username};Password={password};Database={database}";
         }
 
+        /// <summary>
+        /// Return the latest inserted id
+        /// </summary>
         public Int64 LastInsertedID
         {
             get
@@ -31,12 +49,16 @@ namespace NpgsqlWrapper
             }
         }
 
+        /// <summary>
+        /// Returns the number of times @field is in a sql query
+        /// </summary>
+        /// <param name="sqlQuery"></param>
+        /// <returns>Number of @field</returns>
         protected static int GetSqlNumParams(string sqlQuery)
         {
             string pattern = @"[=<>]+\s*@";
             MatchCollection matches = Regex.Matches(sqlQuery, pattern);
             return matches.Count;
-
         }
 
         /// <summary>
@@ -70,6 +92,14 @@ namespace NpgsqlWrapper
             return item;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="listToInsert"></param>
+        /// <param name="sql"></param>
+        /// <param name="args"></param>
+        /// <exception cref="ArgumentException"></exception>
         protected static void PrepareManyInsertSql<T>(List<T> listToInsert, out string sql, out DbParams args)
         {
             List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();

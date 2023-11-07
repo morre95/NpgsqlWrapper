@@ -26,7 +26,6 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Builds the connection to the database, asynchronously.
         /// </summary>
-        /// <returns></returns>
         public async Task ConnectAsync()
         {
             var dataSourceBuilder = new NpgsqlDataSourceBuilder(_connectionString);
@@ -38,7 +37,6 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Close connection to database, asynchronously.
         /// </summary>
-        /// <returns></returns>
         /// <exception cref="ArgumentNullException">Throws if connections is not made</exception>
         public async Task CloseAsync()
         {
@@ -47,9 +45,9 @@ namespace NpgsqlWrapper
         }
 
         /// <summary>
-        /// Fetches asynchronously a list of data from the database.
+        /// Fetches asynchronously a result set from the database.
         /// </summary>
-        /// <typeparam name="T">Class with fields to fetch from database.</typeparam>
+        /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string. If leaved empty it will run a simple SELECT * FROM MyTableClass.</param>
         /// <returns>List of objects with data from the database</returns>
         public async Task<List<T>?> FetchAsync<T>(string? sql = null)
@@ -61,10 +59,10 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Fetches asynchronously a list of data from the database with sql injection safety.
         /// </summary>
-        /// <typeparam name="T">Class with fields to fetch from database.</typeparam>
+        /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string.</param>
         /// <param name="parameters">Arguments for the query.</param>
-        /// <returns>List of objects with data from the database</returns>
+        /// <returns>List of objects with data from the database.</returns>
         /// <exception cref="ArgumentNullException">Throws if no DB connection is made.</exception>
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of arguments.</exception>
         public async Task<List<T>?> FetchAsync<T>(string sql, Dictionary<string, object> parameters)
@@ -112,7 +110,7 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Fetches asynchronously one result from the database.
         /// </summary>
-        /// <typeparam name="T">Class with fields you want to fetch from database.</typeparam>
+        /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string. If leaved empty it will run a simple SELECT * FROM MyTableClass LIMIT 1.</param>
         /// <returns>An object with data from the database.</returns>
         public async Task<T?> FetchOneAsync<T>(string? sql = null)
@@ -124,7 +122,7 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Fetches asynchronously a list of data from the database with sql injection safety.
         /// </summary>
-        /// <typeparam name="T">Class with fields you want to fetch from database.</typeparam>
+        /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string.</param>
         /// <param name="parameters">Arguments for the query.</param>
         /// <returns>List of objects with data from the database.</returns>
@@ -162,7 +160,7 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Inserts asynchronously. 
         /// </summary>
-        /// <typeparam name="T">Object with data to insert into the database.</typeparam>
+        /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="objToInsert">Objects with data.</param>
         /// <returns>The number of rows affected by the insert operation.</returns>
         public async Task<int> InsertAsync<T>(T objToInsert)
@@ -274,12 +272,12 @@ namespace NpgsqlWrapper
         }
 
         /// <summary>
-        /// Executes a SQL command that does not return a result set asynchronously.
+        /// Executes a SQL command and returns the number of affected rows asynchronously.
         /// </summary>
         /// <param name="sql">The SQL command to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL command.</param>
         /// <returns>The number of rows affected by the SQL command.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when '_conn' is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public async Task<int> ExecuteNonQueryAsync(string sql, Dictionary<string, object> parameters)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
@@ -295,11 +293,11 @@ namespace NpgsqlWrapper
         }
 
         /// <summary>
-        /// Executes a SQL command that does not return a result set asynchronously.
+        /// Executes a SQL command and returns the number of affected rows asynchronously.
         /// </summary>
         /// <param name="sql">The SQL command to execute.</param>
         /// <returns>The number of rows affected by the SQL command.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when '_conn' is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public async Task<int> ExecuteNonQueryAsync(string sql)
         {
             return await ExecuteNonQueryAsync(sql, new DbParams());
