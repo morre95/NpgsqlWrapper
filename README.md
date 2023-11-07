@@ -46,14 +46,6 @@ CREATE TABLE teachers
 );
 ```
 
-```c#
-MyNpgsqlAsync pgsql = new(host, username, password, database);
-DbParams p = new("id", id);
-await pgsql.DeleteAsync<Teachers>($"id = @id", p);
-
-List<Actor> actors = await psql.FetchAsync<Actor>();
-```
-
 ## Example
 
 ```c#
@@ -70,7 +62,6 @@ await pgsql.InsertAsync(act);
 # Delete
 DbParams p = new("id", id);
 await pgsql.DeleteAsync<Teachers>($"id = @id", p);
-
 
 # Update command
 var teacherToEdit = new Teachers()
