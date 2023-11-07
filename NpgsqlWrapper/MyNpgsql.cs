@@ -20,8 +20,7 @@ namespace NpgsqlWrapper
 
         public void Close()
         {
-            if (_conn == null) throw new ArgumentNullException();
-
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             _conn.Close();
         }
 
@@ -51,13 +50,8 @@ namespace NpgsqlWrapper
                     {
                         cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
                     }
-                    using var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        T item = Activator.CreateInstance<T>();
-                        item = SetObjectValues(propertyList, item, reader);
-                        yield return item;
-                    }
+
+                    return ExecuteRederMany<T>(propertyList, cmd);
                 }
 
             }
@@ -77,14 +71,30 @@ namespace NpgsqlWrapper
                     }
                 }
 
-                using var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    T item = Activator.CreateInstance<T>();
-                    item = SetObjectValues(propertyList, item, reader);
-                    yield return item;
-                }
+                return ExecuteRederMany<T>(propertyList, cmd);
             }
+        }
+
+        private static IEnumerable<T> ExecuteRederMany<T>(List<PropertyInfo> propertyList, NpgsqlCommand cmd)
+        {
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                T item = Activator.CreateInstance<T>();
+                item = SetObjectValues(propertyList, item, reader);
+                yield return item;
+            }
+        }
+
+        private static T? ExecuteReder<T>(List<PropertyInfo> propertyList, NpgsqlCommand cmd)
+        {
+            T item = Activator.CreateInstance<T>();
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                return SetObjectValues(propertyList, item, reader);
+            }
+            return default;
         }
 
         public T? FetchOne<T>(string? sql = null)
@@ -97,7 +107,7 @@ namespace NpgsqlWrapper
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
-            T item = Activator.CreateInstance<T>();
+            
             using (var cmd = new NpgsqlCommand(sql, _conn))
             {
                 if (parameters != null)
@@ -108,13 +118,8 @@ namespace NpgsqlWrapper
                     }
                 }
 
-                using var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    return SetObjectValues(propertyList, item, reader);
-                }
+                return ExecuteReder<T>(propertyList, cmd);
             }
-            return default;
         }
 
         public int Insert<T>(T objToInsert)
