@@ -9,6 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 The things you need before installing the software.
 
+* PostgreSQL server and or PgAdmin
 * The nuget Npgsql
 
 ### Installation
