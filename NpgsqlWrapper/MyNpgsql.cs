@@ -44,13 +44,8 @@ namespace NpgsqlWrapper
                     {
                         cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
                     }
-                    using var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        T item = Activator.CreateInstance<T>();
-                        item = SetObjectValues(propertyList, item, reader);
-                        yield return item;
-                    }
+
+                    return ExecuteRederMany<T>(propertyList, cmd);
                 }
 
             }
@@ -70,13 +65,18 @@ namespace NpgsqlWrapper
                     }
                 }
 
-                using var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    T item = Activator.CreateInstance<T>();
-                    item = SetObjectValues(propertyList, item, reader);
-                    yield return item;
-                }
+                return ExecuteRederMany<T>(propertyList, cmd);
+            }
+        }
+
+        private static IEnumerable<T> ExecuteRederMany<T>(List<PropertyInfo> propertyList, NpgsqlCommand cmd)
+        {
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                T item = Activator.CreateInstance<T>();
+                item = SetObjectValues(propertyList, item, reader);
+                yield return item;
             }
         }
 
