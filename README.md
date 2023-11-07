@@ -57,22 +57,41 @@ List<Actor> actors = await psql.FetchAsync<Actor>();
 ## Example
 
 ```c#
+# Init
+MyNpgsqlAsync pgsql = new(host, username, password, database);
+
 # Insert
 Actor act = new Actor();
 act.first_name = "First name";
 act.last_name = "Last name";
 act.last_update = DateTime.Now;
-await psql.InsertAsync(act);
+await pgsql.InsertAsync(act);
+
+# Delete
+DbParams p = new("id", id);
+await pgsql.DeleteAsync<Teachers>($"id = @id", p);
+
+
+# Update command
+var teacherToEdit = new Teachers()
+{
+    first_name = firstName,
+    last_name = lastName,
+    subject = subject,
+    salary = salary
+};
+DbParams p = new("id", id);
+await pgsql.UpdateAsync(teacher, "id=@id", p);
 
 # Fatch many
-List<Actor> actors = await psql.FetchAsync<Actor>();
+List<Actor> actors = await pgsql.FetchAsync<Actor>();
 foreach (Actor actor in actors)
 {
     Console.WriteLine(actor.first_name);
 }
 
 # Fetch one result
-Film film = await psql.ExecuteOneAsync<Film>(); // Eqvivalent to SELECT * FROM film LIMIT 1
+Film film = await pgsql.ExecuteOneAsync<Film>(); // Eqvivalent to SELECT * FROM film LIMIT 1
 Console.WriteLine($"id = {film.film_id}, title = {film.title},  +
 $"length = {TimeSpan.FromMinutes(film.length).ToString(@"hh\:mm")}");
 ```
