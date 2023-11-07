@@ -31,6 +31,11 @@
         {
             Teachers teachers = new Teachers();
             teachers.Connect(host, username, password, database);
+
+            //MyNpgsqlAsync pgsql = new(host, username, password, "TestProject");
+            //await pgsql.ConnectAsync();
+            //await pgsql.ExecuteNonQueryAsync("CALL insert_teacher('Karl Von Fasen', 'Fakulteter', 50)");
+
             string command;
             do
             {
@@ -180,6 +185,10 @@
                         Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.subject.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
                     }
                 }
+                else if ( command == "exit")
+                {
+                    teachers.Close();
+                }
 
             } while (command != "exit");
         }
@@ -235,6 +244,11 @@ CREATE TABLE teachers
         {
             pgsql = new(host, username, password, "TestProject");
             await pgsql.ConnectAsync();
+        }
+
+        public async Task Close()
+        {
+            await pgsql.CloseAsync();
         }
 
         public async Task<List<Teachers>> GetAll()

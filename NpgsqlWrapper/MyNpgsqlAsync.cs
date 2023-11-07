@@ -52,7 +52,7 @@ namespace NpgsqlWrapper
         /// <typeparam name="T">Class with fields to fetch from database.</typeparam>
         /// <param name="sql">Query string. If leaved empty it will run a simple SELECT * FROM MyTableClass.</param>
         /// <returns>List of objects with data from the database</returns>
-        public async Task<List<T>> FetchAsync<T>(string? sql = null)
+        public async Task<List<T>?> FetchAsync<T>(string? sql = null)
         {
             if (sql == null) sql = $"SELECT * FROM {typeof(T).Name}";
             return await ExecuteAsync<T>(sql);
@@ -67,10 +67,10 @@ namespace NpgsqlWrapper
         /// <returns>List of objects with data from the database</returns>
         /// <exception cref="ArgumentNullException">Throws if no DB connection is made.</exception>
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of arguments.</exception>
-        public async Task<List<T>> FetchAsync<T>(string sql, Dictionary<string, object> parameters)
+        public async Task<List<T>?> FetchAsync<T>(string sql, Dictionary<string, object> parameters)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            List<T> returnList = new List<T>();
+            List<T>? returnList = new List<T>();
             using (var tx = _conn.BeginTransaction())
             {
                 List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
@@ -89,7 +89,7 @@ namespace NpgsqlWrapper
                         cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
                     }
 
-                    returnList = await ExecuteReaderMenyAsync(returnList, propertyList, cmd);
+                    returnList = await ExecuteReaderMenyAsync<T>(propertyList, cmd);
                 }
 
             }
@@ -100,12 +100,12 @@ namespace NpgsqlWrapper
         /// Executes a <see cref="NpgsqlDataReader"/> object that returns a list of objects of type 'T' asynchronously.
         /// </summary>
         /// <typeparam name="T">The type to map the result to.</typeparam>
-        /// <param name="returnList"></param>
         /// <param name="propertyList">List of <see cref="PropertyInfo"/> made out of T</param>
         /// <param name="cmd">The <see cref="NpgsqlCommand"/> command object</param>
         /// <returns>The result of the SQL query mapped to the specified type.</returns>
-        private static async Task<List<T>> ExecuteReaderMenyAsync<T>(List<T> returnList, List<PropertyInfo> propertyList, NpgsqlCommand cmd)
+        private static async Task<List<T>?> ExecuteReaderMenyAsync<T>(List<PropertyInfo> propertyList, NpgsqlCommand cmd)
         {
+            List<T> returnList = new List<T>();
             await using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
@@ -113,6 +113,7 @@ namespace NpgsqlWrapper
                 item = SetObjectValues(propertyList, item, reader);
                 returnList.Add(item);
             }
+            if (returnList.Count <= 0) return default;
             return returnList;
         }
 
@@ -122,7 +123,7 @@ namespace NpgsqlWrapper
         /// <typeparam name="T">Class with fields you want to fetch from database.</typeparam>
         /// <param name="sql">Query string. If leaved empty it will run a simple SELECT * FROM MyTableClass LIMIT 1.</param>
         /// <returns>An object with data from the database.</returns>
-        public async Task<T> FetchOneAsync<T>(string? sql = null)
+        public async Task<T?> FetchOneAsync<T>(string? sql = null)
         {
             if (sql == null) sql = $"SELECT * FROM {typeof(T).Name} FETCH FIRST 1 ROW ONLY";
             return await ExecuteOneAsync<T>(sql);
@@ -137,7 +138,7 @@ namespace NpgsqlWrapper
         /// <returns>List of objects with data from the database.</returns>
         /// <exception cref="ArgumentNullException">Throws if no DB connection is made.</exception>
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of arguments.</exception>
-        public async Task<T> FetchOneAsync<T>(string sql, Dictionary<string, object> parameters)
+        public async Task<T?> FetchOneAsync<T>(string sql, Dictionary<string, object> parameters)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             // TBD: kolla om det finns LIMIT 1 eller FETCH FIRST 1 ROW ONLY eller liknande och läg till det om det fattas
@@ -172,7 +173,8 @@ namespace NpgsqlWrapper
 
                 }
 
-                return item;
+                return default;
+                //return item;
             }
         }
 
@@ -194,7 +196,7 @@ namespace NpgsqlWrapper
         /// <typeparam name="T">The type of objects to insert.</typeparam>
         /// <param name="objToInsert">The object with records to insert.</param>
         /// <returns>A list of objects containing the inserted records.</returns>
-        public async Task<T> InsertReturningAsync<T>(T objToInsert)
+        public async Task<T?> InsertReturningAsync<T>(T objToInsert)
         {
             PrepareInsertSql(objToInsert, out string sql, out DbParams parameters);
             sql += " RETURNING *";
@@ -221,7 +223,7 @@ namespace NpgsqlWrapper
         /// <param name="listToInsert">The list of objects to insert.</param>
         /// <returns>A list of objects containing the inserted records.</returns>
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of arguments.</exception>
-        public async Task<List<T>> InsertManyReturningAsync<T>(List<T> listToInsert)
+        public async Task<List<T>?> InsertManyReturningAsync<T>(List<T> listToInsert)
         {
             PrepareManyInsertSql(listToInsert, out string sql, out DbParams parameters);
             sql += " RETURNING *";
@@ -312,6 +314,17 @@ namespace NpgsqlWrapper
         }
 
         /// <summary>
+        /// Executes a SQL command that does not return a result set asynchronously.
+        /// </summary>
+        /// <param name="sql">The SQL command to execute.</param>
+        /// <returns>The number of rows affected by the SQL command.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when '_conn' is null.</exception>
+        public async Task<int> ExecuteNonQueryAsync(string sql)
+        {
+            return await ExecuteNonQueryAsync(sql, new DbParams());
+        }
+
+        /// <summary>
         /// Executes a SQL query that returns a single result asynchronously and maps it to a specified type.
         /// </summary>
         /// <typeparam name="T">The type to map the result to.</typeparam>
@@ -319,7 +332,7 @@ namespace NpgsqlWrapper
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <returns>The result of the SQL query mapped to the specified type.</returns>
         /// <exception cref="ArgumentNullException">Thrown when '_conn' is null.</exception>
-        public async Task<T> ExecuteOneAsync<T>(string sql, Dictionary<string, object>? parameters = null)
+        public async Task<T?> ExecuteOneAsync<T>(string sql, Dictionary<string, object>? parameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
@@ -341,8 +354,8 @@ namespace NpgsqlWrapper
                     return SetObjectValues(propertyList, item, reader);
                 }
             }
-            //return default;
-            return item;
+            return default;
+            //return item;
         }
 
 
@@ -354,10 +367,10 @@ namespace NpgsqlWrapper
         /// <param name="sqlQuery">The SQL query to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <returns>A list of objects of type 'T' retrieved from the database.</returns>
-        public async Task<List<T>> ExecuteAsync<T>(string sqlQuery, Dictionary<string, object>? parameters = null)
+        public async Task<List<T>?> ExecuteAsync<T>(string sqlQuery, Dictionary<string, object>? parameters = null)
         {
             List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
-            List<T> returnList = new List<T>();
+            List<T>? returnList = new List<T>();
 
             await using (var cmd = new NpgsqlCommand(sqlQuery, _conn))
             {
@@ -371,7 +384,7 @@ namespace NpgsqlWrapper
 
                 returnList = await ExecuteReaderMenyAsync(returnList, propertyList, cmd);
             }
-            //if (returnList.Count <= 0) return default;
+            if (returnList.Count <= 0) return default;
             return returnList;
         }
 

@@ -153,6 +153,11 @@ namespace NpgsqlWrapper
             return cmd.ExecuteNonQuery();
         }
 
+        public int ExecuteNonQuery(string sql)
+        {
+            return ExecuteNonQuery(sql, new DbParams());
+        }
+
         public IEnumerable<T> InsertManyReturning<T>(List<T> listToInsert)
         {
             PrepareManyInsertSql(listToInsert, out string sql, out DbParams parameters);

@@ -166,12 +166,7 @@ namespace NpgsqlWrapper
 
             sql = sql.Remove(sql.Length - 1, 1);
 
-            if (where != null)
-            {
-                sql += " WHERE ";
-                where = Regex.Replace(where, "where ", "", RegexOptions.IgnoreCase);
-                sql += where;
-            }
+            sql = AddWhereToQuery(where, sql);
 
             if (whereArgs != null)
             {
@@ -183,17 +178,18 @@ namespace NpgsqlWrapper
             }
         }
 
-        protected static string PrepareDeleteSql(string tableName, string? where)
+        protected static string AddWhereToQuery(string? where, string sql)
         {
-            string sql = $"DELETE FROM {tableName}";
             if (where != null)
             {
                 sql += " WHERE ";
                 where = Regex.Replace(where, "where ", "", RegexOptions.IgnoreCase);
                 sql += where;
             }
-
             return sql;
         }
+
+        protected static string PrepareDeleteSql(string tableName, string? where) 
+            => AddWhereToQuery(where, $"DELETE FROM {tableName}");
     }
 }
