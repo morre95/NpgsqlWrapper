@@ -1,5 +1,5 @@
 # NpgsqlWrapper
-This is a wrapper from Npgsql: [Npgsql](https://github.com/npgsql/npgsql)
+This is a wrapper for Npgsql: [Npgsql](https://github.com/npgsql/npgsql)
 
 ## Getting Started
 
