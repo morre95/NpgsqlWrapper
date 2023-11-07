@@ -60,7 +60,8 @@ foreach (Actor actor in actors)
 
 # Fetch one result
 Film film = await psql.ExecuteOneAsync<Film>(); // Eqvivalent to SELECT * FROM film LIMIT 1
-Console.WriteLine($"id = {film.film_id}, title = {film.title}, length = {TimeSpan.FromMinutes(film.length).ToString(@"hh\:mm")}");
+Console.WriteLine($"id = {film.film_id}, title = {film.title},  +
+$"length = {TimeSpan.FromMinutes(film.length).ToString(@"hh\:mm")}");
 ```
 
 ## Deployment
