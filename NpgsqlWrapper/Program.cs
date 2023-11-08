@@ -9,7 +9,7 @@
             string? host, username, password, database;
 
             GetDatabaseLogin(out host, out username, out password, out database);
-            await TestTeachersAsync(host, username, password, database);
+            await TeachersAsync(host, username, password, database);
         }
 
         private static void GetDatabaseLogin(out string? host, out string? username, out string? password, out string? database)
@@ -29,7 +29,7 @@
             if (database == null) { throw new ArgumentNullException(); }
         }
 
-        private static async Task TestTeachersAsync(string? host, string? username, string? password, string? database)
+        private static async Task TeachersAsync(string? host, string? username, string? password, string? database)
         {
             School school = new School();
             school.Connect(host, username, password, database);
