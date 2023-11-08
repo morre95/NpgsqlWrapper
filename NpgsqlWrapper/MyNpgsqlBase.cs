@@ -93,14 +93,6 @@ namespace NpgsqlWrapper
             return item;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="listToInsert"></param>
-        /// <param name="sql"></param>
-        /// <param name="args"></param>
-        /// <exception cref="ArgumentException"></exception>
         protected static void PrepareManyInsertSql<T>(List<T> listToInsert, out string sql, out DbParams args)
         {
             IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();

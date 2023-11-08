@@ -1,11 +1,25 @@
 ﻿namespace NpgsqlWrapper
 {
+
     internal class Program
     {
         static async Task Main(string[] args)
         {
-            // TODO: fixa en create metode för att skapa tabeller.
-            // kolla upp [namn] över variabler fungerar
+            // Edit en uncomment this code the first time you run this. Then remove it
+            /*DatabaseConfig config = new DatabaseConfig
+            {
+                Server = "localhost",
+                Port = 5432,
+                Username = "Username",
+                Password = "Password",
+                Database = "Database"
+            };
+
+            string configFile = "config.json";
+
+            DatabaseConfig.Save(configFile, config);*/
+
+
             string? host, username, password, database;
 
             GetDatabaseLogin(out host, out username, out password, out database);
@@ -14,14 +28,14 @@
 
         private static void GetDatabaseLogin(out string? host, out string? username, out string? password, out string? database)
         {
-            var root = Directory.GetCurrentDirectory();
-            var dotenv = Path.Combine(root, ".env");
-            DotEnv.Load(dotenv);
+            string configFile = "config.json";
 
-            host = Environment.GetEnvironmentVariable("dbHost");
-            username = Environment.GetEnvironmentVariable("bdUsername");
-            password = Environment.GetEnvironmentVariable("dbPassword");
-            database = Environment.GetEnvironmentVariable("dbDatabase");
+            DatabaseConfig config = DatabaseConfig.Load(configFile);
+
+            host = config.Server + ":" + config.Port;
+            username = config.Username;
+            password = config.Password;
+            database = config.Database;
 
             if (host == null) { throw new ArgumentNullException(); }
             if (username == null) { throw new ArgumentNullException(); }
@@ -72,13 +86,13 @@
                     Console.Write("Subject> ");
                     string subject = Console.ReadLine();
 
-                    string dirySalary;
+                    string dirtySalary;
                     int salary;
                     do
                     {
                         Console.Write("Salary> ");
-                        dirySalary = Console.ReadLine();
-                    } while (!int.TryParse(dirySalary, out salary));
+                        dirtySalary = Console.ReadLine();
+                    } while (!int.TryParse(dirtySalary, out salary));
 
                     var teacherToAdd = new Teachers()
                     {
@@ -91,13 +105,13 @@
                 }
                 else if (command == "edit")
                 {
-                    string diryId;
+                    string dirtyId;
                     int id;
                     do
                     {
                         Console.Write("Id> ");
-                        diryId = Console.ReadLine();
-                    } while (!int.TryParse(diryId, out id));
+                        dirtyId = Console.ReadLine();
+                    } while (!int.TryParse(dirtyId, out id));
                     var teacher = await school.GetById(id);
                     Console.WriteLine($"First name: {teacher.first_name}");
                     Console.WriteLine($"Last name: {teacher.last_name}");
@@ -243,7 +257,7 @@ CREATE TABLE teachers
         MyNpgsqlAsync? pgsql = null;
         public async void Connect(string? host, string? username, string? password, string? database)
         {
-            pgsql = new(host, username, password, "TestProject");
+            pgsql = new(host, username, password, database);
             await pgsql.ConnectAsync();
         }
 
