@@ -1,0 +1,792 @@
+\doxysection{Npgsql\+Wrapper.\+My\+Npgsql Class Reference}
+\hypertarget{class_npgsql_wrapper_1_1_my_npgsql}{}\label{class_npgsql_wrapper_1_1_my_npgsql}\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+
+
+Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+://github.\+com/npgsql/npgsql}}.  
+
+
+Inheritance diagram for Npgsql\+Wrapper.\+My\+Npgsql\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_npgsql_wrapper_1_1_my_npgsql}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ac084fb1e58fd1dd91e0ef2ea7f7e6d35}{My\+Npgsql}} (string host, string username, string password, string database)
+\begin{DoxyCompactList}\small\item\em Constructor, building connection string with parameter provided by the user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a97b1c6e69e56f64a4e6a9194e4ac9a9c}{Connect}} ()
+\begin{DoxyCompactList}\small\item\em Builds the connection to the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae751870bc80e427774bf3c8dbcacce79}{Close}} ()
+\begin{DoxyCompactList}\small\item\em Closing database connection. \end{DoxyCompactList}\item 
+IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ad3f6f4783c4557f3e008db35f734c508}{Fetch$<$ T $>$}} (string? sql=null)
+\begin{DoxyCompactList}\small\item\em Fetching a result set from the database. \end{DoxyCompactList}\item 
+IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ac49800a85c48ccdbee71e360e9948c28}{Fetch$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
+\begin{DoxyCompactList}\small\item\em Fetching a result set from the database. \end{DoxyCompactList}\item 
+IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae35883f4faf59a88f46ff42b51aafcd4}{Execute$<$ T $>$}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{}. \end{DoxyCompactList}\item 
+T? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a6942202146760bccab8163b968f3ecec}{Fetch\+One$<$ T $>$}} (string? sql=null)
+\begin{DoxyCompactList}\small\item\em Fetches one result from the database. \end{DoxyCompactList}\item 
+T? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a031ed2895291c5c9752bad60d72bca09}{Execute\+One$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Fetches a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a3f6cecedbdbbd11116671275af7123c3}{Insert$<$ T $>$}} (T obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts. \end{DoxyCompactList}\item 
+T? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_adeb58a77ab6bb1e803aa29ca332fa053}{Insert\+Returning$<$ T $>$}} (T obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts with returning statement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af18c98c7790191315ea95a09699f413b}{Insert\+Many$<$ T $>$}} (List$<$ T $>$ obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts many. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_aa4e23097e0b5524cd078a90c239dd2e8}{Execute\+Non\+Query}} (string sql, Dictionary$<$ string, object $>$ parameters)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns number of effected rows. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af5160caf605ec67e8e7248847352d7cd}{Execute\+Non\+Query}} (string sql)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns number of effected rows. \end{DoxyCompactList}\item 
+IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a78ae4e6313073dff3069e34fb3b06435}{Insert\+Many\+Returning$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts many with returning statement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a45b69bb7486ee82bab592e544a174632}{Update$<$ T $>$}} (T table, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Updates rows in a database table based on the provided object\textquotesingle{}s properties. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}{Delete}} (string table\+Name, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Deletes rows from a database table based on the specified conditions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60}{Delete$<$ T $>$}} (string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database. \end{DoxyCompactList}\item 
+IEnumerable$<$ Dictionary$<$ string, object $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d}{Dump}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1f99c7fd31766970755f3f5e4c1fa927}{My\+Npgsql\+Base}} (string host, string username, string password, string database)
+\begin{DoxyCompactList}\small\item\em Constructor, building connection string with parameter provided by the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1203e36c81bc44676034091602829101}{Get\+Sql\+Num\+Params}} (string sql\+Query)
+\begin{DoxyCompactList}\small\item\em Returns the number of times @field is in a sql query. \end{DoxyCompactList}\item 
+static T \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a654d6c998b5e5eb851bf5e6a7181de78}{Set\+Object\+Values$<$ T $>$}} (List$<$ Property\+Info $>$ property\+List, T item, Npgsql\+Data\+Reader reader)
+\begin{DoxyCompactList}\small\item\em Maps the values from a database reader to the properties of an object of type \textquotesingle{}T\textquotesingle{}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aa1ce69f5c6bdbf9baa26711a8c60fad9}{Prepare\+Many\+Insert\+Sql$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} args)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a515f8446dc982c4b489c1b7e6d0007fc}{Prepare\+Insert\+Sql$<$ T $>$}} (T obj\+To\+Insert, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} args)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a52b682519a4273dddd56bcf7affa03fa}{Prepare\+Update\+Sql$<$ T $>$}} (T table, string? where, Dictionary$<$ string, object $>$? where\+Args, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} return\+Args)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237a112b5bd99ac222cf1a2e4da}{Add\+Where\+To\+Query}} (string? where, string sql)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}{Prepare\+Delete\+Sql}} (string table\+Name, string? where)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}{Add\+Parameters}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters, Npgsql\+Command cmd)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+readonly? string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1f78e4924ec97aa998f6b10d01112e55}{\+\_\+connection\+String}}
+\begin{DoxyCompactList}\small\item\em The connection string provided by the user, including the password. \end{DoxyCompactList}\item 
+Npgsql\+Connection? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a637ef8d9364e905837a2dcba39d4156b}{\+\_\+conn}} = null
+\begin{DoxyCompactList}\small\item\em Connection object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+Int64 \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Return the latest inserted id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+://github.\+com/npgsql/npgsql}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ac084fb1e58fd1dd91e0ef2ea7f7e6d35}\label{class_npgsql_wrapper_1_1_my_npgsql_ac084fb1e58fd1dd91e0ef2ea7f7e6d35} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!MyNpgsql@{MyNpgsql}}
+\index{MyNpgsql@{MyNpgsql}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{MyNpgsql()}{MyNpgsql()}}
+{\footnotesize\ttfamily Npgsql\+Wrapper.\+My\+Npgsql.\+My\+Npgsql (\begin{DoxyParamCaption}\item[{string}]{host,  }\item[{string}]{username,  }\item[{string}]{password,  }\item[{string}]{database }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, building connection string with parameter provided by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Host for server\\
+\hline
+{\em username} & Username\\
+\hline
+{\em password} & Password\\
+\hline
+{\em database} & Database\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ae751870bc80e427774bf3c8dbcacce79}\label{class_npgsql_wrapper_1_1_my_npgsql_ae751870bc80e427774bf3c8dbcacce79} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Close@{Close}}
+\index{Close@{Close}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Npgsql\+Wrapper.\+My\+Npgsql.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Closing database connection. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{...}
+\DoxyCodeLine{Do\ your\ database\ work\ here}
+\DoxyCodeLine{...}
+\DoxyCodeLine{}
+\DoxyCodeLine{pgsql.Close();}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws if connections is not made\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a97b1c6e69e56f64a4e6a9194e4ac9a9c}\label{class_npgsql_wrapper_1_1_my_npgsql_a97b1c6e69e56f64a4e6a9194e4ac9a9c} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Connect@{Connect}}
+\index{Connect@{Connect}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}}
+{\footnotesize\ttfamily void Npgsql\+Wrapper.\+My\+Npgsql.\+Connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Builds the connection to the database. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+
+\end{DoxyCode}
+ \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}\label{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Delete@{Delete}}
+\index{Delete@{Delete}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily int Npgsql\+Wrapper.\+My\+Npgsql.\+Delete (\begin{DoxyParamCaption}\item[{string}]{table\+Name,  }\item[{string?}]{where = {\ttfamily null},  }\item[{Dictionary$<$ string, object $>$?}]{where\+Parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deletes rows from a database table based on the specified conditions. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ pgsql.Delete(\textcolor{stringliteral}{"{}teachers"{}},\ \textcolor{stringliteral}{"{}id=@id"{}},\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 11));}
+\DoxyCodeLine{Console.WriteLine(affectedRows);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & The name of the table to delete rows from.\\
+\hline
+{\em where} & Optional WHERE clause to specify which rows to delete.\\
+\hline
+{\em where\+Parameters} & Additional parameters to include in the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the delete operation.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of parameters.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60}\label{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Delete$<$ T $>$@{Delete$<$ T $>$}}
+\index{Delete$<$ T $>$@{Delete$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Delete$<$ T $>$()}{Delete< T >()}}
+{\footnotesize\ttfamily int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}{Npgsql\+Wrapper.\+My\+Npgsql.\+Delete}}$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{where = {\ttfamily null},  }\item[{Dictionary$<$ string, object $>$?}]{where\+Parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL command that deletes records from the database. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ pgsql.Delete\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}id=@id"{}},\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 11));}
+\DoxyCodeLine{Console.WriteLine(affectedRows);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to take table name from.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em where} & The sql where command.\\
+\hline
+{\em where\+Parameters} & The parameters to bind to the SQL where command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of effected rows
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d}\label{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Dump@{Dump}}
+\index{Dump@{Dump}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Dump()}{Dump()}}
+{\footnotesize\ttfamily IEnumerable$<$ Dictionary$<$ string, object $>$ $>$ Npgsql\+Wrapper.\+My\+Npgsql.\+Dump (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Dumps a record set from the database into a List of Dictionarys. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ pgsql.Dump(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers"{}}))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item[\textcolor{stringliteral}{"{}first\_name"{}}]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sql\+Query} & The SQL query to execute.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of objects of type \textquotesingle{}Dictionary$<$string, object$>$\textquotesingle{} retrieved from the database.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ae35883f4faf59a88f46ff42b51aafcd4}\label{class_npgsql_wrapper_1_1_my_npgsql_ae35883f4faf59a88f46ff42b51aafcd4} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Execute$<$ T $>$@{Execute$<$ T $>$}}
+\index{Execute$<$ T $>$@{Execute$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Execute$<$ T $>$()}{Execute< T >()}}
+{\footnotesize\ttfamily IEnumerable$<$ T $>$ Npgsql\+Wrapper.\+My\+Npgsql.\+Execute$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{}. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}id"{}},\ 23\ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ pgsql.Execute\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id\(\backslash\)<@id"{}},\ p))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item.first\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of objects to retrieve from the database.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql\+Query} & The SQL query to execute.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A IEnumerable$<$\+T$>$ of objects of type \textquotesingle{}T\textquotesingle{} retrieved from the database.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_af5160caf605ec67e8e7248847352d7cd}\label{class_npgsql_wrapper_1_1_my_npgsql_af5160caf605ec67e8e7248847352d7cd} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!ExecuteNonQuery@{ExecuteNonQuery}}
+\index{ExecuteNonQuery@{ExecuteNonQuery}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{ExecuteNonQuery()}{ExecuteNonQuery()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Npgsql\+Wrapper.\+My\+Npgsql.\+Execute\+Non\+Query (\begin{DoxyParamCaption}\item[{string}]{sql }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL command and returns number of effected rows. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ pgsql.ExecuteNonQueryAsync(\textcolor{stringliteral}{"{}CALL\ stored\_procedure\_name(argument\_list)"{}});}
+\DoxyCodeLine{Console.WriteLine(affectedRows);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & SQL query\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of effected rows
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_aa4e23097e0b5524cd078a90c239dd2e8}\label{class_npgsql_wrapper_1_1_my_npgsql_aa4e23097e0b5524cd078a90c239dd2e8} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!ExecuteNonQuery@{ExecuteNonQuery}}
+\index{ExecuteNonQuery@{ExecuteNonQuery}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{ExecuteNonQuery()}{ExecuteNonQuery()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Npgsql\+Wrapper.\+My\+Npgsql.\+Execute\+Non\+Query (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL command and returns number of effected rows. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}firstName"{}},\ \textcolor{stringliteral}{"{}First\ name"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}LastName"{}},\ \textcolor{stringliteral}{"{}Last\ name"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}subject"{}},\ \textcolor{stringliteral}{"{}the\ best\ subject"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}salary"{}},\ 250\ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{pgsql.ExecuteNonQuery(\textcolor{stringliteral}{"{}INSERT\ INTO\ teachers(first\_name,\ last\_name,\ subject,\ salary)\ VALUES(@firstName,\ @lastName,\ @subject,\ @salary)"{}},\ p);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & SQL query\\
+\hline
+{\em parameters} & The parameters to bind to the SQL command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of effected rows
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a031ed2895291c5c9752bad60d72bca09}\label{class_npgsql_wrapper_1_1_my_npgsql_a031ed2895291c5c9752bad60d72bca09} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!ExecuteOne$<$ T $>$@{ExecuteOne$<$ T $>$}}
+\index{ExecuteOne$<$ T $>$@{ExecuteOne$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{ExecuteOne$<$ T $>$()}{ExecuteOne< T >()}}
+{\footnotesize\ttfamily T? Npgsql\+Wrapper.\+My\+Npgsql.\+Execute\+One$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetches a list of data from the database with sql injection safety. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}id"{}},\ 5\ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{Teachers\ teacher\ =\ pgsql.ExecuteOne\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id=@id"{}},\ p)}
+\DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string.\\
+\hline
+{\em parameters} & Arguments for the query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of objects with data from the database.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws if no DB connection is made.\\
+\hline
+{\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of arguments.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ac49800a85c48ccdbee71e360e9948c28}\label{class_npgsql_wrapper_1_1_my_npgsql_ac49800a85c48ccdbee71e360e9948c28} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Fetch$<$ T $>$@{Fetch$<$ T $>$}}
+\index{Fetch$<$ T $>$@{Fetch$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Fetch$<$ T $>$()}{Fetch< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily IEnumerable$<$ T $>$ Npgsql\+Wrapper.\+My\+Npgsql.\+Fetch$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetching a result set from the database. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}id"{}},\ 23\ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ pgsql.Fetch\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id\(\backslash\)<@id"{}},\ p))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item.first\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A IEnumerable$<$\+T$>$ mapped with data set from database
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ad3f6f4783c4557f3e008db35f734c508}\label{class_npgsql_wrapper_1_1_my_npgsql_ad3f6f4783c4557f3e008db35f734c508} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Fetch$<$ T $>$@{Fetch$<$ T $>$}}
+\index{Fetch$<$ T $>$@{Fetch$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Fetch$<$ T $>$()}{Fetch< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily IEnumerable$<$ T $>$ Npgsql\+Wrapper.\+My\+Npgsql.\+Fetch$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetching a result set from the database. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ pgsql.Fetch\(\backslash\)<Teachers\(\backslash\)>())}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item.first\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string. If leaved empty it will run a simple SELECT \texorpdfstring{$\ast$}{*} FROM My\+Table\+Class.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of objects with data from the database
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a6942202146760bccab8163b968f3ecec}\label{class_npgsql_wrapper_1_1_my_npgsql_a6942202146760bccab8163b968f3ecec} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!FetchOne$<$ T $>$@{FetchOne$<$ T $>$}}
+\index{FetchOne$<$ T $>$@{FetchOne$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{FetchOne$<$ T $>$()}{FetchOne< T >()}}
+{\footnotesize\ttfamily T? Npgsql\+Wrapper.\+My\+Npgsql.\+Fetch\+One$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetches one result from the database. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{Teachers\ teacher\ =\ pgsql.FetchOne\(\backslash\)<Teachers\(\backslash\)>()}
+\DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string. If leaved empty it will run a simple SELECT \texorpdfstring{$\ast$}{*} FROM My\+Table\+Class LIMIT 1.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An object with data from the database.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a3f6cecedbdbbd11116671275af7123c3}\label{class_npgsql_wrapper_1_1_my_npgsql_a3f6cecedbdbbd11116671275af7123c3} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Insert$<$ T $>$@{Insert$<$ T $>$}}
+\index{Insert$<$ T $>$@{Insert$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Insert$<$ T $>$()}{Insert< T >()}}
+{\footnotesize\ttfamily int Npgsql\+Wrapper.\+My\+Npgsql.\+Insert$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{obj\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{pgsql.Insert(teacherToAdd);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+To\+Insert} & Objects with data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the insert operation.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_af18c98c7790191315ea95a09699f413b}\label{class_npgsql_wrapper_1_1_my_npgsql_af18c98c7790191315ea95a09699f413b} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!InsertMany$<$ T $>$@{InsertMany$<$ T $>$}}
+\index{InsertMany$<$ T $>$@{InsertMany$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{InsertMany$<$ T $>$()}{InsertMany< T >()}}
+{\footnotesize\ttfamily int Npgsql\+Wrapper.\+My\+Npgsql.\+Insert\+Many$<$ T $>$ (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{obj\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts many. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd1\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary1}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{var\ teacherToAdd2\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary2}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{List\(\backslash\)<Teachers\(\backslash\)>\ addMe\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{addMe.Add(teacherToAdd1);}
+\DoxyCodeLine{addMe.Add(teacherToAdd2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ pgsql.InsertMany(addMe);}
+\DoxyCodeLine{Console.WriteLine(affectedRows);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+To\+Insert} & List of \textquotesingle{}T\textquotesingle{} with data to insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the insert operation.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a78ae4e6313073dff3069e34fb3b06435}\label{class_npgsql_wrapper_1_1_my_npgsql_a78ae4e6313073dff3069e34fb3b06435} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!InsertManyReturning$<$ T $>$@{InsertManyReturning$<$ T $>$}}
+\index{InsertManyReturning$<$ T $>$@{InsertManyReturning$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{InsertManyReturning$<$ T $>$()}{InsertManyReturning< T >()}}
+{\footnotesize\ttfamily IEnumerable$<$ T $>$ Npgsql\+Wrapper.\+My\+Npgsql.\+Insert\+Many\+Returning$<$ T $>$ (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{list\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts many with returning statement. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd1\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary1}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{var\ teacherToAdd2\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary2}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{List\(\backslash\)<Teachers\(\backslash\)>\ addMe\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{addMe.Add(teacherToAdd1);}
+\DoxyCodeLine{addMe.Add(teacherToAdd2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{Enumerable\(\backslash\)<Teachers\(\backslash\)>\ enumerable\ =\ pgsql.InsertReturning(addMe);}
+\DoxyCodeLine{List\(\backslash\)<Teachers\(\backslash\)>\ teachers\ =\ enumerable.ToList()}
+\DoxyCodeLine{Console.WriteLine(teachers[0].first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em list\+To\+Insert} & Objects with data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A IEnumerable$<$\+T$>$ objects containing the inserted records.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_adeb58a77ab6bb1e803aa29ca332fa053}\label{class_npgsql_wrapper_1_1_my_npgsql_adeb58a77ab6bb1e803aa29ca332fa053} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!InsertReturning$<$ T $>$@{InsertReturning$<$ T $>$}}
+\index{InsertReturning$<$ T $>$@{InsertReturning$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{InsertReturning$<$ T $>$()}{InsertReturning< T >()}}
+{\footnotesize\ttfamily T? Npgsql\+Wrapper.\+My\+Npgsql.\+Insert\+Returning$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{obj\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts with returning statement. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{Teachers\ teacher\ =\ pgsql.Insert(teacherToAdd);}
+\DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+To\+Insert} & Objects with data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the insert operation.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a45b69bb7486ee82bab592e544a174632}\label{class_npgsql_wrapper_1_1_my_npgsql_a45b69bb7486ee82bab592e544a174632} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Update$<$ T $>$@{Update$<$ T $>$}}
+\index{Update$<$ T $>$@{Update$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Update$<$ T $>$()}{Update< T >()}}
+{\footnotesize\ttfamily int Npgsql\+Wrapper.\+My\+Npgsql.\+Update$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{table,  }\item[{string?}]{where = {\ttfamily null},  }\item[{Dictionary$<$ string, object $>$?}]{where\+Parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates rows in a database table based on the provided object\textquotesingle{}s properties. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{pgsql.Connect();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ editMe\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \{}
+\DoxyCodeLine{\ \ \ \ \ first\_name\ =\ firstName,}
+\DoxyCodeLine{\ \ \ \ \ last\_name\ =\ lastName,}
+\DoxyCodeLine{\ \ \ \ \ subject\ =\ subject,}
+\DoxyCodeLine{\ \ \ \ \ salary\ =\ salary}
+\DoxyCodeLine{\ \};}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 11);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ pgsql.Update(editMe,\ \textcolor{stringliteral}{"{}id=@id"{}},\ p);}
+\DoxyCodeLine{Console.WriteLine(affectedRows);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object representing the table to update.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em table} & The object representing the table to update.\\
+\hline
+{\em where} & Optional WHERE clause to specify which rows to update.\\
+\hline
+{\em where\+Parameters} & Additional parameters to include in the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the update operation.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_my_npgsql_8cs}{My\+Npgsql.\+cs}}\end{DoxyCompactItemize}

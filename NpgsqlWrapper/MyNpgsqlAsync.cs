@@ -26,6 +26,15 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Builds the connection to the database, asynchronously.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// ]]>
+        /// </code>
+        /// </example>
         public async Task ConnectAsync()
         {
             var dataSourceBuilder = new NpgsqlDataSourceBuilder(_connectionString);
@@ -37,6 +46,21 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Close connection to database, asynchronously.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// ...
+        /// Do your database work here
+        /// ...
+        /// 
+        /// await pgsql.CloseAsync();
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <exception cref="ArgumentNullException">Throws if connections is not made</exception>
         public async Task CloseAsync()
         {
@@ -47,6 +71,20 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Fetches asynchronously a result set from the database.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// foreach (var item in await pgsql.FetchAsync<Teachers>())
+        /// {
+        ///     Console.WriteLine(item.first_name);
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string. If leaved empty it will run a simple SELECT * FROM MyTableClass.</param>
         /// <returns>List of objects with data from the database</returns>
@@ -59,6 +97,25 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Fetches asynchronously a list of data from the database with sql injection safety.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// DbParams p = new DbParams()
+        /// {
+        ///     { "id", 23 }
+        /// }
+        /// 
+        /// foreach (var item in await pgsql.FetchAsync<Teachers>("SELECT * FROM teachers WHERE id<@id", p))
+        /// {
+        ///     Console.WriteLine(item.first_name);
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
@@ -110,6 +167,18 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Fetches asynchronously one result from the database.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// var teacher = await pgsql.FetchOneAsync<Teacher>(); 
+        /// Console.WriteLine(teacher.first_name);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string. If leaved empty it will run a simple SELECT * FROM MyTableClass LIMIT 1.</param>
         /// <returns>An object with data from the database.</returns>
@@ -122,6 +191,20 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Fetches asynchronously a list of data from the database with sql injection safety.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// DbParams p = new DbParams("id", 23);
+        /// 
+        /// var teacher = await pgsql.FetchOneAsync<Teacher>("SELECT * FROM teachers WHERE id=@id", p); 
+        /// Console.WriteLine(teacher.first_name);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">Query string.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
@@ -160,6 +243,24 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Inserts asynchronously. 
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// var teacherToAdd = new Teachers()
+        ///         {
+        ///             first_name = firstName,
+        ///             last_name = lastName,
+        ///             subject = subject,
+        ///             salary = salary
+        ///         };
+        /// await pgsql.InsertAsync(teacherToAdd);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="objToInsert">Objects with data.</param>
         /// <returns>The number of rows affected by the insert operation.</returns>
@@ -172,6 +273,25 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Inserts asynchronously with returning statement.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// var teacherToAdd = new Teachers()
+        ///         {
+        ///             first_name = firstName,
+        ///             last_name = lastName,
+        ///             subject = subject,
+        ///             salary = salary
+        ///         };
+        /// var teacher = await pgsql.InsertReturningAsync(teacherToAdd); 
+        /// Console.WriteLine(teacher.first_name);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type of objects to insert.</typeparam>
         /// <param name="objToInsert">The object with records to insert.</param>
         /// <returns>A list of objects containing the inserted records.</returns>
@@ -186,6 +306,37 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Inserts a list of objects into a database table asynchronously.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// var teacherToAdd1 = new Teachers()
+        ///         {
+        ///             first_name = firstName1,
+        ///             last_name = lastName1,
+        ///             subject = subject1,
+        ///             salary = salary1
+        ///         };
+        /// var teacherToAdd2 = new Teachers()
+        ///         {
+        ///             first_name = firstName2,
+        ///             last_name = lastName2,
+        ///             subject = subject2,
+        ///             salary = salary2
+        ///         };
+        /// 
+        /// List<Teachers> addMe = new();
+        /// addMe.Add(teacherToAdd1);
+        /// addMe.Add(teacherToAdd2);
+        /// 
+        /// int affectedRows = await pgsql.InsertManyAsync(addMe);
+        /// Console.WriteLine(affectedRows);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type of objects to insert.</typeparam>
         /// <param name="objToInsert">The object with records to insert.</param>
         /// <returns>The number of rows affected by the insert operation.</returns>
@@ -198,6 +349,39 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Inserts a list of objects into a database table asynchronously and returns the inserted records.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// var teacherToAdd1 = new Teachers()
+        ///         {
+        ///             first_name = firstName1,
+        ///             last_name = lastName1,
+        ///             subject = subject1,
+        ///             salary = salary1
+        ///         };
+        /// var teacherToAdd2 = new Teachers()
+        ///         {
+        ///             first_name = firstName2,
+        ///             last_name = lastName2,
+        ///             subject = subject2,
+        ///             salary = salary2
+        ///         };
+        /// 
+        /// List<Teachers> addMe = new();
+        /// addMe.Add(teacherToAdd1);
+        /// addMe.Add(teacherToAdd2);
+        /// 
+        /// var teachers = await pgsql.InsertReturningAsync(addMe); 
+        /// 
+        /// foreach (var teacher in teachers)
+        ///     Console.WriteLine(teacher.first_name);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type of objects to insert.</typeparam>
         /// <param name="listToInsert">The list of objects to insert.</param>
         /// <returns>A list of objects containing the inserted records.</returns>
@@ -214,6 +398,29 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Updates rows in a database table asynchronously based on the provided object's properties.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// Clarification:
+        /// It is not necessary to use WHERE in the 'where' parameter. The funktion will work the same with it and without it.
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// var editMe = new Teachers()
+        ///  {
+        ///      first_name = firstName,
+        ///      last_name = lastName,
+        ///      subject = subject,
+        ///      salary = salary
+        ///  };
+        ///  
+        /// DbParams p = new DbParams("id", 11);
+        /// 
+        /// await pgsql.UpdateAsync(editMe, "id=@id", p);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type of object representing the table to update.</typeparam>
         /// <param name="table">The object representing the table to update.</param>
         /// <param name="where">Optional WHERE clause to specify which rows to update.</param>
@@ -233,6 +440,19 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Deletes rows from a database table asynchronously based on the specified conditions.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// DbParams p = new DbParams("id", 11);
+        /// 
+        /// await pgsql.DeleteAsync("teachers", "id=@id", p);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="tableName">The name of the table to delete rows from.</param>
         /// <param name="where">Optional WHERE clause to specify which rows to delete.</param>
         /// <param name="whereParameters">Additional parameters to include in the SQL query.</param>
@@ -261,6 +481,19 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Executes a SQL command that deletes records from the database asynchronously.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// DbParams p = new DbParams("id", 11);
+        /// 
+        /// await pgsql.DeleteAsync<Teachers>("id=@id", p);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type to take table name from.</typeparam>
         /// <param name="where">The sql where command.</param>
         /// <param name="whereParameters">The parameters to bind to the SQL where command.</param>
@@ -274,6 +507,24 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Executes a SQL command and returns the number of affected rows asynchronously.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// DbParams p = new DbParams
+        /// {
+        ///     { "firstName", "First name" },
+        ///     { "LastName", "Last name" },
+        ///     { "subject", "the best subject" },
+        ///     { "salary", 250 }
+        /// };
+        /// await pgsql.ExecuteNonQueryAsync("INSERT INTO teachers(first_name, last_name, subject, salary) VALUES(@firstName, @lastName, @subject, @salary)", p);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="sql">The SQL command to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL command.</param>
         /// <returns>The number of rows affected by the SQL command.</returns>
@@ -295,6 +546,17 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Executes a SQL command and returns the number of affected rows asynchronously.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// await pgsql.ExecuteNonQueryAsync("CALL stored_procedure_name(argument_list)");
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="sql">The SQL command to execute.</param>
         /// <returns>The number of rows affected by the SQL command.</returns>
         /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
@@ -306,6 +568,20 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Executes a SQL query that returns a single result asynchronously and maps it to a specified type.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// DbParams p = new DbParams("id", 23);
+        /// 
+        /// var teacher = await pgsql.ExecuteOneAsync<Teacher>("SELECT * FROM teachers WHERE id=@id", p); 
+        /// Console.WriteLine(teacher.first_name);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="sql">The SQL query to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
@@ -314,7 +590,7 @@ namespace NpgsqlWrapper
         public async Task<T?> ExecuteOneAsync<T>(string sql, Dictionary<string, object>? parameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
+            IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
             T item = Activator.CreateInstance<T>();
             await using (var cmd = new NpgsqlCommand(sql, _conn))
             {
@@ -330,18 +606,35 @@ namespace NpgsqlWrapper
 
                 while (await reader.ReadAsync())
                 {
-                    return SetObjectValues(propertyList, item, reader);
+                    return SetObjectValues(propertyList.ToList(), item, reader);
                 }
             }
             return default;
             //return item;
         }
 
-
-
         /// <summary>
         /// Executes a SQL query that returns a list of objects of type 'T' asynchronously.
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// DbParams p = new DbParams()
+        /// {
+        ///     { "id", 23 }
+        /// }
+        /// 
+        /// foreach (var item in await pgsql.ExecuteAsync<Teachers>("SELECT * FROM teachers WHERE id<@id", p))
+        /// {
+        ///     Console.WriteLine(item.first_name);
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <typeparam name="T">The type of objects to retrieve from the database.</typeparam>
         /// <param name="sqlQuery">The SQL query to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
@@ -370,6 +663,20 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Dumps a record set from the database into a List of Dictionarys
         /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// foreach (var item in await pgsql.DumpAsync("SELECT * FROM teachers"))
+        /// {
+        ///     Console.WriteLine(item["first_name"]);
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="sqlQuery">The SQL query to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <returns>A list of objects of type '<see cref="Dictionary{string, object}"/>' retrieved from the database.</returns>

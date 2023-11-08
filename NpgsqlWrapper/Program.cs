@@ -4,6 +4,8 @@
     {
         static async Task Main(string[] args)
         {
+            // TODO: fixa en create metode för att skapa tabeller.
+            // kolla upp [namn] över variabler fungerar
             string? host, username, password, database;
 
             GetDatabaseLogin(out host, out username, out password, out database);
@@ -31,10 +33,6 @@
         {
             School school = new School();
             school.Connect(host, username, password, database);
-
-            //MyNpgsqlAsync pgsql = new(host, username, password, "TestProject");
-            //await pgsql.ConnectAsync();
-            //await pgsql.ExecuteNonQueryAsync("CALL insert_teacher('Karl Von Fasen', 'Fakulteter', 50)");
 
             string command;
             do

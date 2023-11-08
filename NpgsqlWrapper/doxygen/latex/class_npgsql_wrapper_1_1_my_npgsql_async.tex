@@ -1,0 +1,859 @@
+\doxysection{Npgsql\+Wrapper.\+My\+Npgsql\+Async Class Reference}
+\hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async}{}\label{class_npgsql_wrapper_1_1_my_npgsql_async}\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+
+
+Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+://github.\+com/npgsql/npgsql}}.  
+
+
+Inheritance diagram for Npgsql\+Wrapper.\+My\+Npgsql\+Async\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_npgsql_wrapper_1_1_my_npgsql_async}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a3d1d9b4065331eeab1cf5eb3a6376bd6}{My\+Npgsql\+Async}} (string host, string username, string password, string database)
+\begin{DoxyCompactList}\small\item\em Setting up the connection string. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a3c14303fbc6683e3153e06177b7cb3c4}{Connect\+Async}} ()
+\begin{DoxyCompactList}\small\item\em Builds the connection to the database, asynchronously. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a6734f258b747cfd35b0210f28d1696a0}{Close\+Async}} ()
+\begin{DoxyCompactList}\small\item\em Close connection to database, asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a2916036b247edf501d3dcbee8e0fa07d}{Fetch\+Async$<$ T $>$}} (string? sql=null)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a result set from the database. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6}{Fetch\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500}{Fetch\+One\+Async$<$ T $>$}} (string? sql=null)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously one result from the database. \end{DoxyCompactList}\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186}{Fetch\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a286c99f50a22061ee9f9e37f5e147848}{Insert\+Async$<$ T $>$}} (T obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a8fad2e2ff2eaa15438eb69de69d7a2e9}{Insert\+Returning\+Async$<$ T $>$}} (T obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts asynchronously with returning statement. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0b48c3b721e5a7624d300a7d2c1b9058}{Insert\+Many\+Async$<$ T $>$}} (List$<$ T $>$ obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts a list of objects into a database table asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a58482ccdde9e9d30f344facb7444fc69}{Insert\+Many\+Returning\+Async$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts a list of objects into a database table asynchronously and returns the inserted records. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a216dbaf8c4f681dd21ff67cb87fd9f5c}{Update\+Async$<$ T $>$}} (T table, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Updates rows in a database table asynchronously based on the provided object\textquotesingle{}s properties. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab}{Delete\+Async}} (string table\+Name, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Deletes rows from a database table asynchronously based on the specified conditions. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_aca49346813544e2f3c2dbafa5824a80d}{Delete\+Async$<$ T $>$}} (string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ae6f77f7f40ee43f9f05537ee652a35d6}{Execute\+Non\+Query\+Async}} (string sql, Dictionary$<$ string, object $>$ parameters)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns the number of affected rows asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a1ee5e07ef1778c33b48d99a752300924}{Execute\+Non\+Query\+Async}} (string sql)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns the number of affected rows asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_aa11ac022723a788c6754768f85a8b86e}{Execute\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a single result asynchronously and maps it to a specified type. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ac37243c8140adf9dcfa176b1ce469057}{Execute\+Async$<$ T $>$}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{} asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a9df3356d03e323cfb785577a799dcea6}{Dump\+Async}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1f99c7fd31766970755f3f5e4c1fa927}{My\+Npgsql\+Base}} (string host, string username, string password, string database)
+\begin{DoxyCompactList}\small\item\em Constructor, building connection string with parameter provided by the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1203e36c81bc44676034091602829101}{Get\+Sql\+Num\+Params}} (string sql\+Query)
+\begin{DoxyCompactList}\small\item\em Returns the number of times @field is in a sql query. \end{DoxyCompactList}\item 
+static T \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a654d6c998b5e5eb851bf5e6a7181de78}{Set\+Object\+Values$<$ T $>$}} (List$<$ Property\+Info $>$ property\+List, T item, Npgsql\+Data\+Reader reader)
+\begin{DoxyCompactList}\small\item\em Maps the values from a database reader to the properties of an object of type \textquotesingle{}T\textquotesingle{}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aa1ce69f5c6bdbf9baa26711a8c60fad9}{Prepare\+Many\+Insert\+Sql$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} args)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a515f8446dc982c4b489c1b7e6d0007fc}{Prepare\+Insert\+Sql$<$ T $>$}} (T obj\+To\+Insert, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} args)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a52b682519a4273dddd56bcf7affa03fa}{Prepare\+Update\+Sql$<$ T $>$}} (T table, string? where, Dictionary$<$ string, object $>$? where\+Args, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} return\+Args)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237a112b5bd99ac222cf1a2e4da}{Add\+Where\+To\+Query}} (string? where, string sql)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}{Prepare\+Delete\+Sql}} (string table\+Name, string? where)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}{Add\+Parameters}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters, Npgsql\+Command cmd)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+readonly? string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1f78e4924ec97aa998f6b10d01112e55}{\+\_\+connection\+String}}
+\begin{DoxyCompactList}\small\item\em The connection string provided by the user, including the password. \end{DoxyCompactList}\item 
+Npgsql\+Connection? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a637ef8d9364e905837a2dcba39d4156b}{\+\_\+conn}} = null
+\begin{DoxyCompactList}\small\item\em Connection object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+Int64 \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Return the latest inserted id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+://github.\+com/npgsql/npgsql}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a3d1d9b4065331eeab1cf5eb3a6376bd6}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a3d1d9b4065331eeab1cf5eb3a6376bd6} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!MyNpgsqlAsync@{MyNpgsqlAsync}}
+\index{MyNpgsqlAsync@{MyNpgsqlAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{MyNpgsqlAsync()}{MyNpgsqlAsync()}}
+{\footnotesize\ttfamily Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+My\+Npgsql\+Async (\begin{DoxyParamCaption}\item[{string}]{host,  }\item[{string}]{username,  }\item[{string}]{password,  }\item[{string}]{database }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setting up the connection string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Host IP\\
+\hline
+{\em username} & Username\\
+\hline
+{\em password} & Password\\
+\hline
+{\em database} & Database name\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a6734f258b747cfd35b0210f28d1696a0}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a6734f258b747cfd35b0210f28d1696a0} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!CloseAsync@{CloseAsync}}
+\index{CloseAsync@{CloseAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{CloseAsync()}{CloseAsync()}}
+{\footnotesize\ttfamily async Task Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Close\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Close connection to database, asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{...}
+\DoxyCodeLine{Do\ your\ database\ work\ here}
+\DoxyCodeLine{...}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ pgsql.CloseAsync();}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws if connections is not made\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a3c14303fbc6683e3153e06177b7cb3c4}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a3c14303fbc6683e3153e06177b7cb3c4} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ConnectAsync@{ConnectAsync}}
+\index{ConnectAsync@{ConnectAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{ConnectAsync()}{ConnectAsync()}}
+{\footnotesize\ttfamily async Task Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Connect\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Builds the connection to the database, asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+
+\end{DoxyCode}
+ \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!DeleteAsync@{DeleteAsync}}
+\index{DeleteAsync@{DeleteAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{DeleteAsync()}{DeleteAsync()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Delete\+Async (\begin{DoxyParamCaption}\item[{string}]{table\+Name,  }\item[{string?}]{where = {\ttfamily null},  }\item[{Dictionary$<$ string, object $>$?}]{where\+Parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deletes rows from a database table asynchronously based on the specified conditions. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 11);}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ pgsql.DeleteAsync(\textcolor{stringliteral}{"{}teachers"{}},\ \textcolor{stringliteral}{"{}id=@id"{}},\ p);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & The name of the table to delete rows from.\\
+\hline
+{\em where} & Optional WHERE clause to specify which rows to delete.\\
+\hline
+{\em where\+Parameters} & Additional parameters to include in the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the delete operation.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of parameters.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_aca49346813544e2f3c2dbafa5824a80d}\label{class_npgsql_wrapper_1_1_my_npgsql_async_aca49346813544e2f3c2dbafa5824a80d} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!DeleteAsync$<$ T $>$@{DeleteAsync$<$ T $>$}}
+\index{DeleteAsync$<$ T $>$@{DeleteAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{DeleteAsync$<$ T $>$()}{DeleteAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab}{Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Delete\+Async}}$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{where = {\ttfamily null},  }\item[{Dictionary$<$ string, object $>$?}]{where\+Parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL command that deletes records from the database asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 11);}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ pgsql.DeleteAsync\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}id=@id"{}},\ p);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to take table name from.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em where} & The sql where command.\\
+\hline
+{\em where\+Parameters} & The parameters to bind to the SQL where command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of effected rows
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a9df3356d03e323cfb785577a799dcea6}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a9df3356d03e323cfb785577a799dcea6} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!DumpAsync@{DumpAsync}}
+\index{DumpAsync@{DumpAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{DumpAsync()}{DumpAsync()}}
+{\footnotesize\ttfamily async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Dump\+Async (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Dumps a record set from the database into a List of Dictionarys. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ await\ pgsql.DumpAsync(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers"{}}))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item[\textcolor{stringliteral}{"{}first\_name"{}}]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sql\+Query} & The SQL query to execute.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of objects of type \textquotesingle{}Dictionary$<$string, object$>$\textquotesingle{} retrieved from the database.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of parameters\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ac37243c8140adf9dcfa176b1ce469057}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ac37243c8140adf9dcfa176b1ce469057} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteAsync$<$ T $>$@{ExecuteAsync$<$ T $>$}}
+\index{ExecuteAsync$<$ T $>$@{ExecuteAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{ExecuteAsync$<$ T $>$()}{ExecuteAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{} asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}id"{}},\ 23\ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ await\ pgsql.ExecuteAsync\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id\(\backslash\)<@id"{}},\ p))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item.first\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of objects to retrieve from the database.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql\+Query} & The SQL query to execute.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of objects of type \textquotesingle{}T\textquotesingle{} retrieved from the database.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a1ee5e07ef1778c33b48d99a752300924}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a1ee5e07ef1778c33b48d99a752300924} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteNonQueryAsync@{ExecuteNonQueryAsync}}
+\index{ExecuteNonQueryAsync@{ExecuteNonQueryAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{ExecuteNonQueryAsync()}{ExecuteNonQueryAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Non\+Query\+Async (\begin{DoxyParamCaption}\item[{string}]{sql }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL command and returns the number of affected rows asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ pgsql.ExecuteNonQueryAsync(\textcolor{stringliteral}{"{}CALL\ stored\_procedure\_name(argument\_list)"{}});}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & The SQL command to execute.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the SQL command.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ae6f77f7f40ee43f9f05537ee652a35d6}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ae6f77f7f40ee43f9f05537ee652a35d6} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteNonQueryAsync@{ExecuteNonQueryAsync}}
+\index{ExecuteNonQueryAsync@{ExecuteNonQueryAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{ExecuteNonQueryAsync()}{ExecuteNonQueryAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Non\+Query\+Async (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL command and returns the number of affected rows asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}firstName"{}},\ \textcolor{stringliteral}{"{}First\ name"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}LastName"{}},\ \textcolor{stringliteral}{"{}Last\ name"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}subject"{}},\ \textcolor{stringliteral}{"{}the\ best\ subject"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}salary"{}},\ 250\ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{await\ pgsql.ExecuteNonQueryAsync(\textcolor{stringliteral}{"{}INSERT\ INTO\ teachers(first\_name,\ last\_name,\ subject,\ salary)\ VALUES(@firstName,\ @lastName,\ @subject,\ @salary)"{}},\ p);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & The SQL command to execute.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the SQL command.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_aa11ac022723a788c6754768f85a8b86e}\label{class_npgsql_wrapper_1_1_my_npgsql_async_aa11ac022723a788c6754768f85a8b86e} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteOneAsync$<$ T $>$@{ExecuteOneAsync$<$ T $>$}}
+\index{ExecuteOneAsync$<$ T $>$@{ExecuteOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{ExecuteOneAsync$<$ T $>$()}{ExecuteOneAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Executes a SQL query that returns a single result asynchronously and maps it to a specified type. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 23);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacher\ =\ await\ pgsql.ExecuteOneAsync\(\backslash\)<Teacher\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id=@id"{}},\ p);\ }
+\DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & The SQL query to execute.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the SQL query mapped to the specified type.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when \textquotesingle{}\+\_\+conn\textquotesingle{} is null.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}}
+\index{FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{FetchAsync$<$ T $>$()}{FetchAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetches asynchronously a list of data from the database with sql injection safety. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}id"{}},\ 23\ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ await\ pgsql.FetchAsync\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id\(\backslash\)<@id"{}},\ p))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item.first\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of objects with data from the database.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws if no DB connection is made.\\
+\hline
+{\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of arguments.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a2916036b247edf501d3dcbee8e0fa07d}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a2916036b247edf501d3dcbee8e0fa07d} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}}
+\index{FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{FetchAsync$<$ T $>$()}{FetchAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetches asynchronously a result set from the database. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ await\ pgsql.FetchAsync\(\backslash\)<Teachers\(\backslash\)>())}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(item.first\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string. If leaved empty it will run a simple SELECT \texorpdfstring{$\ast$}{*} FROM My\+Table\+Class.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of objects with data from the database
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}}
+\index{FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{FetchOneAsync$<$ T $>$()}{FetchOneAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetches asynchronously a list of data from the database with sql injection safety. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 23);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacher\ =\ await\ pgsql.FetchOneAsync\(\backslash\)<Teacher\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id=@id"{}},\ p);\ }
+\DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of objects with data from the database.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws if no DB connection is made.\\
+\hline
+{\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of arguments.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}}
+\index{FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{FetchOneAsync$<$ T $>$()}{FetchOneAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetches asynchronously one result from the database. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacher\ =\ await\ pgsql.FetchOneAsync\(\backslash\)<Teacher\(\backslash\)>();\ }
+\DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string. If leaved empty it will run a simple SELECT \texorpdfstring{$\ast$}{*} FROM My\+Table\+Class LIMIT 1.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An object with data from the database.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a286c99f50a22061ee9f9e37f5e147848}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a286c99f50a22061ee9f9e37f5e147848} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!InsertAsync$<$ T $>$@{InsertAsync$<$ T $>$}}
+\index{InsertAsync$<$ T $>$@{InsertAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{InsertAsync$<$ T $>$()}{InsertAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Insert\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{obj\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{await\ pgsql.InsertAsync(teacherToAdd);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+To\+Insert} & Objects with data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the insert operation.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a0b48c3b721e5a7624d300a7d2c1b9058}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a0b48c3b721e5a7624d300a7d2c1b9058} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!InsertManyAsync$<$ T $>$@{InsertManyAsync$<$ T $>$}}
+\index{InsertManyAsync$<$ T $>$@{InsertManyAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{InsertManyAsync$<$ T $>$()}{InsertManyAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Insert\+Many\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{obj\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts a list of objects into a database table asynchronously. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd1\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary1}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{var\ teacherToAdd2\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary2}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{List\(\backslash\)<Teachers\(\backslash\)>\ addMe\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{addMe.Add(teacherToAdd1);}
+\DoxyCodeLine{addMe.Add(teacherToAdd2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ await\ pgsql.InsertManyAsync(addMe);}
+\DoxyCodeLine{Console.WriteLine(affectedRows);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of objects to insert.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+To\+Insert} & The object with records to insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the insert operation.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a58482ccdde9e9d30f344facb7444fc69}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a58482ccdde9e9d30f344facb7444fc69} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!InsertManyReturningAsync$<$ T $>$@{InsertManyReturningAsync$<$ T $>$}}
+\index{InsertManyReturningAsync$<$ T $>$@{InsertManyReturningAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{InsertManyReturningAsync$<$ T $>$()}{InsertManyReturningAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Insert\+Many\+Returning\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{list\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts a list of objects into a database table asynchronously and returns the inserted records. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd1\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary1}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{var\ teacherToAdd2\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary2}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{List\(\backslash\)<Teachers\(\backslash\)>\ addMe\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{addMe.Add(teacherToAdd1);}
+\DoxyCodeLine{addMe.Add(teacherToAdd2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teachers\ =\ await\ pgsql.InsertReturningAsync(addMe);\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{foreach}\ (var\ teacher\ \textcolor{keywordflow}{in}\ teachers)}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of objects to insert.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em list\+To\+Insert} & The list of objects to insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of objects containing the inserted records.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of arguments.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a8fad2e2ff2eaa15438eb69de69d7a2e9}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a8fad2e2ff2eaa15438eb69de69d7a2e9} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!InsertReturningAsync$<$ T $>$@{InsertReturningAsync$<$ T $>$}}
+\index{InsertReturningAsync$<$ T $>$@{InsertReturningAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{InsertReturningAsync$<$ T $>$()}{InsertReturningAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Insert\+Returning\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{obj\+To\+Insert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts asynchronously with returning statement. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ teacherToAdd\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ first\_name\ =\ firstName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ last\_name\ =\ lastName,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{var\ teacher\ =\ await\ pgsql.InsertReturningAsync(teacherToAdd);\ }
+\DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of objects to insert.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+To\+Insert} & The object with records to insert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of objects containing the inserted records.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a216dbaf8c4f681dd21ff67cb87fd9f5c}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a216dbaf8c4f681dd21ff67cb87fd9f5c} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!UpdateAsync$<$ T $>$@{UpdateAsync$<$ T $>$}}
+\index{UpdateAsync$<$ T $>$@{UpdateAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{UpdateAsync$<$ T $>$()}{UpdateAsync< T >()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Update\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{table,  }\item[{string?}]{where = {\ttfamily null},  }\item[{Dictionary$<$ string, object $>$?}]{where\+Parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates rows in a database table asynchronously based on the provided object\textquotesingle{}s properties. 
+
+Usage\+: Clarification\+: It is not necessary to use WHERE in the \textquotesingle{}where\textquotesingle{} parameter. The funktion will work the same with it and without it. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ editMe\ =\ \textcolor{keyword}{new}\ Teachers()}
+\DoxyCodeLine{\ \{}
+\DoxyCodeLine{\ \ \ \ \ first\_name\ =\ firstName,}
+\DoxyCodeLine{\ \ \ \ \ last\_name\ =\ lastName,}
+\DoxyCodeLine{\ \ \ \ \ subject\ =\ subject,}
+\DoxyCodeLine{\ \ \ \ \ salary\ =\ salary}
+\DoxyCodeLine{\ \};}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{DbParams\ p\ =\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 11);}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ pgsql.UpdateAsync(editMe,\ \textcolor{stringliteral}{"{}id=@id"{}},\ p);}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object representing the table to update.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em table} & The object representing the table to update.\\
+\hline
+{\em where} & Optional WHERE clause to specify which rows to update.\\
+\hline
+{\em where\+Parameters} & Additional parameters to include in the SQL query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows affected by the update operation.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when the \textquotesingle{}table\textquotesingle{} parameter is null.\\
+\hline
+{\em Argument\+Exception} & Thrown when a duplicate parameter name is detected in \textquotesingle{}where\+Parameters\textquotesingle{}.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_my_npgsql_async_8cs}{My\+Npgsql\+Async.\+cs}}\end{DoxyCompactItemize}

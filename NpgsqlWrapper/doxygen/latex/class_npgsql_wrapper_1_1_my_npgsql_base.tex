@@ -1,0 +1,220 @@
+\doxysection{Npgsql\+Wrapper.\+My\+Npgsql\+Base Class Reference}
+\hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base}{}\label{class_npgsql_wrapper_1_1_my_npgsql_base}\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+
+
+Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+://github.\+com/npgsql/npgsql}}.  
+
+
+Inheritance diagram for Npgsql\+Wrapper.\+My\+Npgsql\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_npgsql_wrapper_1_1_my_npgsql_base}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1f99c7fd31766970755f3f5e4c1fa927}{My\+Npgsql\+Base}} (string host, string username, string password, string database)
+\begin{DoxyCompactList}\small\item\em Constructor, building connection string with parameter provided by the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1203e36c81bc44676034091602829101}{Get\+Sql\+Num\+Params}} (string sql\+Query)
+\begin{DoxyCompactList}\small\item\em Returns the number of times @field is in a sql query. \end{DoxyCompactList}\item 
+static T \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a654d6c998b5e5eb851bf5e6a7181de78}{Set\+Object\+Values$<$ T $>$}} (List$<$ Property\+Info $>$ property\+List, T item, Npgsql\+Data\+Reader reader)
+\begin{DoxyCompactList}\small\item\em Maps the values from a database reader to the properties of an object of type \textquotesingle{}T\textquotesingle{}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aa1ce69f5c6bdbf9baa26711a8c60fad9}{Prepare\+Many\+Insert\+Sql$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} args)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a515f8446dc982c4b489c1b7e6d0007fc}{Prepare\+Insert\+Sql$<$ T $>$}} (T obj\+To\+Insert, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} args)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a52b682519a4273dddd56bcf7affa03fa}{Prepare\+Update\+Sql$<$ T $>$}} (T table, string? where, Dictionary$<$ string, object $>$? where\+Args, out string sql, out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}} return\+Args)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237a112b5bd99ac222cf1a2e4da}{Add\+Where\+To\+Query}} (string? where, string sql)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}{Prepare\+Delete\+Sql}} (string table\+Name, string? where)
+\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}{Add\+Parameters}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters, Npgsql\+Command cmd)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly? string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a1f78e4924ec97aa998f6b10d01112e55}{\+\_\+connection\+String}}
+\begin{DoxyCompactList}\small\item\em The connection string provided by the user, including the password. \end{DoxyCompactList}\item 
+Npgsql\+Connection? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a637ef8d9364e905837a2dcba39d4156b}{\+\_\+conn}} = null
+\begin{DoxyCompactList}\small\item\em Connection object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Int64 \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Return the latest inserted id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+://github.\+com/npgsql/npgsql}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a1f99c7fd31766970755f3f5e4c1fa927}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a1f99c7fd31766970755f3f5e4c1fa927} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!MyNpgsqlBase@{MyNpgsqlBase}}
+\index{MyNpgsqlBase@{MyNpgsqlBase}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{MyNpgsqlBase()}{MyNpgsqlBase()}}
+{\footnotesize\ttfamily Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+My\+Npgsql\+Base (\begin{DoxyParamCaption}\item[{string}]{host,  }\item[{string}]{username,  }\item[{string}]{password,  }\item[{string}]{database }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, building connection string with parameter provided by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Host for server\\
+\hline
+{\em username} & Username\\
+\hline
+{\em password} & Password\\
+\hline
+{\em database} & Database\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!AddParameters@{AddParameters}}
+\index{AddParameters@{AddParameters}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{AddParameters()}{AddParameters()}}
+{\footnotesize\ttfamily static void Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Add\+Parameters (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters,  }\item[{Npgsql\+Command}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237a112b5bd99ac222cf1a2e4da}\label{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237a112b5bd99ac222cf1a2e4da} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!AddWhereToQuery@{AddWhereToQuery}}
+\index{AddWhereToQuery@{AddWhereToQuery}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{AddWhereToQuery()}{AddWhereToQuery()}}
+{\footnotesize\ttfamily static string Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Add\+Where\+To\+Query (\begin{DoxyParamCaption}\item[{string?}]{where,  }\item[{string}]{sql }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a1203e36c81bc44676034091602829101}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a1203e36c81bc44676034091602829101} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!GetSqlNumParams@{GetSqlNumParams}}
+\index{GetSqlNumParams@{GetSqlNumParams}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{GetSqlNumParams()}{GetSqlNumParams()}}
+{\footnotesize\ttfamily static int Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Get\+Sql\+Num\+Params (\begin{DoxyParamCaption}\item[{string}]{sql\+Query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Returns the number of times @field is in a sql query. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sql\+Query} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of @field
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}\label{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!PrepareDeleteSql@{PrepareDeleteSql}}
+\index{PrepareDeleteSql@{PrepareDeleteSql}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{PrepareDeleteSql()}{PrepareDeleteSql()}}
+{\footnotesize\ttfamily static string Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Prepare\+Delete\+Sql (\begin{DoxyParamCaption}\item[{string}]{table\+Name,  }\item[{string?}]{where }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a515f8446dc982c4b489c1b7e6d0007fc}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a515f8446dc982c4b489c1b7e6d0007fc} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!PrepareInsertSql$<$ T $>$@{PrepareInsertSql$<$ T $>$}}
+\index{PrepareInsertSql$<$ T $>$@{PrepareInsertSql$<$ T $>$}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{PrepareInsertSql$<$ T $>$()}{PrepareInsertSql< T >()}}
+{\footnotesize\ttfamily static void Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Prepare\+Insert\+Sql$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{obj\+To\+Insert,  }\item[{out string}]{sql,  }\item[{out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_aa1ce69f5c6bdbf9baa26711a8c60fad9}\label{class_npgsql_wrapper_1_1_my_npgsql_base_aa1ce69f5c6bdbf9baa26711a8c60fad9} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!PrepareManyInsertSql$<$ T $>$@{PrepareManyInsertSql$<$ T $>$}}
+\index{PrepareManyInsertSql$<$ T $>$@{PrepareManyInsertSql$<$ T $>$}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{PrepareManyInsertSql$<$ T $>$()}{PrepareManyInsertSql< T >()}}
+{\footnotesize\ttfamily static void Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Prepare\+Many\+Insert\+Sql$<$ T $>$ (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{list\+To\+Insert,  }\item[{out string}]{sql,  }\item[{out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em list\+To\+Insert} & \\
+\hline
+{\em sql} & \\
+\hline
+{\em args} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a52b682519a4273dddd56bcf7affa03fa}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a52b682519a4273dddd56bcf7affa03fa} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!PrepareUpdateSql$<$ T $>$@{PrepareUpdateSql$<$ T $>$}}
+\index{PrepareUpdateSql$<$ T $>$@{PrepareUpdateSql$<$ T $>$}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{PrepareUpdateSql$<$ T $>$()}{PrepareUpdateSql< T >()}}
+{\footnotesize\ttfamily static void Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Prepare\+Update\+Sql$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{table,  }\item[{string?}]{where,  }\item[{Dictionary$<$ string, object $>$?}]{where\+Args,  }\item[{out string}]{sql,  }\item[{out \mbox{\hyperlink{class_npgsql_wrapper_1_1_db_params}{Db\+Params}}}]{return\+Args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a654d6c998b5e5eb851bf5e6a7181de78}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a654d6c998b5e5eb851bf5e6a7181de78} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!SetObjectValues$<$ T $>$@{SetObjectValues$<$ T $>$}}
+\index{SetObjectValues$<$ T $>$@{SetObjectValues$<$ T $>$}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{SetObjectValues$<$ T $>$()}{SetObjectValues< T >()}}
+{\footnotesize\ttfamily static T Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Set\+Object\+Values$<$ T $>$ (\begin{DoxyParamCaption}\item[{List$<$ Property\+Info $>$}]{property\+List,  }\item[{T}]{item,  }\item[{Npgsql\+Data\+Reader}]{reader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Maps the values from a database reader to the properties of an object of type \textquotesingle{}T\textquotesingle{}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object to map.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em property\+List} & The list of properties of type \textquotesingle{}T\textquotesingle{}.\\
+\hline
+{\em item} & The object to which the values will be mapped.\\
+\hline
+{\em reader} & The database reader containing the values to map.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object \textquotesingle{}item\textquotesingle{} with values mapped from the database reader.
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a637ef8d9364e905837a2dcba39d4156b}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a637ef8d9364e905837a2dcba39d4156b} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!\_conn@{\_conn}}
+\index{\_conn@{\_conn}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{\_conn}{\_conn}}
+{\footnotesize\ttfamily Npgsql\+Connection? Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+\_\+conn = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Connection object. 
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_a1f78e4924ec97aa998f6b10d01112e55}\label{class_npgsql_wrapper_1_1_my_npgsql_base_a1f78e4924ec97aa998f6b10d01112e55} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!\_connectionString@{\_connectionString}}
+\index{\_connectionString@{\_connectionString}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{\_connectionString}{\_connectionString}}
+{\footnotesize\ttfamily readonly? string Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+\_\+connection\+String\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The connection string provided by the user, including the password. 
+
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}\label{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!LastInsertedID@{LastInsertedID}}
+\index{LastInsertedID@{LastInsertedID}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{LastInsertedID}{LastInsertedID}}
+{\footnotesize\ttfamily Int64 Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Last\+Inserted\+ID\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Return the latest inserted id. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_my_npgsql_base_8cs}{My\+Npgsql\+Base.\+cs}}\end{DoxyCompactItemize}

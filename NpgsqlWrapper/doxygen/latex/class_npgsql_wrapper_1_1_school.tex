@@ -1,0 +1,91 @@
+\doxysection{Npgsql\+Wrapper.\+School Class Reference}
+\hypertarget{class_npgsql_wrapper_1_1_school}{}\label{class_npgsql_wrapper_1_1_school}\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async void \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_ae3df7b992c541ac31901f1c03e4051bb}{Connect}} (string? host, string? username, string? password, string? database)
+\item 
+async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_aa358274da41903bc97d208ebb3607e44}{Close}} ()
+\item 
+async Task$<$ List$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_a6b022167e85e7508a36c79893769f0e6}{Get\+All}} ()
+\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_a007a413bef5ebbce8902745f4e9162c9}{Delete\+By\+Id}} (int id)
+\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_ac35078f1715ebb4ce765a4141f772adf}{Insert}} (\mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} teacher)
+\item 
+async Task$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_ab548167cde7f6acf7d4c645e92d2c6b0}{Get\+By\+Id}} (int id)
+\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_af77d5ac84f9c50e88f1edd4d236f646e}{Edit\+By\+Id}} (int id, \mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} teacher)
+\item 
+async Task$<$ List$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_a0b9bbfb482e875990007caff68f894cc}{Get\+By\+Subject}} (string subject)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async}{My\+Npgsql\+Async}}? \mbox{\hyperlink{class_npgsql_wrapper_1_1_school_a28dbd1e0386373e0aa7e4ac0a33221ba}{pgsql}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_school_aa358274da41903bc97d208ebb3607e44}\label{class_npgsql_wrapper_1_1_school_aa358274da41903bc97d208ebb3607e44} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!Close@{Close}}
+\index{Close@{Close}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily async Task Npgsql\+Wrapper.\+School.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_school_ae3df7b992c541ac31901f1c03e4051bb}\label{class_npgsql_wrapper_1_1_school_ae3df7b992c541ac31901f1c03e4051bb} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!Connect@{Connect}}
+\index{Connect@{Connect}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}}
+{\footnotesize\ttfamily async void Npgsql\+Wrapper.\+School.\+Connect (\begin{DoxyParamCaption}\item[{string?}]{host,  }\item[{string?}]{username,  }\item[{string?}]{password,  }\item[{string?}]{database }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_school_a007a413bef5ebbce8902745f4e9162c9}\label{class_npgsql_wrapper_1_1_school_a007a413bef5ebbce8902745f4e9162c9} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!DeleteById@{DeleteById}}
+\index{DeleteById@{DeleteById}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{DeleteById()}{DeleteById()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+School.\+Delete\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_school_af77d5ac84f9c50e88f1edd4d236f646e}\label{class_npgsql_wrapper_1_1_school_af77d5ac84f9c50e88f1edd4d236f646e} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!EditById@{EditById}}
+\index{EditById@{EditById}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{EditById()}{EditById()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+School.\+Edit\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{\mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}}}]{teacher }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_school_a6b022167e85e7508a36c79893769f0e6}\label{class_npgsql_wrapper_1_1_school_a6b022167e85e7508a36c79893769f0e6} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{GetAll()}{GetAll()}}
+{\footnotesize\ttfamily async Task$<$ List$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} $>$ $>$ Npgsql\+Wrapper.\+School.\+Get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_school_ab548167cde7f6acf7d4c645e92d2c6b0}\label{class_npgsql_wrapper_1_1_school_ab548167cde7f6acf7d4c645e92d2c6b0} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!GetById@{GetById}}
+\index{GetById@{GetById}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{GetById()}{GetById()}}
+{\footnotesize\ttfamily async Task$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} $>$ Npgsql\+Wrapper.\+School.\+Get\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_school_a0b9bbfb482e875990007caff68f894cc}\label{class_npgsql_wrapper_1_1_school_a0b9bbfb482e875990007caff68f894cc} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!GetBySubject@{GetBySubject}}
+\index{GetBySubject@{GetBySubject}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{GetBySubject()}{GetBySubject()}}
+{\footnotesize\ttfamily async Task$<$ List$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}} $>$ $>$ Npgsql\+Wrapper.\+School.\+Get\+By\+Subject (\begin{DoxyParamCaption}\item[{string}]{subject }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_school_ac35078f1715ebb4ce765a4141f772adf}\label{class_npgsql_wrapper_1_1_school_ac35078f1715ebb4ce765a4141f772adf} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!Insert@{Insert}}
+\index{Insert@{Insert}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{Insert()}{Insert()}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+School.\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_npgsql_wrapper_1_1_teachers}{Teachers}}}]{teacher }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_school_a28dbd1e0386373e0aa7e4ac0a33221ba}\label{class_npgsql_wrapper_1_1_school_a28dbd1e0386373e0aa7e4ac0a33221ba} 
+\index{NpgsqlWrapper.School@{NpgsqlWrapper.School}!pgsql@{pgsql}}
+\index{pgsql@{pgsql}!NpgsqlWrapper.School@{NpgsqlWrapper.School}}
+\doxysubsubsection{\texorpdfstring{pgsql}{pgsql}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async}{My\+Npgsql\+Async}}? Npgsql\+Wrapper.\+School.\+pgsql = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_program_8cs}{Program.\+cs}}\end{DoxyCompactItemize}

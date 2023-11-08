@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -102,9 +103,9 @@ namespace NpgsqlWrapper
         /// <exception cref="ArgumentException"></exception>
         protected static void PrepareManyInsertSql<T>(List<T> listToInsert, out string sql, out DbParams args)
         {
-            List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
+            IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
 
-            List<string> fieldNames = GetFieldNames(listToInsert[0], propertyList);
+            List<string> fieldNames = GetFieldNames(listToInsert[0], propertyList).ToList();
 
             if (fieldNames.Count == 0)
             {
@@ -145,9 +146,9 @@ namespace NpgsqlWrapper
             {
                 throw new ArgumentNullException(nameof(objToInsert));
             }
-            List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
+            IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
 
-            List<string> fieldNames = GetFieldNames(objToInsert, propertyList);
+            List<string> fieldNames = GetFieldNames(objToInsert, propertyList).ToList();
 
             if (fieldNames.Count == 0)
             {
@@ -168,9 +169,9 @@ namespace NpgsqlWrapper
             if (args.Count != fieldNames.Count) throw new ArgumentException("The specified fields don't match the number of values to insert");
         }
 
-        private static List<string> GetFieldNames<T>(T fieldObject, List<PropertyInfo> propertyList)
+        private static IEnumerable<string> GetFieldNames<T>(T fieldObject, IEnumerable<PropertyInfo> propertyList)
         {
-            return propertyList.Where(x => x.GetValue(fieldObject, null) != null).Select(x => x.Name).ToList();
+            return propertyList.Where(x => x.GetValue(fieldObject, null) != null).Select(x => x.Name);
         }
 
         protected static void PrepareUpdateSql<T>(T table, string? where, Dictionary<string, object>? whereArgs, out string sql, out DbParams returnArgs)
@@ -179,7 +180,7 @@ namespace NpgsqlWrapper
             {
                 throw new ArgumentNullException();
             }
-            List<PropertyInfo?> propertyList = typeof(T).GetProperties().ToList()!;
+            IEnumerable<PropertyInfo?> propertyList = typeof(T).GetProperties()!;
 
             sql = $"UPDATE {table.GetType().Name} SET ";
             returnArgs = new();
