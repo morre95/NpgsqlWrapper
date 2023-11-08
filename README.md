@@ -36,9 +36,7 @@ DatabaseConfig.Save(configFile, config);
 # Run that code only once. Then remove it so you don't have your password in plain text for security reason
 ```
 
-## Usage
-
-A few examples of useful code snipets.
+The SQL table the test script is using, looks like this
 
 ```sql
 # Sql create statment for running the example
@@ -52,6 +50,10 @@ CREATE TABLE teachers
     PRIMARY KEY (id)
 );
 ```
+
+## Usage
+
+A few examples of useful code snipets.
 
 ## Example
 
