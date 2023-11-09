@@ -19,7 +19,7 @@ jobs:
      - name: Setup dotnet
        uses: actions/setup-dotnet@v3
        with:
-        dotnet-version: '7.x'
+        dotnet-version: '6.0.x'
      - name: Install dependencies
        run: dotnet add package Npgsql --version 7.0.6
      - name: Build
