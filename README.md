@@ -49,6 +49,19 @@ CREATE TABLE teachers
     salary integer,
     PRIMARY KEY (id)
 );
+
+INSERT INTO teachers 
+(first_name, last_name, subject, salary) VALUES 
+('John', 'Doe', 'Mathematics', 50000),
+('Jane', 'Smith', 'English', 52000),
+('Emily', 'Johnson', 'History', 53000),
+('Michael', 'Brown', 'Biology', 51000),
+('Rachel', 'Davis', 'Chemistry', 54000),
+('James', 'Miller', 'Physics', 55000),
+('Linda', 'Wilson', 'Art', 47000),
+('Robert', 'Moore', 'Music', 48000),
+('Patricia', 'Taylor', 'Physical Education', 46000),
+('David', 'Anderson', 'Computer Science', 56000);
 ```
 
 ## Usage
