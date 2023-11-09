@@ -143,6 +143,69 @@ namespace NpgsqlWrapper
             return returnList;
         }
 
+        public async IAsyncEnumerable<T?> FetchEnumerableAsync<T>(string? sql = null)
+        {
+            throw new NotImplementedException();
+
+            /*
+            TODO: Detta är körbart om man returnerar Task<IEnumerable<T?>>
+            sql ??= $"SELECT * FROM {typeof(T).Name}";  
+            return FetchEnumerableAsync<T>(sql, new DbParams()).ToBlockingEnumerable();
+            */
+
+            // Man kör den så här då
+            /*foreach (Teachers techer in await pgsql.FetchEnumerableAsync<Teachers>()) 
+            {
+                Console.WriteLine(techer.first_name);
+            }*/
+        }
+
+        /// <summary>
+        /// Fetches asynchronously a list of data from the database with sql injection safety.
+        /// </summary>
+        /// <example>
+        /// Usage:
+        /// <code>
+        /// <![CDATA[
+        /// MyNpgsqlAsync pgsql = new(host, username, password, database);
+        /// await pgsql.ConnectAsync();
+        /// 
+        /// await foreach (var t in pgsql.FetchEnumerableAsync<Teachers>("SELECT * FROM teachers WHERE id<@id", new DbParams("id", 23))) 
+        /// {
+        ///     Console.WriteLine(t.first_name);
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
+        /// <typeparam name="T">The type to map the result to.</typeparam>
+        /// <param name="sql">Query string.</param>
+        /// <param name="parameters">The parameters to bind to the SQL command.</param>
+        /// <returns><see cref="IAsyncEnumerable{T}"/> object of the SQL query mapped to the specified type.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async IAsyncEnumerable<T?> FetchEnumerableAsync<T>(string sql, Dictionary<string, object> parameters)
+        {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
+            await using var tx = await _conn.BeginTransactionAsync();
+
+            await using var cmd = _conn.CreateCommand();
+
+            cmd.Transaction = tx;
+            cmd.CommandText = sql;
+
+            AddParameters(sql, parameters, cmd);
+
+            await using var reader = await cmd.ExecuteReaderAsync();
+
+            IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
+
+            while (await reader.ReadAsync())
+            {
+                T item = Activator.CreateInstance<T>();
+                item = SetObjectValues(propertyList.ToList(), item, reader);
+                yield return item;
+            }
+        }
+
         /// <summary>
         /// Executes a <see cref="NpgsqlDataReader"/> object that returns a list of objects of type 'T' asynchronously.
         /// </summary>

@@ -24,6 +24,10 @@ async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npg
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a result set from the database. \end{DoxyCompactList}\item 
 async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6}{Fetch\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
+async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748}{Fetch\+Enumerable\+Async$<$ T $>$}} (string? sql=null)
+\item 
+async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d}{Fetch\+Enumerable\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
 async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500}{Fetch\+One\+Async$<$ T $>$}} (string? sql=null)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously one result from the database. \end{DoxyCompactList}\item 
 async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186}{Fetch\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
@@ -525,6 +529,55 @@ Usage\+:
 \begin{DoxyReturn}{Returns}
 List of objects with data from the database
 \end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}}
+\index{FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async IAsync\+Enumerable$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Enumerable\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fetches asynchronously a list of data from the database with sql injection safety. 
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
+\DoxyCodeLine{await\ pgsql.ConnectAsync();}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ \textcolor{keywordflow}{foreach}\ (var\ t\ \textcolor{keywordflow}{in}\ pgsql.FetchEnumerableAsync\(\backslash\)<Teachers\(\backslash\)>(\textcolor{stringliteral}{"{}SELECT\ *\ FROM\ teachers\ WHERE\ id\(\backslash\)<@id"{}},\ \textcolor{keyword}{new}\ DbParams(\textcolor{stringliteral}{"{}id"{}},\ 23)))\ }
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ Console.WriteLine(t.first\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type to map the result to.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sql} & Query string.\\
+\hline
+{\em parameters} & The parameters to bind to the SQL command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+IAsync\+Enumerable$<$\+T$>$ object of the SQL query mapped to the specified type.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748}\label{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}}
+\index{FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async IAsync\+Enumerable$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Enumerable\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}}
 \index{FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
