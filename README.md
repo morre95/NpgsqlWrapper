@@ -20,19 +20,23 @@ A step by step guide that will tell you how to get the development environment u
 # Clone this repository
 $ git clone https://github.com/morre95/NpgsqlWrapper.git
 
-# Create a .env file in projectFolder/bin/net7.0
-$ type nul > .env
+# The first time you run this script edit and add this code to Main()
+DatabaseConfig config = new DatabaseConfig
+{
+    Server = "localhost",
+    Port = 5432,
+    Username = "Username",
+    Password = "Password",
+    Database = "Database"
+};
 
-# Edit .env file
-dbHost=ip to host:port
-bdUsername=username to your server
-dbPassword=password to your server
-dbDatabase=database
+string configFile = "config.json";
+DatabaseConfig.Save(configFile, config);
+
+# Run that code only once. Then remove it so you don't have your password in plain text for security reason
 ```
 
-## Usage
-
-A few examples of useful code snipets.
+The SQL table the test script is using, looks like this
 
 ```sql
 # Sql create statment for running the example
@@ -46,6 +50,10 @@ CREATE TABLE teachers
     PRIMARY KEY (id)
 );
 ```
+
+## Usage
+
+A few examples of useful code snipets.
 
 ## Example
 
@@ -98,4 +106,4 @@ foreach (var item in await pgsql.DumpAsync("SELECT * FROM teachers WHERE id > @i
 ## Additional Documentation and Acknowledgments
 
 * Wiki under construction
-* etc...
+* There is doxygen documentation in the projec in the mean time [Doxygen](https://github.com/morre95/NpgsqlWrapper/blob/master/NpgsqlWrapper/doxygen/html/index.html)https://github.com/morre95/NpgsqlWrapper/blob/master/NpgsqlWrapper/doxygen/html/index.html
