@@ -9,7 +9,7 @@ namespace NpgsqlWrapper
     /// <summary>
     /// Wrapper for Npgsql: https://github.com/npgsql/npgsql
     /// </summary>
-    internal class MyNpgsqlAsync : MyNpgsqlBase
+    public class MyNpgsqlAsync : MyNpgsqlBase
     {
 
         /// <summary>
@@ -143,9 +143,9 @@ namespace NpgsqlWrapper
             return returnList;
         }
 
-        public async IAsyncEnumerable<T?> FetchEnumerableAsync<T>(string? sql = null)
+        /*public async IAsyncEnumerable<T?> FetchEnumerableAsync<T>(string? sql = null)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();*/
 
             /*
             TODO: Detta är körbart om man returnerar Task<IEnumerable<T?>>
@@ -158,7 +158,7 @@ namespace NpgsqlWrapper
             {
                 Console.WriteLine(techer.first_name);
             }*/
-        }
+        //}
 
         /// <summary>
         /// Fetches asynchronously a list of data from the database with sql injection safety.

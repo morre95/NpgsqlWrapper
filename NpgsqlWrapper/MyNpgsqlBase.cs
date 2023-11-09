@@ -8,7 +8,7 @@ namespace NpgsqlWrapper
     /// <summary>
     /// Wrapper for Npgsql: https://github.com/npgsql/npgsql
     /// </summary>
-    internal class MyNpgsqlBase
+    public class MyNpgsqlBase
     {
         /// <summary>
         /// The connection string provided by the user, including the password.
