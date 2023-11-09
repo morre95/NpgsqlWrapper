@@ -2,6 +2,9 @@
 
 namespace NpgsqlWrapper
 {
+    /// <summary>
+    /// This is a class for saving and loading database configuration settings
+    /// </summary>
     public class DatabaseConfig
     {
         public string? Server { get; set; }

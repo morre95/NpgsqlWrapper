@@ -327,7 +327,7 @@ Usage\+:
 \DoxyCodeLine{MyNpgsql\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
 \DoxyCodeLine{pgsql.Connect();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ pgsql.ExecuteNonQueryAsync(\textcolor{stringliteral}{"{}CALL\ stored\_procedure\_name(argument\_list)"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ affectedRows\ =\ pgsql.ExecuteNonQuery(\textcolor{stringliteral}{"{}CALL\ stored\_procedure\_name(argument\_list)"{}});}
 \DoxyCodeLine{Console.WriteLine(affectedRows);}
 
 \end{DoxyCode}
@@ -571,7 +571,7 @@ Usage\+:
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{pgsql.Insert(teacherToAdd);}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numOfAffectedRows\ =\ pgsql.Insert(teacherToAdd);}
 
 \end{DoxyCode}
  
@@ -676,7 +676,7 @@ Usage\+:
 \DoxyCodeLine{addMe.Add(teacherToAdd1);}
 \DoxyCodeLine{addMe.Add(teacherToAdd2);}
 \DoxyCodeLine{}
-\DoxyCodeLine{Enumerable\(\backslash\)<Teachers\(\backslash\)>\ enumerable\ =\ pgsql.InsertReturning(addMe);}
+\DoxyCodeLine{Enumerable\(\backslash\)<Teachers\(\backslash\)>\ enumerable\ =\ pgsql.InsertManyReturning(addMe);}
 \DoxyCodeLine{List\(\backslash\)<Teachers\(\backslash\)>\ teachers\ =\ enumerable.ToList()}
 \DoxyCodeLine{Console.WriteLine(teachers[0].first\_name);}
 
@@ -718,7 +718,7 @@ Usage\+:
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ subject,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ salary\ =\ salary}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{Teachers\ teacher\ =\ pgsql.Insert(teacherToAdd);}
+\DoxyCodeLine{Teachers\ teacher\ =\ pgsql.InsertReturning(teacherToAdd);}
 \DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
 
 \end{DoxyCode}

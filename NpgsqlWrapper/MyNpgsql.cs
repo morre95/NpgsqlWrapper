@@ -304,7 +304,7 @@ namespace NpgsqlWrapper
         ///             subject = subject,
         ///             salary = salary
         ///         };
-        /// pgsql.Insert(teacherToAdd);
+        /// int numOfAffectedRows = pgsql.Insert(teacherToAdd);
         /// ]]>
         /// </code>
         /// </example>
@@ -334,7 +334,7 @@ namespace NpgsqlWrapper
         ///             subject = subject,
         ///             salary = salary
         ///         };
-        /// Teachers teacher = pgsql.Insert(teacherToAdd);
+        /// Teachers teacher = pgsql.InsertReturning(teacherToAdd);
         /// Console.WriteLine(teacher.first_name);
         /// ]]>
         /// </code>
@@ -440,7 +440,7 @@ namespace NpgsqlWrapper
         /// MyNpgsql pgsql = new(host, username, password, database);
         /// pgsql.Connect();
         /// 
-        /// int affectedRows = pgsql.ExecuteNonQueryAsync("CALL stored_procedure_name(argument_list)");
+        /// int affectedRows = pgsql.ExecuteNonQuery("CALL stored_procedure_name(argument_list)");
         /// Console.WriteLine(affectedRows);
         /// ]]>
         /// </code>
@@ -481,7 +481,7 @@ namespace NpgsqlWrapper
         /// addMe.Add(teacherToAdd1);
         /// addMe.Add(teacherToAdd2);
         /// 
-        /// Enumerable<Teachers> enumerable = pgsql.InsertReturning(addMe);
+        /// Enumerable<Teachers> enumerable = pgsql.InsertManyReturning(addMe);
         /// List<Teachers> teachers = enumerable.ToList()
         /// Console.WriteLine(teachers[0].first_name);
         /// ]]>
