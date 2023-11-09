@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['fetch_3c_20t_20_3e_0',['fetch&lt; t &gt;',['../class_npgsql_wrapper_1_1_my_npgsql.html#ad3f6f4783c4557f3e008db35f734c508',1,'NpgsqlWrapper.MyNpgsql.Fetch&lt; T &gt;(string? sql=null)'],['../class_npgsql_wrapper_1_1_my_npgsql.html#ac49800a85c48ccdbee71e360e9948c28',1,'NpgsqlWrapper.MyNpgsql.Fetch&lt; T &gt;(string sql, Dictionary&lt; string, object &gt; parameters)']]],
-  ['fetchasync_3c_20t_20_3e_1',['fetchasync&lt; t &gt;',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a2916036b247edf501d3dcbee8e0fa07d',1,'NpgsqlWrapper.MyNpgsqlAsync.FetchAsync&lt; T &gt;(string? sql=null)'],['../class_npgsql_wrapper_1_1_my_npgsql_async.html#ae1f42d14865f9a950ae01a7375a972d6',1,'NpgsqlWrapper.MyNpgsqlAsync.FetchAsync&lt; T &gt;(string sql, Dictionary&lt; string, object &gt; parameters)']]],
-  ['fetchone_3c_20t_20_3e_2',['FetchOne&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql.html#a6942202146760bccab8163b968f3ecec',1,'NpgsqlWrapper::MyNpgsql']]],
-  ['fetchoneasync_3c_20t_20_3e_3',['fetchoneasync&lt; t &gt;',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#ac40586919aa890abf4623fb2326c0500',1,'NpgsqlWrapper.MyNpgsqlAsync.FetchOneAsync&lt; T &gt;(string? sql=null)'],['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a66f70cd243d631a67330391a567fb186',1,'NpgsqlWrapper.MyNpgsqlAsync.FetchOneAsync&lt; T &gt;(string sql, Dictionary&lt; string, object &gt; parameters)']]]
+  ['encryption_0',['Encryption',['../class_npgsql_wrapper_1_1_encryption.html',1,'NpgsqlWrapper']]],
+  ['encryption_2ecs_1',['Encryption.cs',['../_encryption_8cs.html',1,'']]],
+  ['encryptstringtobytes_2',['EncryptStringToBytes',['../class_npgsql_wrapper_1_1_encryption.html#a6e94468cd846cb086f003d16b7dcfa37',1,'NpgsqlWrapper::Encryption']]],
+  ['execute_3c_20t_20_3e_3',['Execute&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql.html#ae35883f4faf59a88f46ff42b51aafcd4',1,'NpgsqlWrapper::MyNpgsql']]],
+  ['executeasync_3c_20t_20_3e_4',['ExecuteAsync&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#ac37243c8140adf9dcfa176b1ce469057',1,'NpgsqlWrapper::MyNpgsqlAsync']]],
+  ['executenonquery_5',['executenonquery',['../class_npgsql_wrapper_1_1_my_npgsql.html#aa4e23097e0b5524cd078a90c239dd2e8',1,'NpgsqlWrapper.MyNpgsql.ExecuteNonQuery(string sql, Dictionary&lt; string, object &gt; parameters)'],['../class_npgsql_wrapper_1_1_my_npgsql.html#af5160caf605ec67e8e7248847352d7cd',1,'NpgsqlWrapper.MyNpgsql.ExecuteNonQuery(string sql)']]],
+  ['executenonqueryasync_6',['executenonqueryasync',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#ae6f77f7f40ee43f9f05537ee652a35d6',1,'NpgsqlWrapper.MyNpgsqlAsync.ExecuteNonQueryAsync(string sql, Dictionary&lt; string, object &gt; parameters)'],['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a1ee5e07ef1778c33b48d99a752300924',1,'NpgsqlWrapper.MyNpgsqlAsync.ExecuteNonQueryAsync(string sql)']]],
+  ['executeone_3c_20t_20_3e_7',['ExecuteOne&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql.html#a031ed2895291c5c9752bad60d72bca09',1,'NpgsqlWrapper::MyNpgsql']]],
+  ['executeoneasync_3c_20t_20_3e_8',['ExecuteOneAsync&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#aa11ac022723a788c6754768f85a8b86e',1,'NpgsqlWrapper::MyNpgsqlAsync']]]
 ];

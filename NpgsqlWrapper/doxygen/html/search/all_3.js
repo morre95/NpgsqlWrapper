@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['dbparams_0',['dbparams',['../class_npgsql_wrapper_1_1_db_params.html',1,'NpgsqlWrapper.DbParams'],['../class_npgsql_wrapper_1_1_db_params.html#a8d4275967e63958d3223f1e5c7183cea',1,'NpgsqlWrapper.DbParams.DbParams()'],['../class_npgsql_wrapper_1_1_db_params.html#a01b89d132e40d3513d8ec9d53d2d75a5',1,'NpgsqlWrapper.DbParams.DbParams(string key, object value)']]],
-  ['dbparams_2ecs_1',['DbParams.cs',['../_db_params_8cs.html',1,'']]],
-  ['delete_2',['Delete',['../class_npgsql_wrapper_1_1_my_npgsql.html#af6904403918605ae067cde78041d55e6',1,'NpgsqlWrapper::MyNpgsql']]],
-  ['delete_3c_20t_20_3e_3',['Delete&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql.html#aa91f7724fbf4f13d402d93fd9b08af60',1,'NpgsqlWrapper::MyNpgsql']]],
-  ['deleteasync_4',['DeleteAsync',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a0e413a8667f31c50c0ea898916efa1ab',1,'NpgsqlWrapper::MyNpgsqlAsync']]],
-  ['deleteasync_3c_20t_20_3e_5',['DeleteAsync&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#aca49346813544e2f3c2dbafa5824a80d',1,'NpgsqlWrapper::MyNpgsqlAsync']]],
-  ['dump_6',['Dump',['../class_npgsql_wrapper_1_1_my_npgsql.html#ae7e0bc300b22a706bdcffffcf28a9c6d',1,'NpgsqlWrapper::MyNpgsql']]],
-  ['dumpasync_7',['DumpAsync',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a9df3356d03e323cfb785577a799dcea6',1,'NpgsqlWrapper::MyNpgsqlAsync']]]
+  ['close_0',['Close',['../class_npgsql_wrapper_1_1_my_npgsql.html#ae751870bc80e427774bf3c8dbcacce79',1,'NpgsqlWrapper::MyNpgsql']]],
+  ['closeasync_1',['CloseAsync',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a6734f258b747cfd35b0210f28d1696a0',1,'NpgsqlWrapper::MyNpgsqlAsync']]],
+  ['connect_2',['Connect',['../class_npgsql_wrapper_1_1_my_npgsql.html#a97b1c6e69e56f64a4e6a9194e4ac9a9c',1,'NpgsqlWrapper::MyNpgsql']]],
+  ['connectasync_3',['ConnectAsync',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a3c14303fbc6683e3153e06177b7cb3c4',1,'NpgsqlWrapper::MyNpgsqlAsync']]]
 ];

@@ -1,0 +1,88 @@
+\doxysection{Npgsql\+Wrapper.\+Encryption Class Reference}
+\hypertarget{class_npgsql_wrapper_1_1_encryption}{}\label{class_npgsql_wrapper_1_1_encryption}\index{NpgsqlWrapper.Encryption@{NpgsqlWrapper.Encryption}}
+
+
+This class encrypts and decrypts a string with AES (Advanced Encryption Standard). It encrypts data in fixed-\/size blocks of 128 bits, using a key size of 256 bits.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_npgsql_wrapper_1_1_encryption_a6e94468cd846cb086f003d16b7dcfa37}{Encrypt\+String\+To\+Bytes}} (string plain\+Text, byte\mbox{[}$\,$\mbox{]} key, byte\mbox{[}$\,$\mbox{]} iv)
+\begin{DoxyCompactList}\small\item\em Create an Aes object with the specified key and IV to encrypt message in plain text. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_encryption_acc75d0913487726bef7d45bd40cd7a2e}{Decrypt\+String\+From\+Bytes}} (byte\mbox{[}$\,$\mbox{]} cipher\+Text, byte\mbox{[}$\,$\mbox{]} key, byte\mbox{[}$\,$\mbox{]} iv)
+\begin{DoxyCompactList}\small\item\em // Create an Aes object with the specified key and IV to decrypt the byte array. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_encryption_a1822c29b68720ace5588ecf4d3c38397}{Generate\+Key\+Pair}} (out byte\mbox{[}$\,$\mbox{]} key, out byte\mbox{[}$\,$\mbox{]} iv)
+\begin{DoxyCompactList}\small\item\em Generat key and initialisation vector to be used for encryption. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class encrypts and decrypts a string with AES (Advanced Encryption Standard). It encrypts data in fixed-\/size blocks of 128 bits, using a key size of 256 bits. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_encryption_acc75d0913487726bef7d45bd40cd7a2e}\label{class_npgsql_wrapper_1_1_encryption_acc75d0913487726bef7d45bd40cd7a2e} 
+\index{NpgsqlWrapper.Encryption@{NpgsqlWrapper.Encryption}!DecryptStringFromBytes@{DecryptStringFromBytes}}
+\index{DecryptStringFromBytes@{DecryptStringFromBytes}!NpgsqlWrapper.Encryption@{NpgsqlWrapper.Encryption}}
+\doxysubsubsection{\texorpdfstring{DecryptStringFromBytes()}{DecryptStringFromBytes()}}
+{\footnotesize\ttfamily static string Npgsql\+Wrapper.\+Encryption.\+Decrypt\+String\+From\+Bytes (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{cipher\+Text,  }\item[{byte\mbox{[}$\,$\mbox{]}}]{key,  }\item[{byte\mbox{[}$\,$\mbox{]}}]{iv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+// Create an Aes object with the specified key and IV to decrypt the byte array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+Text} & The message to encrypt.\\
+\hline
+{\em key} & Encryption secret ke.\+y\\
+\hline
+{\em iv} & Encryption initialisation vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_encryption_a6e94468cd846cb086f003d16b7dcfa37}\label{class_npgsql_wrapper_1_1_encryption_a6e94468cd846cb086f003d16b7dcfa37} 
+\index{NpgsqlWrapper.Encryption@{NpgsqlWrapper.Encryption}!EncryptStringToBytes@{EncryptStringToBytes}}
+\index{EncryptStringToBytes@{EncryptStringToBytes}!NpgsqlWrapper.Encryption@{NpgsqlWrapper.Encryption}}
+\doxysubsubsection{\texorpdfstring{EncryptStringToBytes()}{EncryptStringToBytes()}}
+{\footnotesize\ttfamily static byte\mbox{[}$\,$\mbox{]} Npgsql\+Wrapper.\+Encryption.\+Encrypt\+String\+To\+Bytes (\begin{DoxyParamCaption}\item[{string}]{plain\+Text,  }\item[{byte\mbox{[}$\,$\mbox{]}}]{key,  }\item[{byte\mbox{[}$\,$\mbox{]}}]{iv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Create an Aes object with the specified key and IV to encrypt message in plain text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plain\+Text} & The message to encrypt.\\
+\hline
+{\em key} & Encryption secret key.\\
+\hline
+{\em iv} & Encryption initialisation vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bytes array.
+\end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_encryption_a1822c29b68720ace5588ecf4d3c38397}\label{class_npgsql_wrapper_1_1_encryption_a1822c29b68720ace5588ecf4d3c38397} 
+\index{NpgsqlWrapper.Encryption@{NpgsqlWrapper.Encryption}!GenerateKeyPair@{GenerateKeyPair}}
+\index{GenerateKeyPair@{GenerateKeyPair}!NpgsqlWrapper.Encryption@{NpgsqlWrapper.Encryption}}
+\doxysubsubsection{\texorpdfstring{GenerateKeyPair()}{GenerateKeyPair()}}
+{\footnotesize\ttfamily static void Npgsql\+Wrapper.\+Encryption.\+Generate\+Key\+Pair (\begin{DoxyParamCaption}\item[{out byte\mbox{[}$\,$\mbox{]}}]{key,  }\item[{out byte\mbox{[}$\,$\mbox{]}}]{iv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Generat key and initialisation vector to be used for encryption. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Encryption secret key.\\
+\hline
+{\em iv} & Encryption initialisation vector.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_encryption_8cs}{Encryption.\+cs}}\end{DoxyCompactItemize}

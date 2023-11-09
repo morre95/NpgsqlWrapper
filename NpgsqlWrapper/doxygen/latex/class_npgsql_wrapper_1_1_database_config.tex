@@ -1,0 +1,132 @@
+\doxysection{Npgsql\+Wrapper.\+Database\+Config Class Reference}
+\hypertarget{class_npgsql_wrapper_1_1_database_config}{}\label{class_npgsql_wrapper_1_1_database_config}\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config}{Database\+Config}} \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_ac11d292f3f761361ac242047ee1e4a54}{Load}} (string config\+File)
+\begin{DoxyCompactList}\small\item\em Decrypts and mapps a Database\+Config object and return it to be used for login in to a database. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a21b5779e46d723827622bdfbebf4a318}{Save}} (string config\+File, \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config}{Database\+Config}} config)
+\begin{DoxyCompactList}\small\item\em Encrypts and saves login information to a database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_af82beb24b7030d0ef2612221d99349cd}{Server}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+int? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a289dd8a25bafd989ebcf13fa3160ec6a}{Port}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a3be19fa52c8f756303c4af64a5fab67c}{Username}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_ae6344ed657421239bcd13eff24e585fe}{Password}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a5c2874fd25feb339cffa18c09849bb8d}{Database}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+byte?\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a0e55359de5853ddf3b765713e6331dcc}{Key}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+byte?\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_af7320d1df3740bf80d840cf373cc7d38}{Vector}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+byte?\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_abdef2c93ddab4ba23dfc727a290156f0}{Bytes}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_ac11d292f3f761361ac242047ee1e4a54}\label{class_npgsql_wrapper_1_1_database_config_ac11d292f3f761361ac242047ee1e4a54} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Load@{Load}}
+\index{Load@{Load}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config}{Database\+Config}} Npgsql\+Wrapper.\+Database\+Config.\+Load (\begin{DoxyParamCaption}\item[{string}]{config\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Decrypts and mapps a Database\+Config object and return it to be used for login in to a database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+File} & File path where tha json is stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Database\+Config with mapped login information.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws if key or vector is set.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_a21b5779e46d723827622bdfbebf4a318}\label{class_npgsql_wrapper_1_1_database_config_a21b5779e46d723827622bdfbebf4a318} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Save@{Save}}
+\index{Save@{Save}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily static void Npgsql\+Wrapper.\+Database\+Config.\+Save (\begin{DoxyParamCaption}\item[{string}]{config\+File,  }\item[{\mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config}{Database\+Config}}}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Encrypts and saves login information to a database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+File} & File path where tha json is stored.\\
+\hline
+{\em config} & Database\+Config with mapped login information.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws if key or vector is set.\\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_abdef2c93ddab4ba23dfc727a290156f0}\label{class_npgsql_wrapper_1_1_database_config_abdef2c93ddab4ba23dfc727a290156f0} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Bytes@{Bytes}}
+\index{Bytes@{Bytes}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Bytes}{Bytes}}
+{\footnotesize\ttfamily byte? \mbox{[}$\,$\mbox{]} Npgsql\+Wrapper.\+Database\+Config.\+Bytes\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_a5c2874fd25feb339cffa18c09849bb8d}\label{class_npgsql_wrapper_1_1_database_config_a5c2874fd25feb339cffa18c09849bb8d} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Database@{Database}}
+\index{Database@{Database}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Database}{Database}}
+{\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Database\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_a0e55359de5853ddf3b765713e6331dcc}\label{class_npgsql_wrapper_1_1_database_config_a0e55359de5853ddf3b765713e6331dcc} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Key@{Key}}
+\index{Key@{Key}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Key}{Key}}
+{\footnotesize\ttfamily byte? \mbox{[}$\,$\mbox{]} Npgsql\+Wrapper.\+Database\+Config.\+Key\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_ae6344ed657421239bcd13eff24e585fe}\label{class_npgsql_wrapper_1_1_database_config_ae6344ed657421239bcd13eff24e585fe} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Password@{Password}}
+\index{Password@{Password}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Password}{Password}}
+{\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Password\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_a289dd8a25bafd989ebcf13fa3160ec6a}\label{class_npgsql_wrapper_1_1_database_config_a289dd8a25bafd989ebcf13fa3160ec6a} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Port@{Port}}
+\index{Port@{Port}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Port}{Port}}
+{\footnotesize\ttfamily int? Npgsql\+Wrapper.\+Database\+Config.\+Port\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_af82beb24b7030d0ef2612221d99349cd}\label{class_npgsql_wrapper_1_1_database_config_af82beb24b7030d0ef2612221d99349cd} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Server@{Server}}
+\index{Server@{Server}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Server}{Server}}
+{\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Server\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_a3be19fa52c8f756303c4af64a5fab67c}\label{class_npgsql_wrapper_1_1_database_config_a3be19fa52c8f756303c4af64a5fab67c} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Username@{Username}}
+\index{Username@{Username}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Username}{Username}}
+{\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Username\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_database_config_af7320d1df3740bf80d840cf373cc7d38}\label{class_npgsql_wrapper_1_1_database_config_af7320d1df3740bf80d840cf373cc7d38} 
+\index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Vector@{Vector}}
+\index{Vector@{Vector}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
+\doxysubsubsection{\texorpdfstring{Vector}{Vector}}
+{\footnotesize\ttfamily byte? \mbox{[}$\,$\mbox{]} Npgsql\+Wrapper.\+Database\+Config.\+Vector\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_database_config_8cs}{Database\+Config.\+cs}}\end{DoxyCompactItemize}

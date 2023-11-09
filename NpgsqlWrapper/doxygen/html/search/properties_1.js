@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['id_0',['id',['../class_npgsql_wrapper_1_1_teachers.html#a3239a58ef5701d5c60f9c66b611e9c32',1,'NpgsqlWrapper::Teachers']]]
+  ['database_0',['Database',['../class_npgsql_wrapper_1_1_database_config.html#a5c2874fd25feb339cffa18c09849bb8d',1,'NpgsqlWrapper::DatabaseConfig']]]
 ];
