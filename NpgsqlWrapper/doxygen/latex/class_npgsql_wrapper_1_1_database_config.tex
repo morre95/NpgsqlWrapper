@@ -16,21 +16,21 @@ static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a21b5779e4
 \begin{DoxyCompactItemize}
 \item 
 string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_af82beb24b7030d0ef2612221d99349cd}{Server}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Server ip. \end{DoxyCompactList}\item 
 int? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a289dd8a25bafd989ebcf13fa3160ec6a}{Port}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Server port. \end{DoxyCompactList}\item 
 string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a3be19fa52c8f756303c4af64a5fab67c}{Username}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Server username. \end{DoxyCompactList}\item 
 string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_ae6344ed657421239bcd13eff24e585fe}{Password}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Server password. \end{DoxyCompactList}\item 
 string? \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a5c2874fd25feb339cffa18c09849bb8d}{Database}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Database name. \end{DoxyCompactList}\item 
 byte?\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_a0e55359de5853ddf3b765713e6331dcc}{Key}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Encryption key. \end{DoxyCompactList}\item 
 byte?\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_af7320d1df3740bf80d840cf373cc7d38}{Vector}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em Encryption initialization vector. \end{DoxyCompactList}\item 
 byte?\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_npgsql_wrapper_1_1_database_config_abdef2c93ddab4ba23dfc727a290156f0}{Bytes}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Bytes array. Holds encryption data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -91,11 +91,19 @@ Encrypts and saves login information to a database.
 \doxysubsubsection{\texorpdfstring{Bytes}{Bytes}}
 {\footnotesize\ttfamily byte? \mbox{[}$\,$\mbox{]} Npgsql\+Wrapper.\+Database\+Config.\+Bytes\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+
+
+Bytes array. Holds encryption data. 
+
 \Hypertarget{class_npgsql_wrapper_1_1_database_config_a5c2874fd25feb339cffa18c09849bb8d}\label{class_npgsql_wrapper_1_1_database_config_a5c2874fd25feb339cffa18c09849bb8d} 
 \index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Database@{Database}}
 \index{Database@{Database}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
 \doxysubsubsection{\texorpdfstring{Database}{Database}}
 {\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Database\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Database name. 
 
 \Hypertarget{class_npgsql_wrapper_1_1_database_config_a0e55359de5853ddf3b765713e6331dcc}\label{class_npgsql_wrapper_1_1_database_config_a0e55359de5853ddf3b765713e6331dcc} 
 \index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Key@{Key}}
@@ -103,11 +111,19 @@ Encrypts and saves login information to a database.
 \doxysubsubsection{\texorpdfstring{Key}{Key}}
 {\footnotesize\ttfamily byte? \mbox{[}$\,$\mbox{]} Npgsql\+Wrapper.\+Database\+Config.\+Key\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+
+
+Encryption key. 
+
 \Hypertarget{class_npgsql_wrapper_1_1_database_config_ae6344ed657421239bcd13eff24e585fe}\label{class_npgsql_wrapper_1_1_database_config_ae6344ed657421239bcd13eff24e585fe} 
 \index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Password@{Password}}
 \index{Password@{Password}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
 \doxysubsubsection{\texorpdfstring{Password}{Password}}
 {\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Password\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Server password. 
 
 \Hypertarget{class_npgsql_wrapper_1_1_database_config_a289dd8a25bafd989ebcf13fa3160ec6a}\label{class_npgsql_wrapper_1_1_database_config_a289dd8a25bafd989ebcf13fa3160ec6a} 
 \index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Port@{Port}}
@@ -115,11 +131,19 @@ Encrypts and saves login information to a database.
 \doxysubsubsection{\texorpdfstring{Port}{Port}}
 {\footnotesize\ttfamily int? Npgsql\+Wrapper.\+Database\+Config.\+Port\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+
+
+Server port. 
+
 \Hypertarget{class_npgsql_wrapper_1_1_database_config_af82beb24b7030d0ef2612221d99349cd}\label{class_npgsql_wrapper_1_1_database_config_af82beb24b7030d0ef2612221d99349cd} 
 \index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Server@{Server}}
 \index{Server@{Server}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
 \doxysubsubsection{\texorpdfstring{Server}{Server}}
 {\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Server\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Server ip. 
 
 \Hypertarget{class_npgsql_wrapper_1_1_database_config_a3be19fa52c8f756303c4af64a5fab67c}\label{class_npgsql_wrapper_1_1_database_config_a3be19fa52c8f756303c4af64a5fab67c} 
 \index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Username@{Username}}
@@ -127,11 +151,19 @@ Encrypts and saves login information to a database.
 \doxysubsubsection{\texorpdfstring{Username}{Username}}
 {\footnotesize\ttfamily string? Npgsql\+Wrapper.\+Database\+Config.\+Username\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+
+
+Server username. 
+
 \Hypertarget{class_npgsql_wrapper_1_1_database_config_af7320d1df3740bf80d840cf373cc7d38}\label{class_npgsql_wrapper_1_1_database_config_af7320d1df3740bf80d840cf373cc7d38} 
 \index{NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}!Vector@{Vector}}
 \index{Vector@{Vector}!NpgsqlWrapper.DatabaseConfig@{NpgsqlWrapper.DatabaseConfig}}
 \doxysubsubsection{\texorpdfstring{Vector}{Vector}}
 {\footnotesize\ttfamily byte? \mbox{[}$\,$\mbox{]} Npgsql\+Wrapper.\+Database\+Config.\+Vector\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Encryption initialization vector. 
 
 
 

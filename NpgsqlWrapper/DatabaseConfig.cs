@@ -7,13 +7,44 @@ namespace NpgsqlWrapper
     /// </summary>
     public class DatabaseConfig
     {
+        /// <summary>
+        /// Server ip
+        /// </summary>
         public string? Server { get; set; }
+
+        /// <summary>
+        /// Server port
+        /// </summary>
         public int? Port { get; set; }
+
+        /// <summary>
+        /// Server username
+        /// </summary>
         public string? Username { get; set; }
+
+        /// <summary>
+        /// Server password
+        /// </summary>
         public string? Password { get; set; }
+
+        /// <summary>
+        /// Database name
+        /// </summary>
         public string? Database { get; set; }
+
+        /// <summary>
+        /// Encryption key
+        /// </summary>
         public byte[]? Key { get; set; }
+
+        /// <summary>
+        /// Encryption initialization vector
+        /// </summary>
         public byte[]? Vector { get; set; }
+
+        /// <summary>
+        /// Bytes array. Holds encryption data
+        /// </summary>
         public byte[]? Bytes { get; set; }
 
         /// <summary>
