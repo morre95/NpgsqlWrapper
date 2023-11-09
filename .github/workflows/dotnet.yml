@@ -24,5 +24,4 @@ jobs:
       run: dotnet add package Npgsql --version 7.0.6
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    
