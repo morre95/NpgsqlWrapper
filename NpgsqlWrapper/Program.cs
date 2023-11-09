@@ -197,6 +197,25 @@
                         Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.subject.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
                     }
                 }
+                else if (command == "cancel")
+                {
+                    try
+                    {
+                        var ts = new CancellationTokenSource();
+                        CancellationToken cts = ts.Token;
+                        cts.Register(() => Console.WriteLine("Is the operation cancelled now?"));
+                        ts.Cancel();
+                        foreach (var teacher in await school.GetAll(cts))
+                        {
+                            Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
+                        }
+                    } 
+                    catch (OperationCanceledException oce)
+                    {
+                        Console.WriteLine(oce.Message);
+                    }
+                    
+                }
                 else if ( command == "exit")
                 {
                     school.Close();
@@ -266,9 +285,9 @@ CREATE TABLE teachers
             await pgsql.CloseAsync();
         }
 
-        public async Task<List<Teachers>> GetAll()
+        public async Task<List<Teachers>> GetAll(CancellationToken cancellationToken = default)
         {
-            return await pgsql.FetchAsync<Teachers>();
+            return await pgsql.FetchAsync<Teachers>(null, cancellationToken);
         }
 
         public async Task<int> DeleteById(int id)
