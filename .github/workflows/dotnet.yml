@@ -15,13 +15,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.x
-    - name: Install dependencies
-      run: dotnet add package Npgsql --version 7.0.6
-    - name: Build
-      run: dotnet build --no-restore
+     - uses: actions/checkout@v4
+     - name: Setup dotnet
+       uses: actions/setup-dotnet@v3
+       with:
+        dotnet-version: '7.x'
+     - name: Install dependencies
+       run: dotnet add package Npgsql --version 7.0.6
+     - name: Build
+       run: dotnet build --no-restore
     
