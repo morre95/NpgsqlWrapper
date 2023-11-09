@@ -16,21 +16,19 @@ Inheritance diagram for Npgsql\+Wrapper.\+My\+Npgsql\+Async\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a3d1d9b4065331eeab1cf5eb3a6376bd6}{My\+Npgsql\+Async}} (string host, string username, string password, string database)
 \begin{DoxyCompactList}\small\item\em Setting up the connection string. \end{DoxyCompactList}\item 
-async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a3c14303fbc6683e3153e06177b7cb3c4}{Connect\+Async}} ()
+async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a5ca9a33d57f3c8d61d9b3d0427fe16fe}{Connect\+Async}} (Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Builds the connection to the database, asynchronously. \end{DoxyCompactList}\item 
 async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a6734f258b747cfd35b0210f28d1696a0}{Close\+Async}} ()
 \begin{DoxyCompactList}\small\item\em Close connection to database, asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a2916036b247edf501d3dcbee8e0fa07d}{Fetch\+Async$<$ T $>$}} (string? sql=null)
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a1f9a33c3a31833646c439c29ba0f4357}{Fetch\+Async$<$ T $>$}} (string? sql=null, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a result set from the database. \end{DoxyCompactList}\item 
-async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6}{Fetch\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a46539871ddd41652fdc6be708c03ae8a}{Fetch\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
-async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748}{Fetch\+Enumerable\+Async$<$ T $>$}} (string? sql=null)
-\item 
-async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d}{Fetch\+Enumerable\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
+async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a90432429d0f26bd16fab46773db38a43}{Fetch\+Enumerable\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
-async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500}{Fetch\+One\+Async$<$ T $>$}} (string? sql=null)
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ad09e1ba8c0600c89fc8e4b710c1be655}{Fetch\+One\+Async$<$ T $>$}} (string? sql=null, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously one result from the database. \end{DoxyCompactList}\item 
-async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186}{Fetch\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_af41683fdcdc06cbb5254560558fb5067}{Fetch\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
 async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a286c99f50a22061ee9f9e37f5e147848}{Insert\+Async$<$ T $>$}} (T obj\+To\+Insert)
 \begin{DoxyCompactList}\small\item\em Inserts asynchronously. \end{DoxyCompactList}\item 
@@ -46,15 +44,15 @@ async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_
 \begin{DoxyCompactList}\small\item\em Deletes rows from a database table asynchronously based on the specified conditions. \end{DoxyCompactList}\item 
 async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_aca49346813544e2f3c2dbafa5824a80d}{Delete\+Async$<$ T $>$}} (string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
 \begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ae6f77f7f40ee43f9f05537ee652a35d6}{Execute\+Non\+Query\+Async}} (string sql, Dictionary$<$ string, object $>$ parameters)
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_aceb2e469689d4de727bf26cc329e6b0c}{Execute\+Non\+Query\+Async}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Executes a SQL command and returns the number of affected rows asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a1ee5e07ef1778c33b48d99a752300924}{Execute\+Non\+Query\+Async}} (string sql)
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ad9a73b564325865ca11649c7235ac47d}{Execute\+Non\+Query\+Async}} (string sql, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Executes a SQL command and returns the number of affected rows asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_aa11ac022723a788c6754768f85a8b86e}{Execute\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$? parameters=null)
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a19c9426722fa2083b718717a6cb4120f}{Execute\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$? parameters=null, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a single result asynchronously and maps it to a specified type. \end{DoxyCompactList}\item 
-async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ac37243c8140adf9dcfa176b1ce469057}{Execute\+Async$<$ T $>$}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0dc42865b4f0c493b6bebed26a6ae7ff}{Execute\+Async$<$ T $>$}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{} asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a9df3356d03e323cfb785577a799dcea6}{Dump\+Async}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a03fb8b1930fa73e1c953c65810ece61a}{Dump\+Async}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
@@ -152,11 +150,11 @@ Usage\+:
 {\em Argument\+Null\+Exception} & Throws if connections is not made\\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a3c14303fbc6683e3153e06177b7cb3c4}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a3c14303fbc6683e3153e06177b7cb3c4} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a5ca9a33d57f3c8d61d9b3d0427fe16fe}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a5ca9a33d57f3c8d61d9b3d0427fe16fe} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ConnectAsync@{ConnectAsync}}
 \index{ConnectAsync@{ConnectAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{ConnectAsync()}{ConnectAsync()}}
-{\footnotesize\ttfamily async Task Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Connect\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Connect\+Async (\begin{DoxyParamCaption}\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -168,7 +166,14 @@ Usage\+:
 \DoxyCodeLine{await\ pgsql.ConnectAsync();}
 
 \end{DoxyCode}
- \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab} 
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!DeleteAsync@{DeleteAsync}}
 \index{DeleteAsync@{DeleteAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{DeleteAsync()}{DeleteAsync()}}
@@ -244,11 +249,11 @@ Usage\+:
 \begin{DoxyReturn}{Returns}
 The number of effected rows
 \end{DoxyReturn}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a9df3356d03e323cfb785577a799dcea6}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a9df3356d03e323cfb785577a799dcea6} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a03fb8b1930fa73e1c953c65810ece61a}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a03fb8b1930fa73e1c953c65810ece61a} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!DumpAsync@{DumpAsync}}
 \index{DumpAsync@{DumpAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{DumpAsync()}{DumpAsync()}}
-{\footnotesize\ttfamily async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Dump\+Async (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Dump\+Async (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null},  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -273,6 +278,8 @@ Usage\+:
 \hline
 {\em parameters} & The parameters to bind to the SQL query.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A list of objects of type \textquotesingle{}Dictionary$<$string, object$>$\textquotesingle{} retrieved from the database.
@@ -282,11 +289,11 @@ A list of objects of type \textquotesingle{}Dictionary$<$string, object$>$\textq
 {\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of parameters\\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ac37243c8140adf9dcfa176b1ce469057}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ac37243c8140adf9dcfa176b1ce469057} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a0dc42865b4f0c493b6bebed26a6ae7ff}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a0dc42865b4f0c493b6bebed26a6ae7ff} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteAsync$<$ T $>$@{ExecuteAsync$<$ T $>$}}
 \index{ExecuteAsync$<$ T $>$@{ExecuteAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{ExecuteAsync$<$ T $>$()}{ExecuteAsync< T >()}}
-{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql\+Query,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null},  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -321,15 +328,17 @@ Usage\+:
 \hline
 {\em parameters} & The parameters to bind to the SQL query.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A list of objects of type \textquotesingle{}T\textquotesingle{} retrieved from the database.
 \end{DoxyReturn}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a1ee5e07ef1778c33b48d99a752300924}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a1ee5e07ef1778c33b48d99a752300924} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ad9a73b564325865ca11649c7235ac47d}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ad9a73b564325865ca11649c7235ac47d} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteNonQueryAsync@{ExecuteNonQueryAsync}}
 \index{ExecuteNonQueryAsync@{ExecuteNonQueryAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{ExecuteNonQueryAsync()}{ExecuteNonQueryAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Non\+Query\+Async (\begin{DoxyParamCaption}\item[{string}]{sql }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Non\+Query\+Async (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -349,6 +358,8 @@ Usage\+:
 \begin{DoxyParams}{Parameters}
 {\em sql} & The SQL command to execute.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The number of rows affected by the SQL command.
@@ -358,11 +369,11 @@ The number of rows affected by the SQL command.
 {\em Argument\+Null\+Exception} & Thrown when connection is null.\\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ae6f77f7f40ee43f9f05537ee652a35d6}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ae6f77f7f40ee43f9f05537ee652a35d6} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_aceb2e469689d4de727bf26cc329e6b0c}\label{class_npgsql_wrapper_1_1_my_npgsql_async_aceb2e469689d4de727bf26cc329e6b0c} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteNonQueryAsync@{ExecuteNonQueryAsync}}
 \index{ExecuteNonQueryAsync@{ExecuteNonQueryAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{ExecuteNonQueryAsync()}{ExecuteNonQueryAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Non\+Query\+Async (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ int $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+Non\+Query\+Async (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters,  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -400,11 +411,11 @@ The number of rows affected by the SQL command.
 {\em Argument\+Null\+Exception} & Thrown when connection is null.\\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_aa11ac022723a788c6754768f85a8b86e}\label{class_npgsql_wrapper_1_1_my_npgsql_async_aa11ac022723a788c6754768f85a8b86e} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a19c9426722fa2083b718717a6cb4120f}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a19c9426722fa2083b718717a6cb4120f} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!ExecuteOneAsync$<$ T $>$@{ExecuteOneAsync$<$ T $>$}}
 \index{ExecuteOneAsync$<$ T $>$@{ExecuteOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{ExecuteOneAsync$<$ T $>$()}{ExecuteOneAsync< T >()}}
-{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Execute\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$?}]{parameters = {\ttfamily null},  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -434,6 +445,8 @@ Usage\+:
 \hline
 {\em parameters} & The parameters to bind to the SQL query.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The result of the SQL query mapped to the specified type.
@@ -443,11 +456,11 @@ The result of the SQL query mapped to the specified type.
 {\em Argument\+Null\+Exception} & Thrown when \textquotesingle{}\+\_\+conn\textquotesingle{} is null.\\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a46539871ddd41652fdc6be708c03ae8a}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a46539871ddd41652fdc6be708c03ae8a} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}}
 \index{FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{FetchAsync$<$ T $>$()}{FetchAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters,  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -482,6 +495,8 @@ Usage\+:
 \hline
 {\em parameters} & The parameters to bind to the SQL query.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 List of objects with data from the database.
@@ -493,11 +508,11 @@ List of objects with data from the database.
 {\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of arguments.\\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a2916036b247edf501d3dcbee8e0fa07d}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a2916036b247edf501d3dcbee8e0fa07d} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a1f9a33c3a31833646c439c29ba0f4357}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a1f9a33c3a31833646c439c29ba0f4357} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}}
 \index{FetchAsync$<$ T $>$@{FetchAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{FetchAsync$<$ T $>$()}{FetchAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ List$<$ T $>$?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null},  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -525,15 +540,17 @@ Usage\+:
 \begin{DoxyParams}{Parameters}
 {\em sql} & Query string. If leaved empty it will run a simple SELECT \texorpdfstring{$\ast$}{*} FROM My\+Table\+Class.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 List of objects with data from the database
 \end{DoxyReturn}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a90432429d0f26bd16fab46773db38a43}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a90432429d0f26bd16fab46773db38a43} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}}
 \index{FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
-\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily async IAsync\+Enumerable$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Enumerable\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}}
+{\footnotesize\ttfamily async IAsync\+Enumerable$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Enumerable\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters,  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -563,6 +580,8 @@ Usage\+:
 \hline
 {\em parameters} & The parameters to bind to the SQL command.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 IAsync\+Enumerable$<$\+T$>$ object of the SQL query mapped to the specified type.
@@ -572,17 +591,11 @@ IAsync\+Enumerable$<$\+T$>$ object of the SQL query mapped to the specified type
 {\em Argument\+Null\+Exception} & \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748}\label{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748} 
-\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}}
-\index{FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
-\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily async IAsync\+Enumerable$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Enumerable\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_af41683fdcdc06cbb5254560558fb5067}\label{class_npgsql_wrapper_1_1_my_npgsql_async_af41683fdcdc06cbb5254560558fb5067} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}}
 \index{FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{FetchOneAsync$<$ T $>$()}{FetchOneAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters,  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -612,6 +625,8 @@ Usage\+:
 \hline
 {\em parameters} & The parameters to bind to the SQL query.\\
 \hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 List of objects with data from the database.
@@ -623,11 +638,11 @@ List of objects with data from the database.
 {\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of arguments.\\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ad09e1ba8c0600c89fc8e4b710c1be655}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ad09e1ba8c0600c89fc8e4b710c1be655} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}}
 \index{FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
 \doxysubsubsection{\texorpdfstring{FetchOneAsync$<$ T $>$()}{FetchOneAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+One\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null},  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -652,6 +667,8 @@ Usage\+:
 
 \begin{DoxyParams}{Parameters}
 {\em sql} & Query string. If leaved empty it will run a simple SELECT \texorpdfstring{$\ast$}{*} FROM My\+Table\+Class LIMIT 1.\\
+\hline
+{\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
