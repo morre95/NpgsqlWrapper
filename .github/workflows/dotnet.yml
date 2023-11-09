@@ -21,7 +21,7 @@ jobs:
        with:
         dotnet-version: '6.0.x'
      - name: Install dependencies
-       run: dotnet add morre95/NpgsqlWrapper/blob/master/NpgsqlWrapper/NpgsqlWrapper.csproj Npgsql --version 7.0.6
+       run: dotnet add /blob/master/NpgsqlWrapper/NpgsqlWrapper.csproj Npgsql --version 7.0.6
      - name: Build
        run: dotnet build --no-restore
     
