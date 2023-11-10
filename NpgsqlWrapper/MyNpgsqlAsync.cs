@@ -138,15 +138,13 @@ namespace NpgsqlWrapper
             using (var tx = _conn.BeginTransaction())
             {
                 List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
-                using (var cmd = _conn.CreateCommand())
-                {
-                    cmd.Transaction = tx;
-                    cmd.CommandText = sql;
+                using var cmd = _conn.CreateCommand();
+                cmd.Transaction = tx;
+                cmd.CommandText = sql;
 
-                    AddParameters(sql, parameters, cmd);
+                AddParameters(sql, parameters, cmd);
 
-                    returnList = await ExecuteReaderMenyAsync<T>(propertyList, cmd, cancellationToken);
-                }
+                returnList = await ExecuteReaderMenyAsync<T>(propertyList, cmd, cancellationToken);
 
             }
             return returnList;
@@ -299,29 +297,27 @@ namespace NpgsqlWrapper
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             // TBD: kolla om det finns LIMIT 1 eller FETCH FIRST 1 ROW ONLY eller liknande och läg till det om det fattas
-            await using (var tx = await _conn.BeginTransactionAsync())
+            await using var tx = await _conn.BeginTransactionAsync();
+            List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
+            T item = Activator.CreateInstance<T>();
+            using (var cmd = _conn.CreateCommand())
             {
-                List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
-                T item = Activator.CreateInstance<T>();
-                using (var cmd = _conn.CreateCommand())
+                cmd.Transaction = tx;
+
+                cmd.CommandText = sql;
+
+                AddParameters(sql, parameters, cmd);
+
+                await using var reader = await cmd.ExecuteReaderAsync(cancellationToken);
+                while (await reader.ReadAsync(cancellationToken))
                 {
-                    cmd.Transaction = tx;
-
-                    cmd.CommandText = sql;
-
-                    AddParameters(sql, parameters, cmd);
-
-                    await using var reader = await cmd.ExecuteReaderAsync(cancellationToken);
-                    while (await reader.ReadAsync(cancellationToken))
-                    {
-                        return SetObjectValues(propertyList, item, reader);
-                    }
-
+                    return SetObjectValues(propertyList, item, reader);
                 }
 
-                return default;
-                //return item;
             }
+
+            return default;
+            //return item;
         }
 
         /// <summary>
@@ -615,14 +611,12 @@ namespace NpgsqlWrapper
         public async Task<int> ExecuteNonQueryAsync(string sql, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            await using (var cmd = new NpgsqlCommand(sql, _conn))
+            await using var cmd = new NpgsqlCommand(sql, _conn);
+            foreach (KeyValuePair<string, object> kvp in parameters)
             {
-                foreach (KeyValuePair<string, object> kvp in parameters)
-                {
-                    cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                }
-                return await cmd.ExecuteNonQueryAsync(cancellationToken);
+                cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
             }
+            return await cmd.ExecuteNonQueryAsync(cancellationToken);
 
         }
 
@@ -699,7 +693,6 @@ namespace NpgsqlWrapper
                 }
             }
             return default;
-            //return item;
         }
 
         /// <summary>
@@ -783,17 +776,15 @@ namespace NpgsqlWrapper
             {
                 AddParameters(sqlQuery, parameters, cmd);
 
-                await using (var reader = await cmd.ExecuteReaderAsync(cancellationToken))
+                await using var reader = await cmd.ExecuteReaderAsync(cancellationToken);
+                while (await reader.ReadAsync(cancellationToken))
                 {
-                    while (await reader.ReadAsync(cancellationToken))
+                    Dictionary<string, object> dict = new Dictionary<string, object>();
+                    for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        Dictionary<string, object> dict = new Dictionary<string, object>();
-                        for (int i = 0; i < reader.FieldCount; i++)
-                        {
-                            dict.Add(reader.GetName(i), reader[i]);
-                        }
-                        returnList.Add(dict);
+                        dict.Add(reader.GetName(i), reader[i]);
                     }
+                    returnList.Add(dict);
                 }
             }
 
