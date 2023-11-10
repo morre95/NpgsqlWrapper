@@ -2,6 +2,7 @@
 using NpgsqlTypes;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 
 namespace NpgsqlWrapper
@@ -192,7 +193,7 @@ namespace NpgsqlWrapper
         /// </param>
         /// <returns><see cref="IAsyncEnumerable{T}"/> object of the SQL query mapped to the specified type.</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async IAsyncEnumerable<T?> FetchEnumerableAsync<T>(string sql, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        public async IAsyncEnumerable<T?> FetchEnumerableAsync<T>(string sql, Dictionary<string, object> parameters, [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             await using var tx = await _conn.BeginTransactionAsync(cancellationToken);
