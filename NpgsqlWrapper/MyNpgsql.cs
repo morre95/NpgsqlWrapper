@@ -164,13 +164,7 @@ namespace NpgsqlWrapper
             IEnumerable<PropertyInfo> properties = typeof(T).GetProperties();
 
             using var cmd = new NpgsqlCommand(sqlQuery, _conn);
-            if (parameters != null)
-            {
-                foreach (KeyValuePair<string, object> kvp in parameters)
-                {
-                    cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                }
-            }
+            AddParameters(sqlQuery, parameters, cmd);
 
             return ExecuteReaderMany<T>(properties, cmd);
         }
@@ -267,13 +261,7 @@ namespace NpgsqlWrapper
             IEnumerable<PropertyInfo> properties = typeof(T).GetProperties();
 
             using var cmd = new NpgsqlCommand(sql, _conn);
-            if (parameters != null)
-            {
-                foreach (KeyValuePair<string, object> kvp in parameters)
-                {
-                    cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                }
-            }
+            AddParameters(sql, parameters, cmd);
 
             return ExecuteReader<T>(properties, cmd);
         }
@@ -414,10 +402,7 @@ namespace NpgsqlWrapper
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             using var cmd = new NpgsqlCommand(sql, _conn);
-            foreach (KeyValuePair<string, object> kvp in parameters)
-            {
-                cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-            }
+            AddParameters(sql, parameters, cmd);
             return cmd.ExecuteNonQuery();
         }
 
