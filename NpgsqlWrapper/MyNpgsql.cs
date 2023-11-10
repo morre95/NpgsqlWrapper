@@ -122,20 +122,15 @@ namespace NpgsqlWrapper
         public IEnumerable<T> Fetch<T>(string sql, Dictionary<string, object> parameters)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            using (var tx = _conn.BeginTransaction())
-            {
-                IEnumerable<PropertyInfo> properties = typeof(T).GetProperties();
-                using (var cmd = _conn.CreateCommand())
-                {
-                    cmd.Transaction = tx;
-                    cmd.CommandText = sql;
+            using var tx = _conn.BeginTransaction();
+            IEnumerable<PropertyInfo> properties = typeof(T).GetProperties();
+            using var cmd = _conn.CreateCommand();
+            cmd.Transaction = tx;
+            cmd.CommandText = sql;
 
-                    AddParameters(sql, parameters, cmd);
+            AddParameters(sql, parameters, cmd);
 
-                    return ExecuteReaderMany<T>(properties, cmd);
-                }
-
-            }
+            return ExecuteReaderMany<T>(properties, cmd);
         }
 
         /// <summary>
@@ -168,18 +163,16 @@ namespace NpgsqlWrapper
         {
             IEnumerable<PropertyInfo> properties = typeof(T).GetProperties();
 
-            using (var cmd = new NpgsqlCommand(sqlQuery, _conn))
+            using var cmd = new NpgsqlCommand(sqlQuery, _conn);
+            if (parameters != null)
             {
-                if (parameters != null)
+                foreach (KeyValuePair<string, object> kvp in parameters)
                 {
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                    }
+                    cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
                 }
-
-                return ExecuteReaderMany<T>(properties, cmd);
             }
+
+            return ExecuteReaderMany<T>(properties, cmd);
         }
 
         /// <summary>
@@ -272,19 +265,17 @@ namespace NpgsqlWrapper
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             IEnumerable<PropertyInfo> properties = typeof(T).GetProperties();
-            
-            using (var cmd = new NpgsqlCommand(sql, _conn))
-            {
-                if (parameters != null)
-                {
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                    }
-                }
 
-                return ExecuteReader<T>(properties, cmd);
+            using var cmd = new NpgsqlCommand(sql, _conn);
+            if (parameters != null)
+            {
+                foreach (KeyValuePair<string, object> kvp in parameters)
+                {
+                    cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
+                }
             }
+
+            return ExecuteReader<T>(properties, cmd);
         }
 
         /// <summary>
@@ -633,8 +624,6 @@ namespace NpgsqlWrapper
                 }
                 yield return dict;
             }
-        }
-
-        
+        }   
     }
 }
