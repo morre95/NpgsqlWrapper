@@ -605,18 +605,15 @@ namespace NpgsqlWrapper
         /// ]]>
         /// </code>
         /// </example>
-        /// <param name="sql">The SQL command to execute.</param>
+        /// <param name="sqlQuery">The SQL command to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL command.</param>
         /// <returns>The number of rows affected by the SQL command.</returns>
         /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
-        public async Task<int> ExecuteNonQueryAsync(string sql, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
+        public async Task<int> ExecuteNonQueryAsync(string sqlQuery, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            await using var cmd = new NpgsqlCommand(sql, _conn);
-            foreach (KeyValuePair<string, object> kvp in parameters)
-            {
-                cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-            }
+            await using var cmd = new NpgsqlCommand(sqlQuery, _conn);
+            AddParameters(sqlQuery, parameters, cmd);
             return await cmd.ExecuteNonQueryAsync(cancellationToken);
 
         }
@@ -664,30 +661,22 @@ namespace NpgsqlWrapper
         /// </code>
         /// </example>
         /// <typeparam name="T">The type to map the result to.</typeparam>
-        /// <param name="sql">The SQL query to execute.</param>
+        /// <param name="sqlQuery">The SQL query to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <param name="cancellationToken">
         /// An optional token to cancel the asynchronous operation. The default value is <see cref="CancellationToken.None"/>.
         /// </param>
         /// <returns>The result of the SQL query mapped to the specified type.</returns>
         /// <exception cref="ArgumentNullException">Thrown when '_conn' is null.</exception>
-        public async Task<T?> ExecuteOneAsync<T>(string sql, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
+        public async Task<T?> ExecuteOneAsync<T>(string sqlQuery, Dictionary<string, object>? parameters = null, CancellationToken cancellationToken = default)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
             T item = Activator.CreateInstance<T>();
-            await using (var cmd = new NpgsqlCommand(sql, _conn))
+            await using (var cmd = new NpgsqlCommand(sqlQuery, _conn))
             {
-
-                if (parameters != null)
-                {
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                    }
-                }
+                AddParameters(sqlQuery, parameters, cmd);
                 await using var reader = await cmd.ExecuteReaderAsync(cancellationToken);
-
                 while (await reader.ReadAsync(cancellationToken))
                 {
                     return SetObjectValues(propertyList.ToList(), item, reader);
@@ -732,13 +721,7 @@ namespace NpgsqlWrapper
 
             await using (var cmd = new NpgsqlCommand(sqlQuery, _conn))
             {
-                if (parameters != null)
-                {
-                    foreach (KeyValuePair<string, object> kvp in parameters)
-                    {
-                        cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                    }
-                }
+                AddParameters(sqlQuery, parameters, cmd);
 
                 returnList = await ExecuteReaderMenyAsync<T>(propertyList, cmd, cancellationToken);
             }
