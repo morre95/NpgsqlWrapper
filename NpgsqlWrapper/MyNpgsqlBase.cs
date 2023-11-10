@@ -51,10 +51,10 @@ namespace NpgsqlWrapper
         }
 
         /// <summary>
-        /// Returns the number of times @field is in a sql query
+        /// Returns the number of times @field is in a sql query.
         /// </summary>
-        /// <param name="sqlQuery"></param>
-        /// <returns>Number of @field</returns>
+        /// <param name="sqlQuery">Query string.</param>
+        /// <returns>Number of escaped @field.</returns>
         protected static int GetSqlNumParams(string sqlQuery)
         {
             string pattern = @"[=<>]+\s*@";
