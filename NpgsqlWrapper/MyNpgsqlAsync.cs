@@ -237,7 +237,7 @@ namespace NpgsqlWrapper
         /// MyNpgsqlAsync pgsql = new(host, username, password, database);
         /// await pgsql.ConnectAsync();
         /// 
-        /// var teacher = await pgsql.FetchOneAsync<Teacher>(); 
+        /// var teacher = await pgsql.FetchOneAsync<Teachers>(); 
         /// Console.WriteLine(teacher.first_name);
         /// ]]>
         /// </code>

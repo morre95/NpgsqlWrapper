@@ -39,7 +39,7 @@ namespace NpgsqlWrapper
             get
             {
                 if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-                using var cmd = new NpgsqlCommand("SELECT lastval() AS id", _conn);
+                using var cmd = new NpgsqlCommand("SELECT lastval()", _conn);
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
