@@ -109,8 +109,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae1f42d14865f9a950ae01a7375a972d6" id="r_ae1f42d14865f9a950ae01a7375a972d6"><td class="memItemLeft" align="right" valign="top">async Task&lt; List&lt; T &gt;?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#ae1f42d14865f9a950ae01a7375a972d6">FetchAsync&lt; T &gt;</a> (string sql, Dictionary&lt; string, object &gt; parameters)</td></tr>
 <tr class="memdesc:ae1f42d14865f9a950ae01a7375a972d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches asynchronously a list of data from the database with sql injection safety.  <br /></td></tr>
 <tr class="separator:ae1f42d14865f9a950ae01a7375a972d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adccb2e6aeef32cbbd91497471e938748" id="r_adccb2e6aeef32cbbd91497471e938748"><td class="memItemLeft" align="right" valign="top">async IAsyncEnumerable&lt; T?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#adccb2e6aeef32cbbd91497471e938748">FetchEnumerableAsync&lt; T &gt;</a> (string? sql=null)</td></tr>
-<tr class="separator:adccb2e6aeef32cbbd91497471e938748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab780b698557dca4c8bd136fcaa12859d" id="r_ab780b698557dca4c8bd136fcaa12859d"><td class="memItemLeft" align="right" valign="top">async IAsyncEnumerable&lt; T?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#ab780b698557dca4c8bd136fcaa12859d">FetchEnumerableAsync&lt; T &gt;</a> (string sql, Dictionary&lt; string, object &gt; parameters)</td></tr>
 <tr class="memdesc:ab780b698557dca4c8bd136fcaa12859d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches asynchronously a list of data from the database with sql injection safety.  <br /></td></tr>
 <tr class="separator:ab780b698557dca4c8bd136fcaa12859d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -873,7 +871,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a id="ab780b698557dca4c8bd136fcaa12859d" name="ab780b698557dca4c8bd136fcaa12859d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab780b698557dca4c8bd136fcaa12859d">&#9670;&#160;</a></span>FetchEnumerableAsync&lt; T &gt;() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab780b698557dca4c8bd136fcaa12859d">&#9670;&#160;</a></span>FetchEnumerableAsync&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -934,32 +932,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="adccb2e6aeef32cbbd91497471e938748" name="adccb2e6aeef32cbbd91497471e938748"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adccb2e6aeef32cbbd91497471e938748">&#9670;&#160;</a></span>FetchEnumerableAsync&lt; T &gt;() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">async IAsyncEnumerable&lt; T?&gt; NpgsqlWrapper.MyNpgsqlAsync.FetchEnumerableAsync&lt; T &gt; </td>
-          <td>(</td>
-          <td class="paramtype">string?&#160;</td>
-          <td class="paramname"><em>sql</em> = <code>null</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -1057,7 +1029,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="class_npgsql_wrapper_1_1_my_npgsql_async.html">MyNpgsqlAsync</a> pgsql = <span class="keyword">new</span>(host, username, password, database);</div>
 <div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a3c14303fbc6683e3153e06177b7cb3c4">ConnectAsync</a>();</div>
 <div class="line"> </div>
-<div class="line">var teacher = await pgsql.FetchOneAsync\&lt;Teacher\&gt;(); </div>
+<div class="line">var teacher = await pgsql.FetchOneAsync\&lt;Teachers\&gt;(); </div>
 <div class="line">Console.WriteLine(teacher.first_name);</div>
 </div><!-- fragment --> <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">

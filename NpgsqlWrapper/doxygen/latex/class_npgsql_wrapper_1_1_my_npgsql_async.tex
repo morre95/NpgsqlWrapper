@@ -24,8 +24,6 @@ async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npg
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a result set from the database. \end{DoxyCompactList}\item 
 async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ae1f42d14865f9a950ae01a7375a972d6}{Fetch\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
-async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748}{Fetch\+Enumerable\+Async$<$ T $>$}} (string? sql=null)
-\item 
 async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d}{Fetch\+Enumerable\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
 \begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
 async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ac40586919aa890abf4623fb2326c0500}{Fetch\+One\+Async$<$ T $>$}} (string? sql=null)
@@ -532,7 +530,7 @@ List of objects with data from the database
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d}\label{class_npgsql_wrapper_1_1_my_npgsql_async_ab780b698557dca4c8bd136fcaa12859d} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}}
 \index{FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
-\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}}
 {\footnotesize\ttfamily async IAsync\+Enumerable$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Enumerable\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{sql,  }\item[{Dictionary$<$ string, object $>$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -572,12 +570,6 @@ IAsync\+Enumerable$<$\+T$>$ object of the SQL query mapped to the specified type
 {\em Argument\+Null\+Exception} & \\
 \hline
 \end{DoxyExceptions}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748}\label{class_npgsql_wrapper_1_1_my_npgsql_async_adccb2e6aeef32cbbd91497471e938748} 
-\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}}
-\index{FetchEnumerableAsync$<$ T $>$@{FetchEnumerableAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
-\doxysubsubsection{\texorpdfstring{FetchEnumerableAsync$<$ T $>$()}{FetchEnumerableAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily async IAsync\+Enumerable$<$ T?$>$ Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Fetch\+Enumerable\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{string?}]{sql = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a66f70cd243d631a67330391a567fb186} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}}
 \index{FetchOneAsync$<$ T $>$@{FetchOneAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
@@ -638,7 +630,7 @@ Usage\+:
 \DoxyCodeLine{MyNpgsqlAsync\ pgsql\ =\ \textcolor{keyword}{new}(host,\ username,\ password,\ database);}
 \DoxyCodeLine{await\ pgsql.ConnectAsync();}
 \DoxyCodeLine{}
-\DoxyCodeLine{var\ teacher\ =\ await\ pgsql.FetchOneAsync\(\backslash\)<Teacher\(\backslash\)>();\ }
+\DoxyCodeLine{var\ teacher\ =\ await\ pgsql.FetchOneAsync\(\backslash\)<Teachers\(\backslash\)>();\ }
 \DoxyCodeLine{Console.WriteLine(teacher.first\_name);}
 
 \end{DoxyCode}
