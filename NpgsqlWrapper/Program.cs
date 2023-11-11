@@ -1,10 +1,158 @@
-﻿namespace NpgsqlWrapper
+﻿using Npgsql;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+
+namespace NpgsqlWrapper
 {
+    public static class AttributesExt
+    {
+        public static IEnumerable<PropertyInfo> AllAttributes<T>(this object obj, string name)
+        {
+            var allProperties = obj.GetType().GetProperties()
+            .Where(x => x.GetCustomAttributes(typeof(T), true).Length >= 1 && x.Name == name);
+            return allProperties;
+        }
+
+        public static IEnumerable<PropertyInfo> GetMyAttr<T>(this object obj)
+        {
+            var allProperties = obj.GetType().GetProperties()
+            .Where(x => x.GetCustomAttributes(typeof(T), true).Length >= 1);
+            return allProperties;
+        }
+
+        public static T ReadAttribute<T>(this PropertyInfo propertyInfo)
+        {
+            var returnType = propertyInfo.GetCustomAttributes(typeof(T), true)
+            .Cast<T>().FirstOrDefault();
+            return returnType;
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FieldAttribute : Attribute
+    {
+        public readonly string FieldName;
+        public readonly string FieldType;
+        public readonly bool FieldNotNull = false;
+        public readonly bool FieldPrimaryKey = false;
+
+
+        private Dictionary<string, object?> properties = new();
+
+        public FieldAttribute(string name, string type)
+        {
+            FieldName = name;
+            FieldType = type;
+        }
+
+        public FieldAttribute(string name, string type, bool notNull)
+        {
+            FieldName = name;
+            FieldType = type;
+            FieldNotNull = notNull;
+        }
+
+        public FieldAttribute(string name, string type, bool notNull, bool primaryKey)
+        {
+            FieldName = name;
+            FieldType = type;
+            FieldNotNull = notNull;
+            FieldPrimaryKey = primaryKey;
+        }
+
+        public T? GetValue<T>(string propertyName)
+        {
+            if (properties.TryGetValue(propertyName, out var value))
+            {
+                return (T?)value;
+            }
+            return default;
+        }
+
+        public void SetValue(string propertyName, object? value)
+        {
+            if (FieldNotNull && value == null) 
+            {
+                throw new ArgumentNullException("value");
+            } 
+            properties[propertyName] = value;
+        }
+
+        public object? this[string propertyName]
+        {
+            get => GetValue<object?>(propertyName);
+            set => SetValue(propertyName, value);
+        }
+    }
+
+    public class Person
+    {
+        // TODO: detta ska skapa en PK nyckel som är serial och not null
+        [Field("person_id", "serial", true, true)]
+        public int PersonId { get; set; }
+
+        // TODO: detta ska skapa ett text fält med namn first_name och med default värde "FirstName"
+        public string first_name { get; set; } = "FirstName";
+
+        // TODO: detta ska skapa ett text fält med namn last_name utan default värde
+        public string last_name { get; set; }
+
+
+        // TODO: detta ska skapa ett varchar(25) fält med namn new_address med default värde "Banglore"
+        [Field("new_address", "varchar(25)")]
+        public string AddressLine { get; set; } = "Banglore";
+
+        // TODO: detta ska skapa ett integer fält med namn my_int utan default värde och not null
+        [Field("my_int", "int", true)]
+        public int MyInt { get; set; }
+
+        // TODO: detta ska skapa ett numeric(15, 2) fält med CHECK (price >= 0) och namn my_int med default värde 55.11
+        [Field("my_numeric", "numeric(15, 2) CHECK (price >= 0)")]
+        public double MyNumric { get; set; } = 55.11;
+    }
+
+    public class MyNpgsqlCreateAsync
+    {
+        private MyNpgsqlAsync _myNpgsql;
+
+        public MyNpgsqlCreateAsync(string host, string username, string password, string database)
+        {
+            _myNpgsql = new(host, username, password, database);
+        }
+
+        public async void ConnectAsync()
+        {
+            await _myNpgsql.ConnectAsync();
+        }
+    }
 
     internal class Program
     {
         static async Task Main(string[] args)
         {
+
+            Person p = new Person();
+
+            // TODO: Inför så att den kan läsa båda typerna av attributnamn i både MyNpgsql- och Async
+            // TODO: Men bygg ut unit testerna innan du tar dig an ovan nämnda uppgift
+            // Exempel på lösning:
+            // PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName || prop.ReadAttribute<FieldAttribute>().FieldName == fieldName); i SetObjectValues<T>()
+            // PrepareUpdateSql<T>() använder property.Name
+            // PrepareManyInsertSql<T>() använder property.Name
+            // PrepareInsertSql<T>() använder property.Name
+            // GetFieldNames() använder property.Name
+            Console.WriteLine("*********** Custom ***********");
+            IEnumerable<FieldAttribute> attrList = GetAttributes(p);
+            Console.WriteLine("*********** Custom returned ***********");
+            foreach (var attr in attrList)
+            {
+                Console.WriteLine($"{attr.FieldName} = {attr[attr.FieldName]}");
+            }
+
+
+
+
             // Edit en uncomment this code the first time you run this. Then remove it
             /*DatabaseConfig config = new DatabaseConfig
             {
@@ -24,6 +172,25 @@
 
             GetDatabaseLogin(out host, out username, out password, out database);
             await TeachersAsync(host, username, password, database);
+        }
+
+        private static IEnumerable<FieldAttribute> GetAttributes<T>(T obj)
+        {
+            foreach (var attribute in obj.GetType().GetProperties())
+            {
+                if (attribute.GetCustomAttribute<FieldAttribute>(true) != null)
+                {
+                    FieldAttribute attr = attribute.ReadAttribute<FieldAttribute>();
+                    attr.SetValue(attr.FieldName, attribute.GetValue(obj));
+                    yield return attr;
+                }
+                else
+                {
+                    FieldAttribute attr = new(attribute.Name, attribute.GetType().ToString());
+                    attr.SetValue(attribute.Name, attribute.GetValue(obj));
+                    yield return attr;
+                }
+            }
         }
 
         private static void GetDatabaseLogin(out string? host, out string? username, out string? password, out string? database)

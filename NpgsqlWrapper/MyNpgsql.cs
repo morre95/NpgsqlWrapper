@@ -64,6 +64,7 @@ namespace NpgsqlWrapper
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             _conn.Close();
+            _conn = null;
         }
 
         /// <summary>
@@ -88,6 +89,7 @@ namespace NpgsqlWrapper
         /// <returns>List of objects with data from the database</returns>
         public IEnumerable<T> Fetch<T>(string? sql = null)
         {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             if (sql == null) sql = $"SELECT * FROM {typeof(T).Name}";
             return Execute<T>(sql);
         }
@@ -425,6 +427,7 @@ namespace NpgsqlWrapper
         /// <returns>The number of effected rows</returns>
         public int ExecuteNonQuery(string sql)
         {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             return ExecuteNonQuery(sql, new DbParams());
         }
 
@@ -468,6 +471,7 @@ namespace NpgsqlWrapper
         /// <returns>A <see cref="IEnumerable{T}"/> objects containing the inserted records.</returns>
         public IEnumerable<T> InsertManyReturning<T>(List<T> listToInsert)
         {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             PrepareManyInsertSql(listToInsert, out string sql, out DbParams parameters);
             sql += " RETURNING *";
             return Execute<T>(sql, parameters);
@@ -505,6 +509,7 @@ namespace NpgsqlWrapper
         /// <returns>The number of rows affected by the update operation.</returns>
         public int Update<T>(T table, string? where = null, Dictionary<string, object>? whereParameters = null)
         {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             PrepareUpdateSql(table, where, whereParameters, out string sql, out DbParams returnParameters);
             return ExecuteNonQuery(sql, returnParameters);
         }
@@ -531,6 +536,7 @@ namespace NpgsqlWrapper
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of parameters.</exception>
         public int Delete(string tableName, string? where = null, Dictionary<string, object>? whereParameters = null)
         {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             string sql = PrepareDeleteSql(tableName, where);
 
             if (whereParameters == null)
@@ -569,6 +575,7 @@ namespace NpgsqlWrapper
         /// <returns>The number of effected rows</returns>
         public int Delete<T>(string? where = null, Dictionary<string, object>? whereParameters = null)
         {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             string tableName = typeof(T).GetType().Name;
             return Delete(tableName, where, whereParameters);
         }
@@ -595,6 +602,7 @@ namespace NpgsqlWrapper
         /// <returns>A list of objects of type '<see cref="Dictionary{string, object}"/>' retrieved from the database.</returns>
         public IEnumerable<Dictionary<string, object>> Dump(string sqlQuery, Dictionary<string, object>? parameters = null)
         {
+            if (_conn == null) throw new ArgumentNullException(nameof(_conn));
             using var cmd = new NpgsqlCommand(sqlQuery, _conn);
 
             AddParameters(sqlQuery, parameters, cmd);

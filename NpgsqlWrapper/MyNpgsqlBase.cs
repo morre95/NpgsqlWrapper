@@ -14,22 +14,11 @@ namespace NpgsqlWrapper
         /// The connection string provided by the user, including the password.
         /// </summary>
         protected readonly string? _connectionString;
+
         /// <summary>
         /// Connection object
         /// </summary>
         protected NpgsqlConnection? _conn = null;
-
-        /// <summary>
-        /// Constructor, building connection string with parameter provided by the user
-        /// </summary>
-        /// <param name="host">Host for server</param>
-        /// <param name="username">Username</param>
-        /// <param name="password">Password</param>
-        /// <param name="database">Database</param>
-        public MyNpgsqlBase(string host, string username, string password, string database)
-        {
-            _connectionString = $"Host={host};Username={username};Password={password};Database={database}";
-        }
 
         /// <summary>
         /// Return the latest inserted id
@@ -49,6 +38,19 @@ namespace NpgsqlWrapper
                 return -1;
             }
         }
+
+        /// <summary>
+        /// Constructor, building connection string with parameter provided by the user
+        /// </summary>
+        /// <param name="host">Host for server</param>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <param name="database">Database</param>
+        public MyNpgsqlBase(string host, string username, string password, string database)
+        {
+            _connectionString = $"Host={host};Username={username};Password={password};Database={database}";
+        }
+
 
         /// <summary>
         /// Returns the number of times @field is in a sql query.
@@ -227,6 +229,25 @@ namespace NpgsqlWrapper
                 foreach (KeyValuePair<string, object> kvp in parameters)
                 {
                     cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
+                }
+            }
+        }
+
+        protected static IEnumerable<FieldAttribute> GetAttributes<T>(T obj)
+        {
+            foreach (var attribute in obj.GetType().GetProperties())
+            {
+                if (attribute.GetCustomAttribute<FieldAttribute>(true) != null)
+                {
+                    FieldAttribute attr = attribute.ReadAttribute<FieldAttribute>();
+                    attr.SetValue(attr.FieldName, attribute.GetValue(obj));
+                    yield return attr;
+                }
+                else
+                {
+                    FieldAttribute attr = new(attribute.Name, attribute.GetType().ToString());
+                    attr.SetValue(attribute.Name, attribute.GetValue(obj));
+                    yield return attr;
                 }
             }
         }
