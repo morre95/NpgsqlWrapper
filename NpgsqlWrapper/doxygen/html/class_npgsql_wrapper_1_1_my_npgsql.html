@@ -368,7 +368,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="keywordtype">int</span> affectedRows = pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql.html#af6904403918605ae067cde78041d55e6">Delete</a>(<span class="stringliteral">&quot;teachers&quot;</span>, <span class="stringliteral">&quot;id=@id&quot;</span>, <span class="keyword">new</span> <a class="code hl_class" href="class_npgsql_wrapper_1_1_db_params.html">DbParams</a>(<span class="stringliteral">&quot;id&quot;</span>, 11));</div>
 <div class="line">Console.WriteLine(affectedRows);</div>
 <div class="ttc" id="aclass_npgsql_wrapper_1_1_db_params_html"><div class="ttname"><a href="class_npgsql_wrapper_1_1_db_params.html">NpgsqlWrapper.DbParams</a></div><div class="ttdoc">A helper class for the SQL parameters to bind to the SQL query.</div><div class="ttdef"><b>Definition</b> DbParams.cs:7</div></div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_html_af6904403918605ae067cde78041d55e6"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql.html#af6904403918605ae067cde78041d55e6">NpgsqlWrapper.MyNpgsql.Delete</a></div><div class="ttdeci">int Delete(string tableName, string? where=null, Dictionary&lt; string, object &gt;? whereParameters=null)</div><div class="ttdoc">Deletes rows from a database table based on the specified conditions.</div><div class="ttdef"><b>Definition</b> MyNpgsql.cs:556</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_html_af6904403918605ae067cde78041d55e6"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql.html#af6904403918605ae067cde78041d55e6">NpgsqlWrapper.MyNpgsql.Delete</a></div><div class="ttdeci">int Delete(string tableName, string? where=null, Dictionary&lt; string, object &gt;? whereParameters=null)</div><div class="ttdoc">Deletes rows from a database table based on the specified conditions.</div><div class="ttdef"><b>Definition</b> MyNpgsql.cs:555</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tableName</td><td>The name of the table to delete rows from.</td></tr>
@@ -486,7 +486,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">{</div>
 <div class="line">    Console.WriteLine(item[<span class="stringliteral">&quot;first_name&quot;</span>]);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_html_ae7e0bc300b22a706bdcffffcf28a9c6d"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql.html#ae7e0bc300b22a706bdcffffcf28a9c6d">NpgsqlWrapper.MyNpgsql.Dump</a></div><div class="ttdeci">IEnumerable&lt; Dictionary&lt; string, object &gt; &gt; Dump(string sqlQuery, Dictionary&lt; string, object &gt;? parameters=null)</div><div class="ttdoc">Dumps a record set from the database into a List of Dictionarys.</div><div class="ttdef"><b>Definition</b> MyNpgsql.cs:620</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_html_ae7e0bc300b22a706bdcffffcf28a9c6d"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql.html#ae7e0bc300b22a706bdcffffcf28a9c6d">NpgsqlWrapper.MyNpgsql.Dump</a></div><div class="ttdeci">IEnumerable&lt; Dictionary&lt; string, object &gt; &gt; Dump(string sqlQuery, Dictionary&lt; string, object &gt;? parameters=null)</div><div class="ttdoc">Dumps a record set from the database into a List of Dictionarys.</div><div class="ttdef"><b>Definition</b> MyNpgsql.cs:621</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sqlQuery</td><td>The SQL query to execute.</td></tr>
@@ -592,7 +592,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> affectedRows = pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql.html#aa4e23097e0b5524cd078a90c239dd2e8">ExecuteNonQuery</a>(<span class="stringliteral">&quot;CALL stored_procedure_name(argument_list)&quot;</span>);</div>
 <div class="line">Console.WriteLine(affectedRows);</div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_html_aa4e23097e0b5524cd078a90c239dd2e8"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql.html#aa4e23097e0b5524cd078a90c239dd2e8">NpgsqlWrapper.MyNpgsql.ExecuteNonQuery</a></div><div class="ttdeci">int ExecuteNonQuery(string sql, Dictionary&lt; string, object &gt; parameters)</div><div class="ttdoc">Executes a SQL command and returns number of effected rows.</div><div class="ttdef"><b>Definition</b> MyNpgsql.cs:422</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_html_aa4e23097e0b5524cd078a90c239dd2e8"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql.html#aa4e23097e0b5524cd078a90c239dd2e8">NpgsqlWrapper.MyNpgsql.ExecuteNonQuery</a></div><div class="ttdeci">int ExecuteNonQuery(string sql, Dictionary&lt; string, object &gt; parameters)</div><div class="ttdoc">Executes a SQL command and returns number of effected rows.</div><div class="ttdef"><b>Definition</b> MyNpgsql.cs:421</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sql</td><td>SQL query</td></tr>

@@ -109,9 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a46539871ddd41652fdc6be708c03ae8a" id="r_a46539871ddd41652fdc6be708c03ae8a"><td class="memItemLeft" align="right" valign="top">async Task&lt; List&lt; T &gt;?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a46539871ddd41652fdc6be708c03ae8a">FetchAsync&lt; T &gt;</a> (string sql, Dictionary&lt; string, object &gt; parameters, CancellationToken cancellationToken=default)</td></tr>
 <tr class="memdesc:a46539871ddd41652fdc6be708c03ae8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches asynchronously a list of data from the database with sql injection safety.  <br /></td></tr>
 <tr class="separator:a46539871ddd41652fdc6be708c03ae8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90432429d0f26bd16fab46773db38a43" id="r_a90432429d0f26bd16fab46773db38a43"><td class="memItemLeft" align="right" valign="top">async IAsyncEnumerable&lt; T?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a90432429d0f26bd16fab46773db38a43">FetchEnumerableAsync&lt; T &gt;</a> (string sql, Dictionary&lt; string, object &gt; parameters, CancellationToken cancellationToken=default)</td></tr>
-<tr class="memdesc:a90432429d0f26bd16fab46773db38a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches asynchronously a list of data from the database with sql injection safety.  <br /></td></tr>
-<tr class="separator:a90432429d0f26bd16fab46773db38a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ff88a46aec1c6dc62a9e3f07ceed9b" id="r_a51ff88a46aec1c6dc62a9e3f07ceed9b"><td class="memItemLeft" align="right" valign="top">async IAsyncEnumerable&lt; T?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a51ff88a46aec1c6dc62a9e3f07ceed9b">FetchEnumerableAsync&lt; T &gt;</a> (string sql, Dictionary&lt; string, object &gt; parameters, [EnumeratorCancellation] CancellationToken cancellationToken=default)</td></tr>
+<tr class="memdesc:a51ff88a46aec1c6dc62a9e3f07ceed9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches asynchronously a list of data from the database with sql injection safety.  <br /></td></tr>
+<tr class="separator:a51ff88a46aec1c6dc62a9e3f07ceed9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad09e1ba8c0600c89fc8e4b710c1be655" id="r_ad09e1ba8c0600c89fc8e4b710c1be655"><td class="memItemLeft" align="right" valign="top">async Task&lt; T?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#ad09e1ba8c0600c89fc8e4b710c1be655">FetchOneAsync&lt; T &gt;</a> (string? sql=null, CancellationToken cancellationToken=default)</td></tr>
 <tr class="memdesc:ad09e1ba8c0600c89fc8e4b710c1be655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches asynchronously one result from the database.  <br /></td></tr>
 <tr class="separator:ad09e1ba8c0600c89fc8e4b710c1be655"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,21 +133,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a216dbaf8c4f681dd21ff67cb87fd9f5c" id="r_a216dbaf8c4f681dd21ff67cb87fd9f5c"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a216dbaf8c4f681dd21ff67cb87fd9f5c">UpdateAsync&lt; T &gt;</a> (T table, string? where=null, Dictionary&lt; string, object &gt;? whereParameters=null)</td></tr>
 <tr class="memdesc:a216dbaf8c4f681dd21ff67cb87fd9f5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates rows in a database table asynchronously based on the provided object's properties.  <br /></td></tr>
 <tr class="separator:a216dbaf8c4f681dd21ff67cb87fd9f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c0eb0cab7e1646822a081eba4c50e4a" id="r_a2c0eb0cab7e1646822a081eba4c50e4a"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a2c0eb0cab7e1646822a081eba4c50e4a">DeleteAsync</a> (string tableName)</td></tr>
+<tr class="memdesc:a2c0eb0cab7e1646822a081eba4c50e4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all rows from a database table asynchronously.  <br /></td></tr>
+<tr class="separator:a2c0eb0cab7e1646822a081eba4c50e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e413a8667f31c50c0ea898916efa1ab" id="r_a0e413a8667f31c50c0ea898916efa1ab"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a0e413a8667f31c50c0ea898916efa1ab">DeleteAsync</a> (string tableName, string? where=null, Dictionary&lt; string, object &gt;? whereParameters=null)</td></tr>
 <tr class="memdesc:a0e413a8667f31c50c0ea898916efa1ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes rows from a database table asynchronously based on the specified conditions.  <br /></td></tr>
 <tr class="separator:a0e413a8667f31c50c0ea898916efa1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca49346813544e2f3c2dbafa5824a80d" id="r_aca49346813544e2f3c2dbafa5824a80d"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#aca49346813544e2f3c2dbafa5824a80d">DeleteAsync&lt; T &gt;</a> (string? where=null, Dictionary&lt; string, object &gt;? whereParameters=null)</td></tr>
-<tr class="memdesc:aca49346813544e2f3c2dbafa5824a80d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL command that deletes records from the database asynchronously.  <br /></td></tr>
-<tr class="separator:aca49346813544e2f3c2dbafa5824a80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceb2e469689d4de727bf26cc329e6b0c" id="r_aceb2e469689d4de727bf26cc329e6b0c"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#aceb2e469689d4de727bf26cc329e6b0c">ExecuteNonQueryAsync</a> (string sql, Dictionary&lt; string, object &gt; parameters, CancellationToken cancellationToken=default)</td></tr>
-<tr class="memdesc:aceb2e469689d4de727bf26cc329e6b0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL command and returns the number of affected rows asynchronously.  <br /></td></tr>
-<tr class="separator:aceb2e469689d4de727bf26cc329e6b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21270220e19fd3fec55c3f3e6f0e141f" id="r_a21270220e19fd3fec55c3f3e6f0e141f"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a21270220e19fd3fec55c3f3e6f0e141f">DeleteAsync&lt; T &gt;</a> (string where, Dictionary&lt; string, object &gt; whereParameters)</td></tr>
+<tr class="memdesc:a21270220e19fd3fec55c3f3e6f0e141f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL command that deletes records from the database asynchronously.  <br /></td></tr>
+<tr class="separator:a21270220e19fd3fec55c3f3e6f0e141f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9ea887513ed3672d71a1fe987a16c8" id="r_acf9ea887513ed3672d71a1fe987a16c8"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#acf9ea887513ed3672d71a1fe987a16c8">ExecuteNonQueryAsync</a> (string sqlQuery, Dictionary&lt; string, object &gt; parameters, CancellationToken cancellationToken=default)</td></tr>
+<tr class="memdesc:acf9ea887513ed3672d71a1fe987a16c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL command and returns the number of affected rows asynchronously.  <br /></td></tr>
+<tr class="separator:acf9ea887513ed3672d71a1fe987a16c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9a73b564325865ca11649c7235ac47d" id="r_ad9a73b564325865ca11649c7235ac47d"><td class="memItemLeft" align="right" valign="top">async Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#ad9a73b564325865ca11649c7235ac47d">ExecuteNonQueryAsync</a> (string sql, CancellationToken cancellationToken=default)</td></tr>
 <tr class="memdesc:ad9a73b564325865ca11649c7235ac47d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL command and returns the number of affected rows asynchronously.  <br /></td></tr>
 <tr class="separator:ad9a73b564325865ca11649c7235ac47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19c9426722fa2083b718717a6cb4120f" id="r_a19c9426722fa2083b718717a6cb4120f"><td class="memItemLeft" align="right" valign="top">async Task&lt; T?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a19c9426722fa2083b718717a6cb4120f">ExecuteOneAsync&lt; T &gt;</a> (string sql, Dictionary&lt; string, object &gt;? parameters=null, CancellationToken cancellationToken=default)</td></tr>
-<tr class="memdesc:a19c9426722fa2083b718717a6cb4120f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL query that returns a single result asynchronously and maps it to a specified type.  <br /></td></tr>
-<tr class="separator:a19c9426722fa2083b718717a6cb4120f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f8c919d4bdfe042d12098e7a66637f" id="r_a65f8c919d4bdfe042d12098e7a66637f"><td class="memItemLeft" align="right" valign="top">async Task&lt; T?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a65f8c919d4bdfe042d12098e7a66637f">ExecuteOneAsync&lt; T &gt;</a> (string sqlQuery, Dictionary&lt; string, object &gt;? parameters=null, CancellationToken cancellationToken=default)</td></tr>
+<tr class="memdesc:a65f8c919d4bdfe042d12098e7a66637f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL query that returns a single result asynchronously and maps it to a specified type.  <br /></td></tr>
+<tr class="separator:a65f8c919d4bdfe042d12098e7a66637f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dc42865b4f0c493b6bebed26a6ae7ff" id="r_a0dc42865b4f0c493b6bebed26a6ae7ff"><td class="memItemLeft" align="right" valign="top">async Task&lt; List&lt; T &gt;?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a0dc42865b4f0c493b6bebed26a6ae7ff">ExecuteAsync&lt; T &gt;</a> (string sqlQuery, Dictionary&lt; string, object &gt;? parameters=null, CancellationToken cancellationToken=default)</td></tr>
 <tr class="memdesc:a0dc42865b4f0c493b6bebed26a6ae7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a SQL query that returns a list of objects of type 'T' asynchronously.  <br /></td></tr>
 <tr class="separator:a0dc42865b4f0c493b6bebed26a6ae7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -287,9 +290,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">...</div>
 <div class="line"> </div>
 <div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a6734f258b747cfd35b0210f28d1696a0">CloseAsync</a>();</div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html">NpgsqlWrapper.MyNpgsqlAsync</a></div><div class="ttdoc">Wrapper for Npgsql: https://github.com/npgsql/npgsql.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:13</div></div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a5ca9a33d57f3c8d61d9b3d0427fe16fe"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a5ca9a33d57f3c8d61d9b3d0427fe16fe">NpgsqlWrapper.MyNpgsqlAsync.ConnectAsync</a></div><div class="ttdeci">async Task ConnectAsync(CancellationToken cancellationToken=default)</div><div class="ttdoc">Builds the connection to the database, asynchronously.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:41</div></div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a6734f258b747cfd35b0210f28d1696a0"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a6734f258b747cfd35b0210f28d1696a0">NpgsqlWrapper.MyNpgsqlAsync.CloseAsync</a></div><div class="ttdeci">async Task CloseAsync()</div><div class="ttdoc">Close connection to database, asynchronously.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:68</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html">NpgsqlWrapper.MyNpgsqlAsync</a></div><div class="ttdoc">Wrapper for Npgsql: https://github.com/npgsql/npgsql.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:14</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a5ca9a33d57f3c8d61d9b3d0427fe16fe"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a5ca9a33d57f3c8d61d9b3d0427fe16fe">NpgsqlWrapper.MyNpgsqlAsync.ConnectAsync</a></div><div class="ttdeci">async Task ConnectAsync(CancellationToken cancellationToken=default)</div><div class="ttdoc">Builds the connection to the database, asynchronously.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:42</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a6734f258b747cfd35b0210f28d1696a0"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a6734f258b747cfd35b0210f28d1696a0">NpgsqlWrapper.MyNpgsqlAsync.CloseAsync</a></div><div class="ttdeci">async Task CloseAsync()</div><div class="ttdoc">Close connection to database, asynchronously.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:69</div></div>
 </div><!-- fragment --> <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">ArgumentNullException</td><td>Throws if connections is not made</td></tr>
@@ -335,8 +338,43 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a2c0eb0cab7e1646822a081eba4c50e4a" name="a2c0eb0cab7e1646822a081eba4c50e4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c0eb0cab7e1646822a081eba4c50e4a">&#9670;&#160;</a></span>DeleteAsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task&lt; int &gt; NpgsqlWrapper.MyNpgsqlAsync.DeleteAsync </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>tableName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deletes all rows from a database table asynchronously. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tableName</td><td>The name of the table to delete rows from.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a0e413a8667f31c50c0ea898916efa1ab" name="a0e413a8667f31c50c0ea898916efa1ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e413a8667f31c50c0ea898916efa1ab">&#9670;&#160;</a></span>DeleteAsync()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e413a8667f31c50c0ea898916efa1ab">&#9670;&#160;</a></span>DeleteAsync() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -381,9 +419,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="class_npgsql_wrapper_1_1_db_params.html">DbParams</a> p = <span class="keyword">new</span> <a class="code hl_class" href="class_npgsql_wrapper_1_1_db_params.html">DbParams</a>(<span class="stringliteral">&quot;id&quot;</span>, 11);</div>
 <div class="line"> </div>
-<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a0e413a8667f31c50c0ea898916efa1ab">DeleteAsync</a>(<span class="stringliteral">&quot;teachers&quot;</span>, <span class="stringliteral">&quot;id=@id&quot;</span>, p);</div>
+<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a2c0eb0cab7e1646822a081eba4c50e4a">DeleteAsync</a>(<span class="stringliteral">&quot;teachers&quot;</span>, <span class="stringliteral">&quot;id=@id&quot;</span>, p);</div>
 <div class="ttc" id="aclass_npgsql_wrapper_1_1_db_params_html"><div class="ttname"><a href="class_npgsql_wrapper_1_1_db_params.html">NpgsqlWrapper.DbParams</a></div><div class="ttdoc">A helper class for the SQL parameters to bind to the SQL query.</div><div class="ttdef"><b>Definition</b> DbParams.cs:7</div></div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a0e413a8667f31c50c0ea898916efa1ab"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a0e413a8667f31c50c0ea898916efa1ab">NpgsqlWrapper.MyNpgsqlAsync.DeleteAsync</a></div><div class="ttdeci">async Task&lt; int &gt; DeleteAsync(string tableName, string? where=null, Dictionary&lt; string, object &gt;? whereParameters=null)</div><div class="ttdoc">Deletes rows from a database table asynchronously based on the specified conditions.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:544</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a2c0eb0cab7e1646822a081eba4c50e4a"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a2c0eb0cab7e1646822a081eba4c50e4a">NpgsqlWrapper.MyNpgsqlAsync.DeleteAsync</a></div><div class="ttdeci">async Task&lt; int &gt; DeleteAsync(string tableName)</div><div class="ttdoc">Deletes all rows from a database table asynchronously.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:526</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tableName</td><td>The name of the table to delete rows from.</td></tr>
@@ -402,8 +440,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aca49346813544e2f3c2dbafa5824a80d" name="aca49346813544e2f3c2dbafa5824a80d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca49346813544e2f3c2dbafa5824a80d">&#9670;&#160;</a></span>DeleteAsync&lt; T &gt;()</h2>
+<a id="a21270220e19fd3fec55c3f3e6f0e141f" name="a21270220e19fd3fec55c3f3e6f0e141f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21270220e19fd3fec55c3f3e6f0e141f">&#9670;&#160;</a></span>DeleteAsync&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,16 +450,16 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">async Task&lt; int &gt; <a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a0e413a8667f31c50c0ea898916efa1ab">NpgsqlWrapper.MyNpgsqlAsync.DeleteAsync</a>&lt; T &gt; </td>
+          <td class="memname">async Task&lt; int &gt; <a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a2c0eb0cab7e1646822a081eba4c50e4a">NpgsqlWrapper.MyNpgsqlAsync.DeleteAsync</a>&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype">string?&#160;</td>
-          <td class="paramname"><em>where</em> = <code>null</code>, </td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>where</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Dictionary&lt; string, object &gt;?&#160;</td>
-          <td class="paramname"><em>whereParameters</em> = <code>null</code>&#160;</td>
+          <td class="paramtype">Dictionary&lt; string, object &gt;&#160;</td>
+          <td class="paramname"><em>whereParameters</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -442,7 +480,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="class_npgsql_wrapper_1_1_db_params.html">DbParams</a> p = <span class="keyword">new</span> <a class="code hl_class" href="class_npgsql_wrapper_1_1_db_params.html">DbParams</a>(<span class="stringliteral">&quot;id&quot;</span>, 11);</div>
 <div class="line"> </div>
-<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a0e413a8667f31c50c0ea898916efa1ab">DeleteAsync</a>\&lt;Teachers\&gt;(<span class="stringliteral">&quot;id=@id&quot;</span>, p);</div>
+<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a2c0eb0cab7e1646822a081eba4c50e4a">DeleteAsync</a>\&lt;Teachers\&gt;(<span class="stringliteral">&quot;id=@id&quot;</span>, p);</div>
 </div><!-- fragment --> <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The type to take table name from.</td></tr>
@@ -508,7 +546,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">{</div>
 <div class="line">    Console.WriteLine(item[<span class="stringliteral">&quot;first_name&quot;</span>]);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a03fb8b1930fa73e1c953c65810ece61a"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a03fb8b1930fa73e1c953c65810ece61a">NpgsqlWrapper.MyNpgsqlAsync.DumpAsync</a></div><div class="ttdeci">async Task&lt; List&lt; Dictionary&lt; string, object &gt; &gt; &gt; DumpAsync(string sqlQuery, Dictionary&lt; string, object &gt;? parameters=null, CancellationToken cancellationToken=default)</div><div class="ttdoc">Dumps a record set from the database into a List of Dictionarys.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:779</div></div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_a03fb8b1930fa73e1c953c65810ece61a"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a03fb8b1930fa73e1c953c65810ece61a">NpgsqlWrapper.MyNpgsqlAsync.DumpAsync</a></div><div class="ttdeci">async Task&lt; List&lt; Dictionary&lt; string, object &gt; &gt; &gt; DumpAsync(string sqlQuery, Dictionary&lt; string, object &gt;? parameters=null, CancellationToken cancellationToken=default)</div><div class="ttdoc">Dumps a record set from the database into a List of Dictionarys.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:769</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sqlQuery</td><td>The SQL query to execute.</td></tr>
@@ -636,8 +674,8 @@ Additional Inherited Members</h2></td></tr>
 <p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="class_npgsql_wrapper_1_1_my_npgsql_async.html">MyNpgsqlAsync</a> pgsql = <span class="keyword">new</span>(host, username, password, database);</div>
 <div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#a5ca9a33d57f3c8d61d9b3d0427fe16fe">ConnectAsync</a>();</div>
 <div class="line"> </div>
-<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#aceb2e469689d4de727bf26cc329e6b0c">ExecuteNonQueryAsync</a>(<span class="stringliteral">&quot;CALL stored_procedure_name(argument_list)&quot;</span>);</div>
-<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_aceb2e469689d4de727bf26cc329e6b0c"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#aceb2e469689d4de727bf26cc329e6b0c">NpgsqlWrapper.MyNpgsqlAsync.ExecuteNonQueryAsync</a></div><div class="ttdeci">async Task&lt; int &gt; ExecuteNonQueryAsync(string sql, Dictionary&lt; string, object &gt; parameters, CancellationToken cancellationToken=default)</div><div class="ttdoc">Executes a SQL command and returns the number of affected rows asynchronously.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:615</div></div>
+<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#acf9ea887513ed3672d71a1fe987a16c8">ExecuteNonQueryAsync</a>(<span class="stringliteral">&quot;CALL stored_procedure_name(argument_list)&quot;</span>);</div>
+<div class="ttc" id="aclass_npgsql_wrapper_1_1_my_npgsql_async_html_acf9ea887513ed3672d71a1fe987a16c8"><div class="ttname"><a href="class_npgsql_wrapper_1_1_my_npgsql_async.html#acf9ea887513ed3672d71a1fe987a16c8">NpgsqlWrapper.MyNpgsqlAsync.ExecuteNonQueryAsync</a></div><div class="ttdeci">async Task&lt; int &gt; ExecuteNonQueryAsync(string sqlQuery, Dictionary&lt; string, object &gt; parameters, CancellationToken cancellationToken=default)</div><div class="ttdoc">Executes a SQL command and returns the number of affected rows asynchronously.</div><div class="ttdef"><b>Definition</b> MyNpgsqlAsync.cs:625</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sql</td><td>The SQL command to execute.</td></tr>
@@ -655,8 +693,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aceb2e469689d4de727bf26cc329e6b0c" name="aceb2e469689d4de727bf26cc329e6b0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aceb2e469689d4de727bf26cc329e6b0c">&#9670;&#160;</a></span>ExecuteNonQueryAsync() <span class="overload">[2/2]</span></h2>
+<a id="acf9ea887513ed3672d71a1fe987a16c8" name="acf9ea887513ed3672d71a1fe987a16c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf9ea887513ed3672d71a1fe987a16c8">&#9670;&#160;</a></span>ExecuteNonQueryAsync() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -668,7 +706,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">async Task&lt; int &gt; NpgsqlWrapper.MyNpgsqlAsync.ExecuteNonQueryAsync </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>sql</em>, </td>
+          <td class="paramname"><em>sqlQuery</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -706,10 +744,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">    { <span class="stringliteral">&quot;subject&quot;</span>, <span class="stringliteral">&quot;the best subject&quot;</span> },</div>
 <div class="line">    { <span class="stringliteral">&quot;salary&quot;</span>, 250 }</div>
 <div class="line">};</div>
-<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#aceb2e469689d4de727bf26cc329e6b0c">ExecuteNonQueryAsync</a>(<span class="stringliteral">&quot;INSERT INTO teachers(first_name, last_name, subject, salary) VALUES(@firstName, @lastName, @subject, @salary)&quot;</span>, p);</div>
+<div class="line">await pgsql.<a class="code hl_function" href="class_npgsql_wrapper_1_1_my_npgsql_async.html#acf9ea887513ed3672d71a1fe987a16c8">ExecuteNonQueryAsync</a>(<span class="stringliteral">&quot;INSERT INTO teachers(first_name, last_name, subject, salary) VALUES(@firstName, @lastName, @subject, @salary)&quot;</span>, p);</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sql</td><td>The SQL command to execute.</td></tr>
+    <tr><td class="paramname">sqlQuery</td><td>The SQL command to execute.</td></tr>
     <tr><td class="paramname">parameters</td><td>The parameters to bind to the SQL command.</td></tr>
   </table>
   </dd>
@@ -724,8 +762,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a19c9426722fa2083b718717a6cb4120f" name="a19c9426722fa2083b718717a6cb4120f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19c9426722fa2083b718717a6cb4120f">&#9670;&#160;</a></span>ExecuteOneAsync&lt; T &gt;()</h2>
+<a id="a65f8c919d4bdfe042d12098e7a66637f" name="a65f8c919d4bdfe042d12098e7a66637f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65f8c919d4bdfe042d12098e7a66637f">&#9670;&#160;</a></span>ExecuteOneAsync&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -737,7 +775,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">async Task&lt; T?&gt; NpgsqlWrapper.MyNpgsqlAsync.ExecuteOneAsync&lt; T &gt; </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>sql</em>, </td>
+          <td class="paramname"><em>sqlQuery</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -780,7 +818,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sql</td><td>The SQL query to execute.</td></tr>
+    <tr><td class="paramname">sqlQuery</td><td>The SQL query to execute.</td></tr>
     <tr><td class="paramname">parameters</td><td>The parameters to bind to the SQL query.</td></tr>
     <tr><td class="paramname">cancellationToken</td><td>An optional token to cancel the asynchronous operation. The default value is CancellationToken.None. </td></tr>
   </table>
@@ -933,8 +971,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a90432429d0f26bd16fab46773db38a43" name="a90432429d0f26bd16fab46773db38a43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90432429d0f26bd16fab46773db38a43">&#9670;&#160;</a></span>FetchEnumerableAsync&lt; T &gt;()</h2>
+<a id="a51ff88a46aec1c6dc62a9e3f07ceed9b" name="a51ff88a46aec1c6dc62a9e3f07ceed9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ff88a46aec1c6dc62a9e3f07ceed9b">&#9670;&#160;</a></span>FetchEnumerableAsync&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -957,7 +995,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramtype">[EnumeratorCancellation] CancellationToken&#160;</td>
           <td class="paramname"><em>cancellationToken</em> = <code>default</code>&#160;</td>
         </tr>
         <tr>

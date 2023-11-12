@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['school_0',['School',['../class_npgsql_wrapper_1_1_school.html',1,'NpgsqlWrapper']]]
+  ['fieldattribute_0',['FieldAttribute',['../class_npgsql_wrapper_1_1_field_attribute.html',1,'NpgsqlWrapper']]],
+  ['fieldignoreattribute_1',['FieldIgnoreAttribute',['../class_npgsql_wrapper_1_1_field_ignore_attribute.html',1,'NpgsqlWrapper']]]
 ];

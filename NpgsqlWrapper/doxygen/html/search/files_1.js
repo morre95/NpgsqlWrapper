@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['encryption_2ecs_0',['Encryption.cs',['../_encryption_8cs.html',1,'']]]
+  ['databaseconfig_2ecs_0',['DatabaseConfig.cs',['../_database_config_8cs.html',1,'']]],
+  ['dbparams_2ecs_1',['DbParams.cs',['../_db_params_8cs.html',1,'']]]
 ];

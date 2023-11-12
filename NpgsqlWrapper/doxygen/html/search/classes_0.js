@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['databaseconfig_0',['DatabaseConfig',['../class_npgsql_wrapper_1_1_database_config.html',1,'NpgsqlWrapper']]],
-  ['dbparams_1',['DbParams',['../class_npgsql_wrapper_1_1_db_params.html',1,'NpgsqlWrapper']]]
+  ['attributesext_0',['AttributesExt',['../class_npgsql_wrapper_1_1_attributes_ext.html',1,'NpgsqlWrapper']]]
 ];
