@@ -120,3 +120,4 @@ foreach (var item in await pgsql.DumpAsync("SELECT * FROM teachers WHERE id > @i
 
 * Wiki under construction
 * There is doxygen documentation in the projec in the mean time [Doxygen](https://github.com/morre95/NpgsqlWrapper/blob/master/NpgsqlWrapper/doxygen/html/index.html)https://github.com/morre95/NpgsqlWrapper/blob/master/NpgsqlWrapper/doxygen/html/index.html
+* [Npgsql documentation](https://www.npgsql.org/doc/index.html)https://www.npgsql.org/doc/index.html
