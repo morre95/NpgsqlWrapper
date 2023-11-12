@@ -443,6 +443,7 @@ namespace NpgsqlWrapper
         /// </example>
         /// <param name="sql">SQL query</param>
         /// <returns>The number of effected rows</returns>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public int ExecuteNonQuery(string sql)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
@@ -487,6 +488,7 @@ namespace NpgsqlWrapper
         /// <typeparam name="T">The type to map the result to.</typeparam>
         /// <param name="listToInsert">Objects with data.</param>
         /// <returns>A <see cref="IEnumerable{T}"/> objects containing the inserted records.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public IEnumerable<T> InsertManyReturning<T>(List<T> listToInsert)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
@@ -525,6 +527,7 @@ namespace NpgsqlWrapper
         /// <param name="where">Optional WHERE clause to specify which rows to update.</param>
         /// <param name="whereParameters">Additional parameters to include in the SQL query.</param>
         /// <returns>The number of rows affected by the update operation.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public int Update<T>(T table, string? where = null, Dictionary<string, object>? whereParameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
@@ -552,6 +555,7 @@ namespace NpgsqlWrapper
         /// <param name="whereParameters">Additional parameters to include in the SQL query.</param>
         /// <returns>The number of rows affected by the delete operation.</returns>
         /// <exception cref="ArgumentException">Throws if number of @field don't correspond to the number of parameters.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public int Delete(string tableName, string? where = null, Dictionary<string, object>? whereParameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
@@ -591,6 +595,7 @@ namespace NpgsqlWrapper
         /// <param name="where">The sql where command.</param>
         /// <param name="whereParameters">The parameters to bind to the SQL where command.</param>
         /// <returns>The number of effected rows</returns>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public int Delete<T>(string? where = null, Dictionary<string, object>? whereParameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
@@ -618,6 +623,7 @@ namespace NpgsqlWrapper
         /// <param name="sqlQuery">The SQL query to execute.</param>
         /// <param name="parameters">The parameters to bind to the SQL query.</param>
         /// <returns>A list of objects of type '<see cref="Dictionary{string, object}"/>' retrieved from the database.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when connection is null.</exception>
         public IEnumerable<Dictionary<string, object>> Dump(string sqlQuery, Dictionary<string, object>? parameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
