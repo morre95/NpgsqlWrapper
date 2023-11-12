@@ -70,6 +70,7 @@ namespace NpgsqlWrapper
         {
             if ( _conn == null ) throw new ArgumentNullException(nameof( _conn));
             await _conn.CloseAsync();
+            _conn = null;
         }
 
         /// <summary>
@@ -518,6 +519,18 @@ namespace NpgsqlWrapper
 
 
         /// <summary>
+        /// Deletes all rows from a database table asynchronously.
+        /// </summary>
+        /// <param name="tableName">The name of the table to delete rows from.</param>
+        /// <returns></returns>
+        public async Task<int> DeleteAsync(string tableName)
+        {
+            string sql = PrepareDeleteSql(tableName, null);
+            return await ExecuteNonQueryAsync(sql, new DbParams(), CancellationToken.None);
+        }
+
+
+        /// <summary>
         /// Deletes rows from a database table asynchronously based on the specified conditions.
         /// </summary>
         /// <example>
@@ -578,7 +591,7 @@ namespace NpgsqlWrapper
         /// <param name="where">The sql where command.</param>
         /// <param name="whereParameters">The parameters to bind to the SQL where command.</param>
         /// <returns>The number of effected rows</returns>
-        public async Task<int> DeleteAsync<T>(string? where = null, Dictionary<string, object>? whereParameters = null)
+        public async Task<int> DeleteAsync<T>(string where, Dictionary<string, object> whereParameters)
         {
             string tableName = typeof(T).Name;
             return await DeleteAsync(tableName, where, whereParameters);

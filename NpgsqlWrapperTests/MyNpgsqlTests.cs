@@ -46,14 +46,26 @@ namespace NpgsqlWrapper.Tests
         public void CloseTest()
         {
             MyNpgsql npgsql = Connect();
+            Assert.IsNotNull(npgsql);
+
             npgsql.Close();
-            Assert.ThrowsException<ArgumentNullException>(() => npgsql.Dump("SELECT * FROM teachers"));
+            Assert.ThrowsException<ArgumentNullException>(() => npgsql.Close());
         }
 
         [TestMethod()]
         public void FetchTest()
         {
-            Assert.Fail();
+            MyNpgsql? npgsql = Connect();
+            Assert.IsNotNull(npgsql);
+
+            IEnumerable<Teachers>? teacherList = npgsql.Fetch<Teachers>();
+            Assert.IsNotNull(teacherList);
+
+            Teachers? teachers = npgsql.FetchOne<Teachers>("SELECT COUNT(*) num FROM teachers");
+
+            Assert.IsNotNull(teachers);
+
+            Assert.AreEqual(teachers.Count, teacherList.Count());
         }
 
         [TestMethod()]
@@ -65,7 +77,16 @@ namespace NpgsqlWrapper.Tests
         [TestMethod()]
         public void ExecuteTest()
         {
-            Assert.Fail();
+            MyNpgsql? npgsql = Connect();
+            Assert.IsNotNull(npgsql);
+
+
+            string sql = "CREATE TEMP TABLE mytemp(c INT)";
+
+            IEnumerable<MyTemp>? myTemp = npgsql.Execute<MyTemp>(sql);
+            Assert.IsNotNull(myTemp);
+
+            Assert.IsTrue(myTemp.Any());
         }
 
         [TestMethod()]

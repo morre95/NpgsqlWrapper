@@ -5,86 +5,6 @@ using System.Runtime.CompilerServices;
 
 namespace NpgsqlWrapper
 {
-    public static class AttributesExt
-    {
-        public static IEnumerable<PropertyInfo> AllAttributes<T>(this object obj, string name)
-        {
-            var allProperties = obj.GetType().GetProperties()
-            .Where(x => x.GetCustomAttributes(typeof(T), true).Length >= 1 && x.Name == name);
-            return allProperties;
-        }
-
-        public static IEnumerable<PropertyInfo> GetMyAttr<T>(this object obj)
-        {
-            var allProperties = obj.GetType().GetProperties()
-            .Where(x => x.GetCustomAttributes(typeof(T), true).Length >= 1);
-            return allProperties;
-        }
-
-        public static T ReadAttribute<T>(this PropertyInfo propertyInfo)
-        {
-            var returnType = propertyInfo.GetCustomAttributes(typeof(T), true)
-            .Cast<T>().FirstOrDefault();
-            return returnType;
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FieldAttribute : Attribute
-    {
-        public readonly string FieldName;
-        public readonly string FieldType;
-        public readonly bool FieldNotNull = false;
-        public readonly bool FieldPrimaryKey = false;
-
-
-        private Dictionary<string, object?> properties = new();
-
-        public FieldAttribute(string name, string type)
-        {
-            FieldName = name;
-            FieldType = type;
-        }
-
-        public FieldAttribute(string name, string type, bool notNull)
-        {
-            FieldName = name;
-            FieldType = type;
-            FieldNotNull = notNull;
-        }
-
-        public FieldAttribute(string name, string type, bool notNull, bool primaryKey)
-        {
-            FieldName = name;
-            FieldType = type;
-            FieldNotNull = notNull;
-            FieldPrimaryKey = primaryKey;
-        }
-
-        public T? GetValue<T>(string propertyName)
-        {
-            if (properties.TryGetValue(propertyName, out var value))
-            {
-                return (T?)value;
-            }
-            return default;
-        }
-
-        public void SetValue(string propertyName, object? value)
-        {
-            if (FieldNotNull && value == null) 
-            {
-                throw new ArgumentNullException("value");
-            } 
-            properties[propertyName] = value;
-        }
-
-        public object? this[string propertyName]
-        {
-            get => GetValue<object?>(propertyName);
-            set => SetValue(propertyName, value);
-        }
-    }
 
     public class Person
     {
@@ -134,21 +54,7 @@ namespace NpgsqlWrapper
 
             Person p = new Person();
 
-            // TODO: Inför så att den kan läsa båda typerna av attributnamn i både MyNpgsql- och Async
-            // TODO: Men bygg ut unit testerna innan du tar dig an ovan nämnda uppgift
-            // Exempel på lösning:
-            // PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName || prop.ReadAttribute<FieldAttribute>().FieldName == fieldName); i SetObjectValues<T>()
-            // PrepareUpdateSql<T>() använder property.Name
-            // PrepareManyInsertSql<T>() använder property.Name
-            // PrepareInsertSql<T>() använder property.Name
-            // GetFieldNames() använder property.Name
-            Console.WriteLine("*********** Custom ***********");
-            IEnumerable<FieldAttribute> attrList = GetAttributes(p);
-            Console.WriteLine("*********** Custom returned ***********");
-            foreach (var attr in attrList)
-            {
-                Console.WriteLine($"{attr.FieldName} = {attr[attr.FieldName]}");
-            }
+            
 
 
 
@@ -240,7 +146,7 @@ namespace NpgsqlWrapper
                 {
                     foreach (var teacher in await school.GetAll())
                     {
-                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
+                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.Subjectet}");
                     }
                 }
                 else if (command == "add")
@@ -265,7 +171,7 @@ namespace NpgsqlWrapper
                     {
                         first_name = firstName,
                         last_name = lastName,
-                        subject = subject,
+                        Subjectet = subject,
                         salary = salary
                     };
                     await school.Insert(teacherToAdd);
@@ -282,7 +188,7 @@ namespace NpgsqlWrapper
                     var teacher = await school.GetById(id);
                     Console.WriteLine($"First name: {teacher.first_name}");
                     Console.WriteLine($"Last name: {teacher.last_name}");
-                    Console.WriteLine($"Subject: {teacher.subject}");
+                    Console.WriteLine($"Subject: {teacher.Subjectet}");
                     Console.WriteLine($"Salary: {teacher.salary}");
 
                     Console.Write("First Name> ");
@@ -293,7 +199,7 @@ namespace NpgsqlWrapper
                     if (lastName == "") lastName = teacher.last_name;
                     Console.Write("Subject> ");
                     string subject = Console.ReadLine();
-                    if (subject == "") subject = teacher.subject;
+                    if (subject == "") subject = teacher.Subjectet;
 
                     string dirtySalary;
                     int salary;
@@ -308,7 +214,7 @@ namespace NpgsqlWrapper
                     {
                         first_name = firstName,
                         last_name = lastName,
-                        subject = subject,
+                        Subjectet = subject,
                         salary = salary
                     };
                     await school.EditById(id, teacherToEdit);
@@ -329,7 +235,7 @@ namespace NpgsqlWrapper
                     int i = 0;
                     List<string> list = new List<string>();
                     var all = await school.GetAll();
-                    foreach (var subject in all.Select(x => x.subject).Distinct())
+                    foreach (var subject in all.Select(x => x.Subjectet).Distinct())
                     {
                         Console.WriteLine($"#{++i} {subject}");
                         list.Add(subject);
@@ -345,14 +251,14 @@ namespace NpgsqlWrapper
 
                     foreach (var teacher in await school.GetBySubject(list[id - 1]))
                     {
-                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
+                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.Subjectet}");
                     }
                 }
                 else if (command == "table")
                 {
                     var all = await school.GetAll();
                     int longestName = all.Max(x => (x.first_name + " " + x.last_name).Length) + 1;
-                    int longestSubject = all.Max(x => x.subject.Length) + 1;
+                    int longestSubject = all.Max(x => x.Subjectet.Length) + 1;
                     int longestSalary = all.Max(x => x.salary.ToString().Length);
 
                     string header = $"ID  |{"Name".PadRight(longestName)}|{"Subject".PadRight(longestSubject)}|Salary";
@@ -361,7 +267,7 @@ namespace NpgsqlWrapper
 
                     foreach (var teacher in await school.GetAll())
                     {
-                        Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.subject.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
+                        Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.Subjectet.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
                     }
                 }
                 else if (command == "cancel")
@@ -374,7 +280,7 @@ namespace NpgsqlWrapper
                         ts.Cancel();
                         foreach (var teacher in await school.GetAll(cts))
                         {
-                            Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
+                            Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.Subjectet}");
                         }
                     } 
                     catch (OperationCanceledException oce)
@@ -501,8 +407,13 @@ VALUES
         public int? id { get; set; }
         public string? first_name { get; set; }
         public string? last_name { get; set; }
-        public string? subject { get; set; }
+
+        [Field("subject", "test")]
+        public string? Subjectet { get; set; }
         public int? salary { get; set; }
+
+        [Field("num", "int64")]
+        public Int64? Count { get; set; }
     }
 
     public class School

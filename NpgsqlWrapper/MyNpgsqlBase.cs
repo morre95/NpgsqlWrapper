@@ -1,5 +1,7 @@
 ﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -59,7 +61,7 @@ namespace NpgsqlWrapper
         /// <returns>Number of escaped @field.</returns>
         protected static int GetSqlNumParams(string sqlQuery)
         {
-            string pattern = @"[=<>]+\s*@";
+            string pattern = @"[=<>,]+\s*@";
             MatchCollection matches = Regex.Matches(sqlQuery, pattern);
             return matches.Count;
         }
@@ -77,7 +79,7 @@ namespace NpgsqlWrapper
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 string fieldName = reader.GetName(i);
-                PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName);
+                PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName || (prop.ReadAttribute<FieldAttribute>() != null && prop.ReadAttribute<FieldAttribute>().FieldName == fieldName));
 
                 if (propertyInfo != null)
                 {
@@ -97,16 +99,15 @@ namespace NpgsqlWrapper
 
         protected static void PrepareManyInsertSql<T>(List<T> listToInsert, out string sql, out DbParams args)
         {
+            if (listToInsert.Any(x => x == null)) throw new ArgumentNullException(nameof(listToInsert));
+
             IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
+            IEnumerable<string> fieldNames = GetFieldNames(listToInsert[0], propertyList);
 
-            List<string> fieldNames = GetFieldNames(listToInsert[0], propertyList).ToList();
-
-            if (fieldNames.Count == 0)
+            if (fieldNames.Count() <= 0)
             {
                 throw new ArgumentException("There are no non-null fields to insert.");
             }
-
-            if (listToInsert.Any(x => x == null)) throw new ArgumentException();
 
             string table = listToInsert[0]!.GetType().Name;
 
@@ -119,9 +120,22 @@ namespace NpgsqlWrapper
                 sql += "(";
                 foreach (PropertyInfo property in propertyList)
                 {
-                    if (property.GetValue(listToInsert[i], null) == null) { continue; }
-                    args.Add($"{property.Name}_{i}", property.GetValue(listToInsert[i], null)!);
-                    sql += $"@{property.Name}_{i},";
+                    object? value = property.GetValue(listToInsert[i], null);
+
+                    IEnumerable<InsertIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<InsertIgnoreAttribute>(true);
+
+                    if (value == null || ignoreAttributes.Any()) { continue; }
+                    if (property.GetCustomAttribute<FieldAttribute>(true) != null)
+                    {
+                        FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                        args.Add($"{attr.FieldName}_{i}", value);
+                        sql += $"@{attr.FieldName}_{i},";
+                    }
+                    else
+                    {
+                        args.Add($"{property.Name}_{i}", value);
+                        sql += $"@{property.Name}_{i},";
+                    }
                 }
 
                 sql = sql.Remove(sql.Length - 1, 1);
@@ -131,8 +145,10 @@ namespace NpgsqlWrapper
 
             sql = sql.Remove(sql.Length - 1, 1);
 
-            if (args.Count != fieldNames.Count * i) throw new ArgumentException("List of arguments don't match objects to insert");
+            if (args.Count != fieldNames.Count() * i) throw new ArgumentException("List of arguments don't match objects to insert");
         }
+
+        
 
         protected static void PrepareInsertSql<T>(T objToInsert, out string sql, out DbParams args)
         {
@@ -140,11 +156,12 @@ namespace NpgsqlWrapper
             {
                 throw new ArgumentNullException(nameof(objToInsert));
             }
+
             IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
 
-            List<string> fieldNames = GetFieldNames(objToInsert, propertyList).ToList();
+            IEnumerable<string> fieldNames = GetFieldNames(objToInsert, propertyList);
 
-            if (fieldNames.Count == 0)
+            if (fieldNames.Count() == 0)
             {
                 throw new ArgumentException("There are no non-null fields to insert.");
             }
@@ -154,18 +171,48 @@ namespace NpgsqlWrapper
             args = new();
             foreach (var property in propertyList)
             {
-                if (property.GetValue(objToInsert, null) == null) { continue; }
-                args.Add(property.Name, property.GetValue(objToInsert, null)!);
-                sql += $"@{property.Name},";
+                object? value = property.GetValue(objToInsert, null);
+
+                IEnumerable<InsertIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<InsertIgnoreAttribute>(true);
+
+                if (value == null || ignoreAttributes.Any()) { continue; }
+                if (property.GetCustomAttribute<FieldAttribute>(true) != null)
+                {
+                    FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                    args.Add($"{attr.FieldName}", value);
+                    sql += $"@{attr.FieldName},";
+                }
+                else
+                {
+                    args.Add($"{property.Name}", value);
+                    sql += $"@{property.Name},";
+                }
             }
             sql = sql.Remove(sql.Length - 1, 1) + ")";
 
-            if (args.Count != fieldNames.Count) throw new ArgumentException("The specified fields don't match the number of values to insert");
+            if (args.Count != fieldNames.Count()) throw new ArgumentException("The specified fields don't match the number of values to insert");
         }
 
         private static IEnumerable<string> GetFieldNames<T>(T fieldObject, IEnumerable<PropertyInfo> propertyList)
         {
-            return propertyList.Where(x => x.GetValue(fieldObject, null) != null).Select(x => x.Name);
+            foreach (PropertyInfo property in propertyList)
+            {
+                if (property.GetValue(fieldObject, null) != null)
+                {
+                    string fieldName = property.Name;
+                    if (property.ReadAttribute<FieldAttribute>() != null)
+                    {
+                        fieldName = property.ReadAttribute<FieldAttribute>().FieldName;
+                    }
+
+                    IEnumerable<InsertIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<InsertIgnoreAttribute>(true);
+
+                    if (!ignoreAttributes.Any())
+                    {
+                        yield return fieldName;
+                    }
+                }
+            }
         }
 
         protected static void PrepareUpdateSql<T>(T table, string? where, Dictionary<string, object>? whereArgs, out string sql, out DbParams returnArgs)
@@ -182,10 +229,23 @@ namespace NpgsqlWrapper
             {
                 if (property != null)
                 {
-                    if (property.GetValue(table, null) == null) { continue; }
+                    object value = property.GetValue(table, null)!;
 
-                    returnArgs.Add(property.Name, property.GetValue(table, null)!);
-                    sql += $"{property.Name} = @{property.Name},";
+                    IEnumerable<UpdateIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<UpdateIgnoreAttribute>(true);
+
+                    if (value == null || ignoreAttributes.Any()) { continue; }
+                    FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                    if (attr != null)
+                    {
+                        returnArgs.Add(attr.FieldName, value);
+                        sql += $"{attr.FieldName} = @{attr.FieldName},";
+                    }
+                    else
+                    {
+                        returnArgs.Add(property.Name, value);
+                        sql += $"{property.Name} = @{property.Name},";
+                    }
+                    
                 }
             }
 
@@ -221,33 +281,9 @@ namespace NpgsqlWrapper
         {
             if (parameters != null)
             {
-                if (GetSqlNumParams(sqlQuery) != parameters.Count)
-                {
-                    throw new ArgumentException("List of arguments don't match the sql query");
-                }
-
                 foreach (KeyValuePair<string, object> kvp in parameters)
                 {
                     cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
-                }
-            }
-        }
-
-        protected static IEnumerable<FieldAttribute> GetAttributes<T>(T obj)
-        {
-            foreach (var attribute in obj.GetType().GetProperties())
-            {
-                if (attribute.GetCustomAttribute<FieldAttribute>(true) != null)
-                {
-                    FieldAttribute attr = attribute.ReadAttribute<FieldAttribute>();
-                    attr.SetValue(attr.FieldName, attribute.GetValue(obj));
-                    yield return attr;
-                }
-                else
-                {
-                    FieldAttribute attr = new(attribute.Name, attribute.GetType().ToString());
-                    attr.SetValue(attribute.Name, attribute.GetValue(obj));
-                    yield return attr;
                 }
             }
         }
