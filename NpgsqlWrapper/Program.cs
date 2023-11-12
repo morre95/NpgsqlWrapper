@@ -47,14 +47,6 @@ namespace NpgsqlWrapper
         }
     }
 
-    public class MyTemp
-    {
-        public int? c { get; set; }
-
-        [UpdateIgnore]
-        [InsertIgnore]
-        public Int64 num { get; set; }
-    }
 
     internal class Program
     {
