@@ -90,7 +90,7 @@ namespace NpgsqlWrapper
         public IEnumerable<T> Fetch<T>(string? sql = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            if (sql == null) sql = $"SELECT * FROM {typeof(T).Name}";
+            if (sql == null) sql = $"SELECT * FROM {GetTableName<T>()}";
             return Execute<T>(sql);
         }
 
@@ -245,7 +245,7 @@ namespace NpgsqlWrapper
         /// <returns>An object with data from the database.</returns>
         public T? FetchOne<T>(string? sql = null)
         {
-            sql ??= $"SELECT * FROM {typeof(T).Name} FETCH FIRST 1 ROW ONLY";
+            sql ??= $"SELECT * FROM {GetTableName<T>()} FETCH FIRST 1 ROW ONLY";
             return ExecuteOne<T>(sql);
         }
 
@@ -599,7 +599,7 @@ namespace NpgsqlWrapper
         public int Delete<T>(string? where = null, Dictionary<string, object>? whereParameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            string tableName = typeof(T).Name;
+            string tableName = GetTableName<T>();
             return Delete(tableName, where, whereParameters);
         }
 

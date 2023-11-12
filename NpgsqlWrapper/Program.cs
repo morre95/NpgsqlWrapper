@@ -1,16 +1,20 @@
 ﻿using Npgsql;
+using NpgsqlTypes;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace NpgsqlWrapper
 {
-
+    [TableName("person")]
     public class Person
     {
         // TODO: detta ska skapa en PK nyckel som är serial och not null
         [Field("person_id", "serial", true, true)]
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
 
         // TODO: detta ska skapa ett text fält med namn first_name och med default värde "FirstName"
         public string first_name { get; set; } = "FirstName";
@@ -27,36 +31,142 @@ namespace NpgsqlWrapper
         [Field("my_int", "int", true)]
         public int MyInt { get; set; }
 
+        [Field("price", "int")]
+        public int? Price { get; set; }
+
         // TODO: detta ska skapa ett numeric(15, 2) fält med CHECK (price >= 0) och namn my_int med default värde 55.11
         [Field("my_numeric", "numeric(15, 2) CHECK (price >= 0)")]
         public double MyNumric { get; set; } = 55.11;
     }
 
-    public class MyNpgsqlCreateAsync
+    public class MyNpgsqlCreateAsync : MyNpgsqlAsync
     {
-        private MyNpgsqlAsync _myNpgsql;
-
-        public MyNpgsqlCreateAsync(string host, string username, string password, string database)
+        public MyNpgsqlCreateAsync(string host, string username, string password, string database) : 
+            base(host, username, password, database) { }
+        
+        
+        public async Task<int> Create<T>(bool dropIfExists = false)
         {
-            _myNpgsql = new(host, username, password, database);
+            IEnumerable<PropertyInfo?> propertyList = typeof(T).GetProperties().Where(x => x != null)!;
+            IEnumerable<FieldAttribute> fieldAttributes = PrepareFieldAttribute<T>(propertyList);
+
+            string queryString = PrepareQueryString<T>(fieldAttributes, dropIfExists);
+
+            //Console.WriteLine(queryString);
+
+            return await ExecuteNonQueryAsync(queryString);
         }
 
-        public async void ConnectAsync()
+        private static string PrepareQueryString<T>(IEnumerable<FieldAttribute> fieldAttributes, bool dropIfExists)
         {
-            await _myNpgsql.ConnectAsync();
+            string tableName = GetTableName<T>();
+
+            string queryString = dropIfExists ? $"DROP TABLE IF EXISTS {tableName}; " : "";
+            queryString += $"CREATE TABLE {tableName}(";
+            List<string> primaryKey = new();
+            foreach (FieldAttribute attribute in fieldAttributes)
+            {
+                queryString += $"{attribute.FieldName} {attribute.FieldType}";
+
+                if (attribute.FieldNotNull)
+                {
+                    queryString += " NOT NULL";
+                }
+
+                if (attribute.FieldValue != null)
+                {
+                    if (attribute.FieldType.ToLower().StartsWith("char") || 
+                        attribute.FieldType.ToLower().StartsWith("var") || 
+                        attribute.FieldType.ToLower().StartsWith("text"))
+                    {
+                        queryString += $" DEFAULT '{attribute.FieldValue}'";
+                    }
+                    else
+                    {
+                        queryString += $" DEFAULT {attribute.FieldValue}".Replace(',', '.');
+                    }
+                }
+
+                if (attribute.FieldPrimaryKey)
+                {
+                    primaryKey.Add(attribute.FieldName);
+                }
+                queryString += ",\n";
+            }
+
+            if (primaryKey.Count > 0)
+            {
+                queryString += $"PRIMARY KEY({string.Join(",", primaryKey)}) )";
+            }
+            else
+            {
+                queryString = queryString.Remove(queryString.Length - 1, 1) + ")";
+            }
+
+            return queryString;
+        }
+
+        private static IEnumerable<FieldAttribute> PrepareFieldAttribute<T>(IEnumerable<PropertyInfo?> propertyList)
+        {
+            T item = Activator.CreateInstance<T>();
+
+            foreach (PropertyInfo property in propertyList)
+            {
+                object? defaultValue = property.GetValue(item, null)!;
+
+                if (defaultValue != null && defaultValue.GetType() == typeof(int?))
+                {
+                    defaultValue = null;
+                }
+
+                FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                if (attr != null)
+                {
+                    if (defaultValue != null)
+                    {
+                        attr.SetValue(defaultValue);
+                    }
+                }
+                else
+                {
+                    string propertyType = property.PropertyType.ToString().Split('.')[1];
+
+                    propertyType = Regex.Replace(propertyType, "string", "TEXT", RegexOptions.IgnoreCase);
+
+                    attr = new(property.Name, propertyType);
+                    if (defaultValue != null)
+                    {
+                        attr.SetValue(defaultValue);
+                    }
+                }
+                yield return attr;
+            }
         }
     }
+
+    
+
+    /* TODO: koda in Batching i dina klasser
+     * 
+     * https://www.npgsql.org/doc/basic-usage.html
+     * 
+await using var batch = new NpgsqlBatch(conn)
+{
+    BatchCommands =
+    {
+        new("INSERT INTO table (col1) VALUES ('foo')"),
+        new("SELECT * FROM table")
+    }
+};
+
+await using var reader = await batch.ExecuteReaderAsync();
+    */
 
 
     internal class Program
     {
         static async Task Main(string[] args)
         {
-
-            Person p = new Person();
-
-
-
 
             // Edit en uncomment this code the first time you run this. Then remove it
             /*DatabaseConfig config = new DatabaseConfig
@@ -76,26 +186,18 @@ namespace NpgsqlWrapper
             string? host, username, password, database;
 
             GetDatabaseLogin(out host, out username, out password, out database);
-            await TeachersAsync(host, username, password, database);
-        }
 
-        private static IEnumerable<FieldAttribute> GetAttributes<T>(T obj)
-        {
-            foreach (var attribute in obj.GetType().GetProperties())
-            {
-                if (attribute.GetCustomAttribute<FieldAttribute>(true) != null)
-                {
-                    FieldAttribute attr = attribute.ReadAttribute<FieldAttribute>();
-                    attr.SetValue(attr.FieldName, attribute.GetValue(obj));
-                    yield return attr;
-                }
-                else
-                {
-                    FieldAttribute attr = new(attribute.Name, attribute.GetType().ToString());
-                    attr.SetValue(attribute.Name, attribute.GetValue(obj));
-                    yield return attr;
-                }
-            }
+
+
+            MyNpgsqlCreateAsync create = new(host, username, password, database);
+            await create.ConnectAsync();
+
+            await create.Create<Person>(true);
+
+
+
+
+            await TeachersAsync(host, username, password, database);
         }
 
         private static void GetDatabaseLogin(out string? host, out string? username, out string? password, out string? database)

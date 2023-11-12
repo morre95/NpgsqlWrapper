@@ -1,20 +1,16 @@
 ﻿namespace NpgsqlWrapper
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public class FieldAttribute : Attribute
     {
         public readonly string FieldName;
-        public readonly string? FieldType;
+        public readonly string FieldType;
         public readonly bool FieldNotNull = false;
         public readonly bool FieldPrimaryKey = false;
 
+        private FieldValue _fieldValue = new();
 
-        private Dictionary<string, object?> properties = new();
-
-        public FieldAttribute(string name)
-        {
-            FieldName = name;
-        }
+        public object FieldValue { get { return _fieldValue[FieldName]; } private set { _fieldValue[FieldName] = value; } }
 
         public FieldAttribute(string name, string type)
         {
@@ -37,27 +33,33 @@
             FieldPrimaryKey = primaryKey;
         }
 
-        public T? GetValue<T>(string propertyName)
+        public void SetValue(object value)
+        {
+            FieldValue = value;
+        }
+    }
+
+    public class FieldValue
+    {
+        private Dictionary<string, object> properties = new Dictionary<string, object>();
+
+        public T GetValue<T>(string propertyName)
         {
             if (properties.TryGetValue(propertyName, out var value))
             {
-                return (T?)value;
+                return (T)value;
             }
-            return default;
+            return default(T);
         }
 
-        public void SetValue(string propertyName, object? value)
+        public void SetValue(string propertyName, object value)
         {
-            if (FieldNotNull && value == null) 
-            {
-                throw new ArgumentNullException("value");
-            } 
             properties[propertyName] = value;
         }
 
-        public object? this[string propertyName]
+        public object this[string propertyName]
         {
-            get => GetValue<object?>(propertyName);
+            get => GetValue<object>(propertyName);
             set => SetValue(propertyName, value);
         }
     }

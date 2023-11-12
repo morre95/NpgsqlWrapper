@@ -109,7 +109,8 @@ namespace NpgsqlWrapper
                 throw new ArgumentException("There are no non-null fields to insert.");
             }
 
-            string table = listToInsert[0]!.GetType().Name;
+            //string table = listToInsert[0]!.GetType().Name;
+            string table = GetTableName<T>();
 
 
             sql = $"INSERT INTO {table} ({string.Join(",", fieldNames)}) VALUES";
@@ -166,7 +167,9 @@ namespace NpgsqlWrapper
                 throw new ArgumentException("There are no non-null fields to insert.");
             }
 
-            string table = objToInsert.GetType().Name;
+            //string table = objToInsert.GetType().Name;
+            string table = GetTableName<T>();
+
             sql = $"INSERT INTO {table} ({string.Join(",", fieldNames)}) VALUES(";
             args = new();
             foreach (var property in propertyList)
@@ -223,7 +226,7 @@ namespace NpgsqlWrapper
             }
             IEnumerable<PropertyInfo?> propertyList = typeof(T).GetProperties()!;
 
-            sql = $"UPDATE {table.GetType().Name} SET ";
+            sql = $"UPDATE {GetTableName<T>()} SET ";
             returnArgs = new();
             foreach (var property in propertyList)
             {
@@ -286,6 +289,25 @@ namespace NpgsqlWrapper
                     cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
                 }
             }
+        }
+
+        protected static string GetTableName<T>()
+        {
+            Type type = typeof(T);
+            string tableName;
+
+            var tableNameAttribute = type.GetCustomAttribute<TableNameAttribute>();
+
+            if (tableNameAttribute != null)
+            {
+                tableName = tableNameAttribute.TableName;
+            }
+            else
+            {
+                tableName = type.Name;
+            }
+
+            return tableName;
         }
     }
 }

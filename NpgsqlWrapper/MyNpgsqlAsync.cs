@@ -98,7 +98,7 @@ namespace NpgsqlWrapper
         /// <returns>List of objects with data from the database</returns>
         public async Task<List<T>?> FetchAsync<T>(string? sql = null, CancellationToken cancellationToken = default)
         {
-            if (sql == null) sql = $"SELECT * FROM {typeof(T).Name}";
+            if (sql == null) sql = $"SELECT * FROM {GetTableName<T>()}";
             return await ExecuteAsync<T>(sql, null, cancellationToken);
         }
 
@@ -265,7 +265,7 @@ namespace NpgsqlWrapper
         /// <returns>An object with data from the database.</returns>
         public async Task<T?> FetchOneAsync<T>(string? sql = null, CancellationToken cancellationToken = default)
         {
-            if (sql == null) sql = $"SELECT * FROM {typeof(T).Name} FETCH FIRST 1 ROW ONLY";
+            if (sql == null) sql = $"SELECT * FROM {GetTableName<T>()} FETCH FIRST 1 ROW ONLY";
             return await ExecuteOneAsync<T>(sql, null, cancellationToken);
         }
 
@@ -593,7 +593,7 @@ namespace NpgsqlWrapper
         /// <returns>The number of effected rows</returns>
         public async Task<int> DeleteAsync<T>(string where, Dictionary<string, object> whereParameters)
         {
-            string tableName = typeof(T).Name;
+            string tableName = GetTableName<T>();
             return await DeleteAsync(tableName, where, whereParameters);
         }
 
