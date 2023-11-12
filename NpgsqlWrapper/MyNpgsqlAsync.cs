@@ -787,5 +787,43 @@ namespace NpgsqlWrapper
 
             return returnList;
         }
+
+
+        /// <summary>
+        /// Creates database table from class structure asynchronously.
+        /// </summary>
+        /// <typeparam name="T">The type of object to map table structure from.</typeparam>
+        /// <param name="dropIfExists">If true it adds DROP TABLE IF EXISTS statement</param>
+        /// <param name="isTempTable">If true it creates a temporary table</param>
+        /// <exception cref="ArgumentNullException">Thrown if name of field is set via the attribute [Field("name_of_field")] but no FieldType.</exception>
+        public async Task CreateAsync<T>(bool dropIfExists = false, bool isTempTable = false)
+        {
+            IEnumerable<PropertyInfo?> propertyList = typeof(T).GetProperties().Where(x => x != null)!;
+            IEnumerable<FieldAttribute> fieldAttributes = PrepareCreateFields<T>(propertyList);
+
+            string queryString = PrepareCreateSql<T>(fieldAttributes);
+
+            string tableName = GetTableName<T>();
+
+            queryString = isTempTable ? $"CREATE TEMP TABLE {tableName}({queryString}" : $"CREATE TABLE {tableName}({queryString}";
+
+            if (dropIfExists)
+            {
+                await using var batch = new NpgsqlBatch(_conn)
+                {
+                    BatchCommands =
+                    {
+                        new($"DROP TABLE IF EXISTS {tableName}"),
+                        new(queryString)
+                    }
+                };
+
+                await batch.ExecuteNonQueryAsync();
+            }
+            else
+            {
+                await ExecuteNonQueryAsync(queryString);
+            }
+        }
     }
 }

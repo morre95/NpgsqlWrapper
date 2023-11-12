@@ -309,5 +309,93 @@ namespace NpgsqlWrapper
 
             return tableName;
         }
+
+        protected static string PrepareCreateSql<T>(IEnumerable<FieldAttribute> fieldAttributes)
+        {
+            string queryString = "";
+            List<string> primaryKey = new();
+            foreach (FieldAttribute attribute in fieldAttributes)
+            {
+                queryString += $"{attribute.FieldName} {attribute.FieldType}";
+
+                if (attribute.FieldNotNull)
+                {
+                    queryString += " NOT NULL";
+                }
+
+                if (attribute.FieldValue != null)
+                {
+                    if (attribute.FieldType.ToLower().StartsWith("char") ||
+                        attribute.FieldType.ToLower().StartsWith("var") ||
+                        attribute.FieldType.ToLower().StartsWith("text"))
+                    {
+                        queryString += $" DEFAULT '{attribute.FieldValue}'";
+                    }
+                    else
+                    {
+                        queryString += $" DEFAULT {attribute.FieldValue}".Replace(',', '.');
+                    }
+                }
+
+                if (attribute.FieldPrimaryKey)
+                {
+                    primaryKey.Add(attribute.FieldName);
+                }
+                queryString += ",";
+            }
+
+            if (primaryKey.Count > 0)
+            {
+                queryString += $"PRIMARY KEY({string.Join(",", primaryKey)}))";
+            }
+            else
+            {
+                queryString = queryString.Remove(queryString.Length - 1, 1) + ")";
+            }
+
+            return queryString;
+        }
+
+        protected static IEnumerable<FieldAttribute> PrepareCreateFields<T>(IEnumerable<PropertyInfo?> propertyList)
+        {
+            T item = Activator.CreateInstance<T>();
+
+            foreach (PropertyInfo property in propertyList)
+            {
+                object? defaultValue = property.GetValue(item, null)!;
+
+                if (defaultValue != null && defaultValue.GetType() == typeof(int?))
+                {
+                    defaultValue = null;
+                }
+
+                FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                if (attr != null)
+                {
+                    if (attr.FieldType == null)
+                    {
+                        throw new ArgumentNullException(nameof(attr.FieldType));
+                    }
+
+                    if (defaultValue != null)
+                    {
+                        attr.SetValue(defaultValue);
+                    }
+                }
+                else
+                {
+                    string propertyType = property.PropertyType.ToString().Split('.')[1];
+
+                    propertyType = Regex.Replace(propertyType, "string", "TEXT", RegexOptions.IgnoreCase);
+
+                    attr = new(property.Name, propertyType);
+                    if (defaultValue != null)
+                    {
+                        attr.SetValue(defaultValue);
+                    }
+                }
+                yield return attr;
+            }
+        }
     }
 }

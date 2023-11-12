@@ -10,17 +10,30 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace NpgsqlWrapper.Tests
 {
-    /*
-CREATE TABLE sales
-(
-    sale_id serial NOT NULL,
-    date date,
-    customer_id integer,
-    product_id integer,
-    quantity integer CHECK (quantity >= 0),
-    total_price numeric(15, 2) CHECK(total_price >= 0),
-    PRIMARY KEY(sale_id)
-);*/
+
+    [TableName("person")]
+    public class Person
+    {
+        [Field("person_id", "serial", true, true)]
+        public int? PersonId { get; set; }
+
+        public string first_name { get; set; } = "FirstName";
+
+        public string last_name { get; set; }
+
+        [Field("new_address", "varchar(25)")]
+        public string AddressLine { get; set; } = "Banglore";
+
+        [Field("my_int", "int", true)]
+        public int MyInt { get; set; }
+
+        [Field("price", "int")]
+        public int? Price { get; set; }
+
+        [Field("my_numeric", "numeric(15, 2) CHECK (price >= 0)")]
+        public double MyNumric { get; set; } = 55.11;
+    }
+
     public class Sales
     {
         [Field("sale_id", "serial", true, true)]
@@ -559,6 +572,14 @@ CREATE TABLE sales
             };
 
             Assert.AreEqual(expectedResult[0].Values.Count, dict[0].Values.Count);
+        }
+
+        [TestMethod()]
+        public void CreateAsyncTest()
+        {
+            //await create.CreateAsync<Person>(true);
+            //await create.CreateAsync<Person>(true);
+            Assert.Fail();
         }
     }
 }

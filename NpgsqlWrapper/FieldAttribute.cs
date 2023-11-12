@@ -4,13 +4,18 @@
     public class FieldAttribute : Attribute
     {
         public readonly string FieldName;
-        public readonly string FieldType;
+        public readonly string? FieldType = null;
         public readonly bool FieldNotNull = false;
         public readonly bool FieldPrimaryKey = false;
 
         private FieldValue _fieldValue = new();
 
         public object FieldValue { get { return _fieldValue[FieldName]; } private set { _fieldValue[FieldName] = value; } }
+
+        public FieldAttribute(string name)
+        {
+            FieldName = name;
+        }
 
         public FieldAttribute(string name, string type)
         {

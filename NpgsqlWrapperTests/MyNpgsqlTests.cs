@@ -456,5 +456,13 @@ namespace NpgsqlWrapper.Tests
 
             Assert.AreEqual(expectedResult[0].Values.Count, dict.ToList()[0].Values.Count);
         }
+
+        [TestMethod()]
+        public void CreateTest()
+        {
+            //await create.Create<Person>(true);
+            //await create.Create<Person>(true);
+            Assert.Fail();
+        }
     }
 }
