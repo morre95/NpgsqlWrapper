@@ -12,5 +12,6 @@ var searchData=
   ['fieldname_9',['FieldName',['../class_npgsql_wrapper_1_1_field_attribute.html#abdc0e87b7148b93e03b81767a9b4b085',1,'NpgsqlWrapper::FieldAttribute']]],
   ['fieldnotnull_10',['FieldNotNull',['../class_npgsql_wrapper_1_1_field_attribute.html#ada7382617d143a47379c849e2e7b7c9f',1,'NpgsqlWrapper::FieldAttribute']]],
   ['fieldprimarykey_11',['FieldPrimaryKey',['../class_npgsql_wrapper_1_1_field_attribute.html#a50a58418aad2c74246f81bace8ef4fe5',1,'NpgsqlWrapper::FieldAttribute']]],
-  ['fieldtype_12',['FieldType',['../class_npgsql_wrapper_1_1_field_attribute.html#a7c3ae7c24aebe2c82d0ce4f452dfe3d1',1,'NpgsqlWrapper::FieldAttribute']]]
+  ['fieldtype_12',['FieldType',['../class_npgsql_wrapper_1_1_field_attribute.html#a7c3ae7c24aebe2c82d0ce4f452dfe3d1',1,'NpgsqlWrapper::FieldAttribute']]],
+  ['fieldvalue_13',['fieldvalue',['../class_npgsql_wrapper_1_1_field_value.html',1,'NpgsqlWrapper.FieldValue'],['../class_npgsql_wrapper_1_1_field_attribute.html#ad00ef2cae859353a60440f69594e7888',1,'NpgsqlWrapper.FieldAttribute.FieldValue']]]
 ];

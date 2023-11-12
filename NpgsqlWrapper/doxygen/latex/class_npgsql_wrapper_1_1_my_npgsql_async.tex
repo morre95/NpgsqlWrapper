@@ -55,7 +55,9 @@ async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a6
 async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0dc42865b4f0c493b6bebed26a6ae7ff}{Execute\+Async$<$ T $>$}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{} asynchronously. \end{DoxyCompactList}\item 
 async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a03fb8b1930fa73e1c953c65810ece61a}{Dump\+Async}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null, Cancellation\+Token cancellation\+Token=default)
-\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a6c0cfd9120d80aa24b9be73827cf6130}{Create\+Async$<$ T $>$}} (bool drop\+If\+Exists=false, bool is\+Temp\+Table=false)
+\begin{DoxyCompactList}\small\item\em Creates database table from class structure asynchronously. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -80,6 +82,12 @@ static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237
 static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}{Prepare\+Delete\+Sql}} (string table\+Name, string? where)
 \item 
 static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}{Add\+Parameters}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters, Npgsql\+Command cmd)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ad80295f6ba4a2ee4b106a7c0b4e58403}{Get\+Table\+Name$<$ T $>$}} ()
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ac78712e7a5f7c3b33c7be305170beb84}{Prepare\+Create\+Sql$<$ T $>$}} (IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ field\+Attributes)
+\item 
+static IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aed0d36d9316bc5f0cc17f5ec8eb2f48a}{Prepare\+Create\+Fields$<$ T $>$}} (IEnumerable$<$ Property\+Info?$>$ property\+List)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
@@ -175,6 +183,33 @@ Usage\+:
 {\em cancellation\+Token} & An optional token to cancel the asynchronous operation. The default value is Cancellation\+Token.\+None. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a6c0cfd9120d80aa24b9be73827cf6130}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a6c0cfd9120d80aa24b9be73827cf6130} 
+\index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!CreateAsync$<$ T $>$@{CreateAsync$<$ T $>$}}
+\index{CreateAsync$<$ T $>$@{CreateAsync$<$ T $>$}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}
+\doxysubsubsection{\texorpdfstring{CreateAsync$<$ T $>$()}{CreateAsync< T >()}}
+{\footnotesize\ttfamily async Task Npgsql\+Wrapper.\+My\+Npgsql\+Async.\+Create\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{bool}]{drop\+If\+Exists = {\ttfamily false},  }\item[{bool}]{is\+Temp\+Table = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates database table from class structure asynchronously. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object to map table structure from.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em drop\+If\+Exists} & If true it adds DROP TABLE IF EXISTS statement\\
+\hline
+{\em is\+Temp\+Table} & If true it creates a temporary table\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown if name of field is set via the attribute \mbox{[}Field("{}name\+\_\+of\+\_\+field"{})\mbox{]} but no Field\+Type.\\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_async_a2c0eb0cab7e1646822a081eba4c50e4a}\label{class_npgsql_wrapper_1_1_my_npgsql_async_a2c0eb0cab7e1646822a081eba4c50e4a} 
 \index{NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}!DeleteAsync@{DeleteAsync}}
 \index{DeleteAsync@{DeleteAsync}!NpgsqlWrapper.MyNpgsqlAsync@{NpgsqlWrapper.MyNpgsqlAsync}}

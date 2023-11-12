@@ -122,6 +122,12 @@ Static Protected Member Functions</h2></td></tr>
 <tr class="separator:ace60ced8effd0e8948067c97b169b75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bea49ef185f7b4cca0e077e73022313" id="r_a6bea49ef185f7b4cca0e077e73022313"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_base.html#a6bea49ef185f7b4cca0e077e73022313">AddParameters</a> (string sqlQuery, Dictionary&lt; string, object &gt;? parameters, NpgsqlCommand cmd)</td></tr>
 <tr class="separator:a6bea49ef185f7b4cca0e077e73022313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad80295f6ba4a2ee4b106a7c0b4e58403" id="r_ad80295f6ba4a2ee4b106a7c0b4e58403"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_base.html#ad80295f6ba4a2ee4b106a7c0b4e58403">GetTableName&lt; T &gt;</a> ()</td></tr>
+<tr class="separator:ad80295f6ba4a2ee4b106a7c0b4e58403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac78712e7a5f7c3b33c7be305170beb84" id="r_ac78712e7a5f7c3b33c7be305170beb84"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_base.html#ac78712e7a5f7c3b33c7be305170beb84">PrepareCreateSql&lt; T &gt;</a> (IEnumerable&lt; <a class="el" href="class_npgsql_wrapper_1_1_field_attribute.html">FieldAttribute</a> &gt; fieldAttributes)</td></tr>
+<tr class="separator:ac78712e7a5f7c3b33c7be305170beb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed0d36d9316bc5f0cc17f5ec8eb2f48a" id="r_aed0d36d9316bc5f0cc17f5ec8eb2f48a"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_npgsql_wrapper_1_1_field_attribute.html">FieldAttribute</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_npgsql_wrapper_1_1_my_npgsql_base.html#aed0d36d9316bc5f0cc17f5ec8eb2f48a">PrepareCreateFields&lt; T &gt;</a> (IEnumerable&lt; PropertyInfo?&gt; propertyList)</td></tr>
+<tr class="separator:aed0d36d9316bc5f0cc17f5ec8eb2f48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -311,6 +317,83 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of escaped @field.</dd></dl>
+
+</div>
+</div>
+<a id="ad80295f6ba4a2ee4b106a7c0b4e58403" name="ad80295f6ba4a2ee4b106a7c0b4e58403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad80295f6ba4a2ee4b106a7c0b4e58403">&#9670;&#160;</a></span>GetTableName&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string NpgsqlWrapper.MyNpgsqlBase.GetTableName&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed0d36d9316bc5f0cc17f5ec8eb2f48a" name="aed0d36d9316bc5f0cc17f5ec8eb2f48a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed0d36d9316bc5f0cc17f5ec8eb2f48a">&#9670;&#160;</a></span>PrepareCreateFields&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt; <a class="el" href="class_npgsql_wrapper_1_1_field_attribute.html">FieldAttribute</a> &gt; NpgsqlWrapper.MyNpgsqlBase.PrepareCreateFields&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">IEnumerable&lt; PropertyInfo?&gt;&#160;</td>
+          <td class="paramname"><em>propertyList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac78712e7a5f7c3b33c7be305170beb84" name="ac78712e7a5f7c3b33c7be305170beb84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac78712e7a5f7c3b33c7be305170beb84">&#9670;&#160;</a></span>PrepareCreateSql&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string NpgsqlWrapper.MyNpgsqlBase.PrepareCreateSql&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">IEnumerable&lt; <a class="el" href="class_npgsql_wrapper_1_1_field_attribute.html">FieldAttribute</a> &gt;&#160;</td>
+          <td class="paramname"><em>fieldAttributes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -49,7 +49,9 @@ int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde7
 int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60}{Delete$<$ T $>$}} (string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
 \begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database. \end{DoxyCompactList}\item 
 IEnumerable$<$ Dictionary$<$ string, object $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d}{Dump}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
-\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a233c8e1d13d6b5bd46861942d8e7e44f}{Create$<$ T $>$}} (bool drop\+If\+Exists=false, bool is\+Temp\+Table=false)
+\begin{DoxyCompactList}\small\item\em Creates database table from class structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,6 +76,12 @@ static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237
 static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}{Prepare\+Delete\+Sql}} (string table\+Name, string? where)
 \item 
 static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}{Add\+Parameters}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters, Npgsql\+Command cmd)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ad80295f6ba4a2ee4b106a7c0b4e58403}{Get\+Table\+Name$<$ T $>$}} ()
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ac78712e7a5f7c3b33c7be305170beb84}{Prepare\+Create\+Sql$<$ T $>$}} (IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ field\+Attributes)
+\item 
+static IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aed0d36d9316bc5f0cc17f5ec8eb2f48a}{Prepare\+Create\+Fields$<$ T $>$}} (IEnumerable$<$ Property\+Info?$>$ property\+List)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
@@ -162,7 +170,34 @@ Usage\+:
 \DoxyCodeLine{pgsql.Connect();}
 
 \end{DoxyCode}
- \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}\label{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6} 
+ \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a233c8e1d13d6b5bd46861942d8e7e44f}\label{class_npgsql_wrapper_1_1_my_npgsql_a233c8e1d13d6b5bd46861942d8e7e44f} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Create$<$ T $>$@{Create$<$ T $>$}}
+\index{Create$<$ T $>$@{Create$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Create$<$ T $>$()}{Create< T >()}}
+{\footnotesize\ttfamily void Npgsql\+Wrapper.\+My\+Npgsql.\+Create$<$ T $>$ (\begin{DoxyParamCaption}\item[{bool}]{drop\+If\+Exists = {\ttfamily false},  }\item[{bool}]{is\+Temp\+Table = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates database table from class structure. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object to map table structure from.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em drop\+If\+Exists} & If true it adds DROP TABLE IF EXISTS statement.\\
+\hline
+{\em is\+Temp\+Table} & If true it creates a temporary table\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown if name of field is set via the attribute \mbox{[}Field("{}name\+\_\+of\+\_\+field"{})\mbox{]} but no Field\+Type.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}\label{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6} 
 \index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Delete@{Delete}}
 \index{Delete@{Delete}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}

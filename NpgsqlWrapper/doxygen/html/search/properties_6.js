@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['this_5bstring_20propertyname_5d_0',['this[string propertyName]',['../class_npgsql_wrapper_1_1_field_attribute.html#aef5a0cb37f1c6ad350e6c0a749621cc6',1,'NpgsqlWrapper::FieldAttribute']]]
+  ['server_0',['Server',['../class_npgsql_wrapper_1_1_database_config.html#af82beb24b7030d0ef2612221d99349cd',1,'NpgsqlWrapper::DatabaseConfig']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['server_0',['Server',['../class_npgsql_wrapper_1_1_database_config.html#af82beb24b7030d0ef2612221d99349cd',1,'NpgsqlWrapper::DatabaseConfig']]]
+  ['password_0',['Password',['../class_npgsql_wrapper_1_1_database_config.html#ae6344ed657421239bcd13eff24e585fe',1,'NpgsqlWrapper::DatabaseConfig']]],
+  ['port_1',['Port',['../class_npgsql_wrapper_1_1_database_config.html#a289dd8a25bafd989ebcf13fa3160ec6a',1,'NpgsqlWrapper::DatabaseConfig']]]
 ];
