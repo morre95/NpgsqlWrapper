@@ -132,7 +132,16 @@ namespace NpgsqlWrapper
 
             AddParameters(sql, parameters, cmd);
 
-            return ExecuteReaderMany<T>(properties, cmd);
+            // TBD: ExecuteReaderMany kastar System.ObjectDisposedException: 'Cannot access a disposed object.
+            //return ExecuteReaderMany<T>(properties, cmd);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                T item = Activator.CreateInstance<T>();
+                item = SetObjectValues(properties.ToList(), item, reader);
+                yield return item;
+            }
         }
 
         /// <summary>
@@ -168,7 +177,16 @@ namespace NpgsqlWrapper
             using var cmd = new NpgsqlCommand(sqlQuery, _conn);
             AddParameters(sqlQuery, parameters, cmd);
 
-            return ExecuteReaderMany<T>(properties, cmd);
+            // TBD: ExecuteReaderMany kastar System.ObjectDisposedException: 'Cannot access a disposed object.
+            //return ExecuteReaderMany<T>(properties, cmd);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                T item = Activator.CreateInstance<T>();
+                item = SetObjectValues(properties.ToList(), item, reader);
+                yield return item;
+            }
         }
 
         /// <summary>
@@ -576,7 +594,7 @@ namespace NpgsqlWrapper
         public int Delete<T>(string? where = null, Dictionary<string, object>? whereParameters = null)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            string tableName = typeof(T).GetType().Name;
+            string tableName = typeof(T).Name;
             return Delete(tableName, where, whereParameters);
         }
 
