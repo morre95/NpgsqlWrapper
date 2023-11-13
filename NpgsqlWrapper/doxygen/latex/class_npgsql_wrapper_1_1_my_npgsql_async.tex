@@ -8,7 +8,7 @@ Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+:/
 Inheritance diagram for Npgsql\+Wrapper.\+My\+Npgsql\+Async\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_npgsql_wrapper_1_1_my_npgsql_async}
+\includegraphics[height=1.103448cm]{class_npgsql_wrapper_1_1_my_npgsql_async}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -20,32 +20,6 @@ async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a5ca9a33d57
 \begin{DoxyCompactList}\small\item\em Builds the connection to the database, asynchronously. \end{DoxyCompactList}\item 
 async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a6734f258b747cfd35b0210f28d1696a0}{Close\+Async}} ()
 \begin{DoxyCompactList}\small\item\em Close connection to database, asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a1f9a33c3a31833646c439c29ba0f4357}{Fetch\+Async$<$ T $>$}} (string? sql=null, Cancellation\+Token cancellation\+Token=default)
-\begin{DoxyCompactList}\small\item\em Fetches asynchronously a result set from the database. \end{DoxyCompactList}\item 
-async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a46539871ddd41652fdc6be708c03ae8a}{Fetch\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
-\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
-async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a51ff88a46aec1c6dc62a9e3f07ceed9b}{Fetch\+Enumerable\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, \mbox{[}Enumerator\+Cancellation\mbox{]} Cancellation\+Token cancellation\+Token=default)
-\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
-async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ad09e1ba8c0600c89fc8e4b710c1be655}{Fetch\+One\+Async$<$ T $>$}} (string? sql=null, Cancellation\+Token cancellation\+Token=default)
-\begin{DoxyCompactList}\small\item\em Fetches asynchronously one result from the database. \end{DoxyCompactList}\item 
-async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_af41683fdcdc06cbb5254560558fb5067}{Fetch\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
-\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a286c99f50a22061ee9f9e37f5e147848}{Insert\+Async$<$ T $>$}} (T obj\+To\+Insert)
-\begin{DoxyCompactList}\small\item\em Inserts asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a8fad2e2ff2eaa15438eb69de69d7a2e9}{Insert\+Returning\+Async$<$ T $>$}} (T obj\+To\+Insert)
-\begin{DoxyCompactList}\small\item\em Inserts asynchronously with returning statement. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0b48c3b721e5a7624d300a7d2c1b9058}{Insert\+Many\+Async$<$ T $>$}} (List$<$ T $>$ obj\+To\+Insert)
-\begin{DoxyCompactList}\small\item\em Inserts a list of objects into a database table asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a58482ccdde9e9d30f344facb7444fc69}{Insert\+Many\+Returning\+Async$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert)
-\begin{DoxyCompactList}\small\item\em Inserts a list of objects into a database table asynchronously and returns the inserted records. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a216dbaf8c4f681dd21ff67cb87fd9f5c}{Update\+Async$<$ T $>$}} (T table, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
-\begin{DoxyCompactList}\small\item\em Updates rows in a database table asynchronously based on the provided object\textquotesingle{}s properties. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a2c0eb0cab7e1646822a081eba4c50e4a}{Delete\+Async}} (string table\+Name)
-\begin{DoxyCompactList}\small\item\em Deletes all rows from a database table asynchronously. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab}{Delete\+Async}} (string table\+Name, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
-\begin{DoxyCompactList}\small\item\em Deletes rows from a database table asynchronously based on the specified conditions. \end{DoxyCompactList}\item 
-async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a21270220e19fd3fec55c3f3e6f0e141f}{Delete\+Async$<$ T $>$}} (string where, Dictionary$<$ string, object $>$ where\+Parameters)
-\begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database asynchronously. \end{DoxyCompactList}\item 
 async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_acf9ea887513ed3672d71a1fe987a16c8}{Execute\+Non\+Query\+Async}} (string sql\+Query, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Executes a SQL command and returns the number of affected rows asynchronously. \end{DoxyCompactList}\item 
 async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ad9a73b564325865ca11649c7235ac47d}{Execute\+Non\+Query\+Async}} (string sql, Cancellation\+Token cancellation\+Token=default)
@@ -57,7 +31,33 @@ async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npg
 async Task$<$ List$<$ Dictionary$<$ string, object $>$ $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a03fb8b1930fa73e1c953c65810ece61a}{Dump\+Async}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null, Cancellation\+Token cancellation\+Token=default)
 \begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\item 
 async Task \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a6c0cfd9120d80aa24b9be73827cf6130}{Create\+Async$<$ T $>$}} (bool drop\+If\+Exists=false, bool is\+Temp\+Table=false)
-\begin{DoxyCompactList}\small\item\em Creates database table from class structure asynchronously. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates database table from class structure asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a2c0eb0cab7e1646822a081eba4c50e4a}{Delete\+Async}} (string table\+Name)
+\begin{DoxyCompactList}\small\item\em Deletes all rows from a database table asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0e413a8667f31c50c0ea898916efa1ab}{Delete\+Async}} (string table\+Name, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Deletes rows from a database table asynchronously based on the specified conditions. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a21270220e19fd3fec55c3f3e6f0e141f}{Delete\+Async$<$ T $>$}} (string where, Dictionary$<$ string, object $>$ where\+Parameters)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a1f9a33c3a31833646c439c29ba0f4357}{Fetch\+Async$<$ T $>$}} (string? sql=null, Cancellation\+Token cancellation\+Token=default)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a result set from the database. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a46539871ddd41652fdc6be708c03ae8a}{Fetch\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_ad09e1ba8c0600c89fc8e4b710c1be655}{Fetch\+One\+Async$<$ T $>$}} (string? sql=null, Cancellation\+Token cancellation\+Token=default)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously one result from the database. \end{DoxyCompactList}\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_af41683fdcdc06cbb5254560558fb5067}{Fetch\+One\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, Cancellation\+Token cancellation\+Token=default)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
+async IAsync\+Enumerable$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a51ff88a46aec1c6dc62a9e3f07ceed9b}{Fetch\+Enumerable\+Async$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters, \mbox{[}Enumerator\+Cancellation\mbox{]} Cancellation\+Token cancellation\+Token=default)
+\begin{DoxyCompactList}\small\item\em Fetches asynchronously a list of data from the database with sql injection safety. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a286c99f50a22061ee9f9e37f5e147848}{Insert\+Async$<$ T $>$}} (T obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a8fad2e2ff2eaa15438eb69de69d7a2e9}{Insert\+Returning\+Async$<$ T $>$}} (T obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts asynchronously with returning statement. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a0b48c3b721e5a7624d300a7d2c1b9058}{Insert\+Many\+Async$<$ T $>$}} (List$<$ T $>$ obj\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts a list of objects into a database table asynchronously. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ T $>$?$>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a58482ccdde9e9d30f344facb7444fc69}{Insert\+Many\+Returning\+Async$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts a list of objects into a database table asynchronously and returns the inserted records. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_async_a216dbaf8c4f681dd21ff67cb87fd9f5c}{Update\+Async$<$ T $>$}} (T table, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Updates rows in a database table asynchronously based on the provided object\textquotesingle{}s properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -99,7 +99,7 @@ Npgsql\+Connection? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a63
 \doxysubsection*{Properties inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
 \item 
-Int64 \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+long \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aa8cba64d090188aae079a2289f3dabf2}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Return the latest inserted id. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -979,6 +979,10 @@ The number of rows affected by the update operation.
 \end{DoxyExceptions}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_my_npgsql_async_8cs}{My\+Npgsql\+Async.\+cs}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{_my_npgsql_async_8cs}{My\+Npgsql\+Async.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_async_8_delete_8cs}{My\+Npgsql\+Async.\+Delete.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_async_8_fetch_8cs}{My\+Npgsql\+Async.\+Fetch.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_async_8_insert_8cs}{My\+Npgsql\+Async.\+Insert.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_async_8_update_8cs}{My\+Npgsql\+Async.\+Update.\+cs}}\end{DoxyCompactItemize}
