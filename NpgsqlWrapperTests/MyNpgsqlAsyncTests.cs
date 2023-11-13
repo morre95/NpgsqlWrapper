@@ -80,14 +80,16 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task MyNpgsqlAsyncTest()
+        public void MyNpgsqlAsyncTest()
         {
-            MyNpgsqlAsync? npgsql = await ConnectAsync();
+            MyNpgsqlAsync? npgsql = new("", "", "", ""); 
             Assert.IsNotNull(npgsql);
+
+            Assert.IsInstanceOfType(npgsql, typeof(MyNpgsqlBase));
         }
 
         [TestMethod()]
-        public async Task ConnectAsyncTestAsync()
+        public async Task ConnectAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -107,7 +109,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task FetchAsyncTestAsync()
+        public async Task FetchAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -118,7 +120,24 @@ namespace NpgsqlWrapper.Tests
             List<Teachers>? teacherList = await npgsql.FetchAsync<Teachers>();
             Assert.IsNotNull(teacherList);
 
-            Teachers? teachers = await npgsql.FetchOneAsync<Teachers>("SELECT COUNT(*) num FROM teachers", cts);
+            Assert.IsTrue(teacherList.Any());
+        }
+
+        [TestMethod()]
+        public async Task FetchAsyncTest2()
+        {
+            MyNpgsqlAsync? npgsql = await ConnectAsync();
+            Assert.IsNotNull(npgsql);
+
+            var ts = new CancellationTokenSource();
+            CancellationToken cts = ts.Token;
+
+            List<Teachers>? teacherList = await npgsql.FetchAsync<Teachers>(null, cts);
+            Assert.IsNotNull(teacherList);
+
+            Assert.IsTrue(teacherList.Any());
+
+            Teachers? teachers = await npgsql.FetchOneAsync<Teachers>("SELECT COUNT(*) num FROM teachers");
 
             Assert.IsNotNull(teachers);
 
@@ -138,7 +157,7 @@ namespace NpgsqlWrapper.Tests
             List<Sales>? salesList = await npgsql.FetchAsync<Sales>("SELECT * FROM sales WHERE date=@pDate", param, cts);
             Assert.IsNotNull(salesList);
 
-            Sales? sales = await npgsql.FetchOneAsync<Sales>("SELECT COUNT(*) num FROM sales WHERE date=@pDate", param);
+            Sales? sales = await npgsql.FetchOneAsync<Sales>("SELECT COUNT(*) num FROM sales WHERE date=@pDate", param, cts);
 
             Assert.IsNotNull(sales);
 
@@ -146,7 +165,20 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task FetchEnumerableAsyncTestAsync()
+        public async Task FetchEnumerableAsyncTest()
+        {
+            MyNpgsqlAsync? npgsql = await ConnectAsync();
+
+            DbParams param = new DbParams("pDate", DateTime.Parse("2023-11-10"));
+
+            await foreach (var test in npgsql.FetchEnumerableAsync<Sales>("SELECT * FROM sales", param))
+            {
+                Assert.IsNotNull(test);
+            }
+        }
+
+        [TestMethod()]
+        public async Task FetchEnumerableAsyncTest2()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -176,7 +208,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task FetchOneAsyncTest1Async()
+        public async Task FetchOneAsyncTest1()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -192,7 +224,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task InsertAsyncTestAsync()
+        public async Task InsertAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -219,7 +251,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task InsertReturningAsyncTestAsync()
+        public async Task InsertReturningAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -239,7 +271,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task InsertManyAsyncTestAsync()
+        public async Task InsertManyAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -263,7 +295,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task InsertManyReturningAsyncTestAsync()
+        public async Task InsertManyReturningAsyncTest()
         {
 
             MyNpgsqlAsync? npgsql = await ConnectAsync();
@@ -297,7 +329,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task UpdateAsyncTestAsync()
+        public async Task UpdateAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -338,7 +370,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task DeleteAsyncTestAsync()
+        public async Task DeleteAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -371,7 +403,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task DeleteAsyncTest2Async()
+        public async Task DeleteAsyncTest2()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -404,7 +436,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task DeleteAsyncTest3Async()
+        public async Task DeleteAsyncTest3()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -438,7 +470,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task ExecuteNonQueryAsyncTestAsync()
+        public async Task ExecuteNonQueryAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -455,7 +487,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task ExecuteNonQueryAsyncTest1Async()
+        public async Task ExecuteNonQueryAsyncTest1()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -487,7 +519,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task ExecuteOneAsyncTest2Async()
+        public async Task ExecuteOneAsyncTest2()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -512,7 +544,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task ExecuteAsyncTestAsync()
+        public async Task ExecuteAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -525,7 +557,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task DumpAsyncTestAsync()
+        public async Task DumpAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
@@ -563,7 +595,7 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public async Task CreateAsyncTestAsync()
+        public async Task CreateAsyncTest()
         {
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);

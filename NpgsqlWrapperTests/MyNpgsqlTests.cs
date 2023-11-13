@@ -25,8 +25,10 @@ namespace NpgsqlWrapper.Tests
         [TestMethod()]
         public void MyNpgsqlTest()
         {
-            MyNpgsql npgsql = Connect();
+            MyNpgsql npgsql = new("", "", "", "");
             Assert.IsNotNull(npgsql);
+
+            Assert.IsInstanceOfType(npgsql, typeof(MyNpgsql));
         }
 
         [TestMethod()]
