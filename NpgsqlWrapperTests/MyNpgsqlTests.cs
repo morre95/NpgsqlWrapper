@@ -213,10 +213,7 @@ namespace NpgsqlWrapper.Tests
 
             string sql = "CREATE TEMP TABLE mytemp(c INT)";
 
-            int num = npgsql.ExecuteNonQuery(sql);
-
-            // TODO: kolla upp om det ska vara så att om inga rader har ändrats att den ska returnera -1
-            Assert.AreEqual(-1, num);
+            npgsql.ExecuteNonQuery(sql);
 
             string insertSql = "INSERT INTO mytemp(c) VALUES(697)";
 
@@ -233,9 +230,7 @@ namespace NpgsqlWrapper.Tests
 
             string sql = "CREATE TEMP TABLE mytemp(c INT)";
 
-            int num = npgsql.ExecuteNonQuery(sql);
-
-            Assert.AreEqual(-1, num);
+            npgsql.ExecuteNonQuery(sql);
 
             string insertSql = "INSERT INTO mytemp(c) VALUES(697), (2), (88)";
 

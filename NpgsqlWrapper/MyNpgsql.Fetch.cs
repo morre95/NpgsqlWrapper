@@ -71,9 +71,6 @@ namespace NpgsqlWrapper
 
             AddParameters(sql, parameters, cmd);
 
-            // TBD: ExecuteReaderMany kastar System.ObjectDisposedException: 'Cannot access a disposed object.
-            //return ExecuteReaderMany<T>(properties, cmd);
-
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {

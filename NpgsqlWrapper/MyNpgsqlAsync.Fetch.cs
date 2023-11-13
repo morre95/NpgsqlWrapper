@@ -141,14 +141,13 @@ namespace NpgsqlWrapper
         public async Task<T?> FetchOneAsync<T>(string sql, Dictionary<string, object> parameters, CancellationToken cancellationToken = default)
         {
             if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-            // TBD: kolla om det finns LIMIT 1 eller FETCH FIRST 1 ROW ONLY eller liknande och läg till det om det fattas
+
             await using var tx = await _conn.BeginTransactionAsync();
             List<PropertyInfo> propertyList = typeof(T).GetProperties().ToList();
             T item = Activator.CreateInstance<T>();
             using (var cmd = _conn.CreateCommand())
             {
                 cmd.Transaction = tx;
-
                 cmd.CommandText = sql;
 
                 AddParameters(sql, parameters, cmd);

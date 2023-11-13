@@ -112,7 +112,6 @@ namespace NpgsqlWrapper
         /// <returns>The number of rows affected by the insert operation.</returns>
         public int InsertMany<T>(List<T> objToInsert)
         {
-            // TODO: bör vara InsertMany<T>(Enumerable<T> objToInsert)
             PrepareManyInsertSql(objToInsert, out string sql, out DbParams parameters);
             return ExecuteNonQuery(sql, parameters);
         }
