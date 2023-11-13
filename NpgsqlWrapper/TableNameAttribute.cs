@@ -5,9 +5,9 @@
     {
         public string TableName { get; set; }
 
-        public TableNameAttribute(string tableName) 
-        { 
-            TableName = tableName.Replace(' ', '_'); 
+        public TableNameAttribute(string tableName)
+        {
+            TableName = tableName.Replace(' ', '_');
         }
 
     }

@@ -54,7 +54,7 @@
             {
                 return (T)value;
             }
-            return default(T);
+            return default;
         }
 
         public void SetValue(string propertyName, object value)

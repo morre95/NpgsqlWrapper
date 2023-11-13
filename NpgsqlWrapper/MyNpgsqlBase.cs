@@ -25,7 +25,7 @@ namespace NpgsqlWrapper
         /// <summary>
         /// Return the latest inserted id
         /// </summary>
-        public Int64 LastInsertedID
+        public long LastInsertedID
         {
             get
             {
@@ -34,7 +34,7 @@ namespace NpgsqlWrapper
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (reader[0].GetType() == typeof(Int64))
+                    if (reader[0].GetType() == typeof(long))
                         return reader.GetInt64(0);
                 }
                 return -1;
@@ -79,7 +79,7 @@ namespace NpgsqlWrapper
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 string fieldName = reader.GetName(i);
-                PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName || (prop.ReadAttribute<FieldAttribute>() != null && prop.ReadAttribute<FieldAttribute>().FieldName == fieldName));
+                PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName || prop.ReadAttribute<FieldAttribute>() != null && prop.ReadAttribute<FieldAttribute>().FieldName == fieldName);
 
                 if (propertyInfo != null)
                 {
@@ -149,7 +149,7 @@ namespace NpgsqlWrapper
             if (args.Count != fieldNames.Count() * i) throw new ArgumentException("List of arguments don't match objects to insert");
         }
 
-        
+
 
         protected static void PrepareInsertSql<T>(T objToInsert, out string sql, out DbParams args)
         {
@@ -248,7 +248,7 @@ namespace NpgsqlWrapper
                         returnArgs.Add(property.Name, value);
                         sql += $"{property.Name} = @{property.Name},";
                     }
-                    
+
                 }
             }
 
@@ -277,7 +277,7 @@ namespace NpgsqlWrapper
             return sql;
         }
 
-        protected static string PrepareDeleteSql(string tableName, string? where) 
+        protected static string PrepareDeleteSql(string tableName, string? where)
             => AddWhereToQuery(where, $"DELETE FROM {tableName}");
 
         protected static void AddParameters(string sqlQuery, Dictionary<string, object>? parameters, NpgsqlCommand cmd)
