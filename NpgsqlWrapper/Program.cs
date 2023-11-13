@@ -1,10 +1,26 @@
-﻿namespace NpgsqlWrapper
+﻿using Npgsql;
+using NpgsqlTypes;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+
+namespace NpgsqlWrapper
 {
+    /* 
+     * 
+     * https://www.npgsql.org/doc/basic-usage.html
+     * 
+    */
+
 
     internal class Program
     {
         static async Task Main(string[] args)
         {
+
             // Edit en uncomment this code the first time you run this. Then remove it
             /*DatabaseConfig config = new DatabaseConfig
             {
@@ -23,6 +39,7 @@
             string? host, username, password, database;
 
             GetDatabaseLogin(out host, out username, out password, out database);
+
             await TeachersAsync(host, username, password, database);
         }
 
@@ -73,7 +90,7 @@
                 {
                     foreach (var teacher in await school.GetAll())
                     {
-                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
+                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.Subjectet}");
                     }
                 }
                 else if (command == "add")
@@ -98,7 +115,7 @@
                     {
                         first_name = firstName,
                         last_name = lastName,
-                        subject = subject,
+                        Subjectet = subject,
                         salary = salary
                     };
                     await school.Insert(teacherToAdd);
@@ -115,7 +132,7 @@
                     var teacher = await school.GetById(id);
                     Console.WriteLine($"First name: {teacher.first_name}");
                     Console.WriteLine($"Last name: {teacher.last_name}");
-                    Console.WriteLine($"Subject: {teacher.subject}");
+                    Console.WriteLine($"Subject: {teacher.Subjectet}");
                     Console.WriteLine($"Salary: {teacher.salary}");
 
                     Console.Write("First Name> ");
@@ -126,7 +143,7 @@
                     if (lastName == "") lastName = teacher.last_name;
                     Console.Write("Subject> ");
                     string subject = Console.ReadLine();
-                    if (subject == "") subject = teacher.subject;
+                    if (subject == "") subject = teacher.Subjectet;
 
                     string dirtySalary;
                     int salary;
@@ -141,7 +158,7 @@
                     {
                         first_name = firstName,
                         last_name = lastName,
-                        subject = subject,
+                        Subjectet = subject,
                         salary = salary
                     };
                     await school.EditById(id, teacherToEdit);
@@ -162,7 +179,7 @@
                     int i = 0;
                     List<string> list = new List<string>();
                     var all = await school.GetAll();
-                    foreach (var subject in all.Select(x => x.subject).Distinct())
+                    foreach (var subject in all.Select(x => x.Subjectet).Distinct())
                     {
                         Console.WriteLine($"#{++i} {subject}");
                         list.Add(subject);
@@ -178,14 +195,14 @@
 
                     foreach (var teacher in await school.GetBySubject(list[id - 1]))
                     {
-                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
+                        Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.Subjectet}");
                     }
                 }
                 else if (command == "table")
                 {
                     var all = await school.GetAll();
                     int longestName = all.Max(x => (x.first_name + " " + x.last_name).Length) + 1;
-                    int longestSubject = all.Max(x => x.subject.Length) + 1;
+                    int longestSubject = all.Max(x => x.Subjectet.Length) + 1;
                     int longestSalary = all.Max(x => x.salary.ToString().Length);
 
                     string header = $"ID  |{"Name".PadRight(longestName)}|{"Subject".PadRight(longestSubject)}|Salary";
@@ -194,7 +211,7 @@
 
                     foreach (var teacher in await school.GetAll())
                     {
-                        Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.subject.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
+                        Console.WriteLine($"#{teacher.id.ToString().PadLeft(3, '0')}|{(teacher.first_name + " " + teacher.last_name).PadRight(longestName)}|{teacher.Subjectet.PadRight(longestSubject)}|{teacher.salary.ToString().PadLeft(longestSalary)}");
                     }
                 }
                 else if (command == "cancel")
@@ -207,7 +224,7 @@
                         ts.Cancel();
                         foreach (var teacher in await school.GetAll(cts))
                         {
-                            Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.subject}");
+                            Console.WriteLine($"#{teacher.id}: {teacher.first_name} {teacher.last_name} has salary {teacher.salary} for teaching {teacher.Subjectet}");
                         }
                     } 
                     catch (OperationCanceledException oce)
@@ -251,24 +268,18 @@
         }
     }
 
-    /*
-CREATE TABLE teachers
-(
-    id serial NOT NULL,
-    first_name character varying(25),
-    last_name character varying(25),
-    subject character varying(20),
-    salary integer,
-    PRIMARY KEY (id)
-);
-*/
     public class Teachers
     {
         public int? id { get; set; }
         public string? first_name { get; set; }
         public string? last_name { get; set; }
-        public string? subject { get; set; }
+
+        [Field("subject", "test")]
+        public string? Subjectet { get; set; }
         public int? salary { get; set; }
+
+        [Field("num", "int64")]
+        public Int64? Count { get; set; }
     }
 
     public class School

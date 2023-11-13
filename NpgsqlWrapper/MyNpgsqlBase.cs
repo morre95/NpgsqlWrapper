@@ -1,5 +1,7 @@
 ﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -14,10 +16,30 @@ namespace NpgsqlWrapper
         /// The connection string provided by the user, including the password.
         /// </summary>
         protected readonly string? _connectionString;
+
         /// <summary>
         /// Connection object
         /// </summary>
         protected NpgsqlConnection? _conn = null;
+
+        /// <summary>
+        /// Return the latest inserted id
+        /// </summary>
+        public long LastInsertedID
+        {
+            get
+            {
+                if (_conn == null) throw new ArgumentNullException(nameof(_conn));
+                using var cmd = new NpgsqlCommand("SELECT lastval()", _conn);
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].GetType() == typeof(long))
+                        return reader.GetInt64(0);
+                }
+                return -1;
+            }
+        }
 
         /// <summary>
         /// Constructor, building connection string with parameter provided by the user
@@ -31,24 +53,6 @@ namespace NpgsqlWrapper
             _connectionString = $"Host={host};Username={username};Password={password};Database={database}";
         }
 
-        /// <summary>
-        /// Return the latest inserted id
-        /// </summary>
-        public Int64 LastInsertedID
-        {
-            get
-            {
-                if (_conn == null) throw new ArgumentNullException(nameof(_conn));
-                using var cmd = new NpgsqlCommand("SELECT lastval()", _conn);
-                using var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    if (reader[0].GetType() == typeof(Int64))
-                        return reader.GetInt64(0);
-                }
-                return -1;
-            }
-        }
 
         /// <summary>
         /// Returns the number of times @field is in a sql query.
@@ -57,7 +61,7 @@ namespace NpgsqlWrapper
         /// <returns>Number of escaped @field.</returns>
         protected static int GetSqlNumParams(string sqlQuery)
         {
-            string pattern = @"[=<>]+\s*@";
+            string pattern = @"[=<>,]+\s*@";
             MatchCollection matches = Regex.Matches(sqlQuery, pattern);
             return matches.Count;
         }
@@ -75,7 +79,7 @@ namespace NpgsqlWrapper
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 string fieldName = reader.GetName(i);
-                PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName);
+                PropertyInfo? propertyInfo = propertyList.Find(prop => prop.Name == fieldName || prop.ReadAttribute<FieldAttribute>() != null && prop.ReadAttribute<FieldAttribute>().FieldName == fieldName);
 
                 if (propertyInfo != null)
                 {
@@ -95,18 +99,18 @@ namespace NpgsqlWrapper
 
         protected static void PrepareManyInsertSql<T>(List<T> listToInsert, out string sql, out DbParams args)
         {
+            if (listToInsert.Any(x => x == null)) throw new ArgumentNullException(nameof(listToInsert));
+
             IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
+            IEnumerable<string> fieldNames = GetFieldNames(listToInsert[0], propertyList);
 
-            List<string> fieldNames = GetFieldNames(listToInsert[0], propertyList).ToList();
-
-            if (fieldNames.Count == 0)
+            if (fieldNames.Count() <= 0)
             {
                 throw new ArgumentException("There are no non-null fields to insert.");
             }
 
-            if (listToInsert.Any(x => x == null)) throw new ArgumentException();
-
-            string table = listToInsert[0]!.GetType().Name;
+            //string table = listToInsert[0]!.GetType().Name;
+            string table = GetTableName<T>();
 
 
             sql = $"INSERT INTO {table} ({string.Join(",", fieldNames)}) VALUES";
@@ -117,9 +121,22 @@ namespace NpgsqlWrapper
                 sql += "(";
                 foreach (PropertyInfo property in propertyList)
                 {
-                    if (property.GetValue(listToInsert[i], null) == null) { continue; }
-                    args.Add($"{property.Name}_{i}", property.GetValue(listToInsert[i], null)!);
-                    sql += $"@{property.Name}_{i},";
+                    object? value = property.GetValue(listToInsert[i], null);
+
+                    IEnumerable<InsertIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<InsertIgnoreAttribute>(true);
+
+                    if (value == null || ignoreAttributes.Any()) { continue; }
+                    if (property.GetCustomAttribute<FieldAttribute>(true) != null)
+                    {
+                        FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                        args.Add($"{attr.FieldName}_{i}", value);
+                        sql += $"@{attr.FieldName}_{i},";
+                    }
+                    else
+                    {
+                        args.Add($"{property.Name}_{i}", value);
+                        sql += $"@{property.Name}_{i},";
+                    }
                 }
 
                 sql = sql.Remove(sql.Length - 1, 1);
@@ -129,8 +146,10 @@ namespace NpgsqlWrapper
 
             sql = sql.Remove(sql.Length - 1, 1);
 
-            if (args.Count != fieldNames.Count * i) throw new ArgumentException("List of arguments don't match objects to insert");
+            if (args.Count != fieldNames.Count() * i) throw new ArgumentException("List of arguments don't match objects to insert");
         }
+
+
 
         protected static void PrepareInsertSql<T>(T objToInsert, out string sql, out DbParams args)
         {
@@ -138,32 +157,65 @@ namespace NpgsqlWrapper
             {
                 throw new ArgumentNullException(nameof(objToInsert));
             }
+
             IEnumerable<PropertyInfo> propertyList = typeof(T).GetProperties();
 
-            List<string> fieldNames = GetFieldNames(objToInsert, propertyList).ToList();
+            IEnumerable<string> fieldNames = GetFieldNames(objToInsert, propertyList);
 
-            if (fieldNames.Count == 0)
+            if (fieldNames.Count() == 0)
             {
                 throw new ArgumentException("There are no non-null fields to insert.");
             }
 
-            string table = objToInsert.GetType().Name;
+            //string table = objToInsert.GetType().Name;
+            string table = GetTableName<T>();
+
             sql = $"INSERT INTO {table} ({string.Join(",", fieldNames)}) VALUES(";
             args = new();
             foreach (var property in propertyList)
             {
-                if (property.GetValue(objToInsert, null) == null) { continue; }
-                args.Add(property.Name, property.GetValue(objToInsert, null)!);
-                sql += $"@{property.Name},";
+                object? value = property.GetValue(objToInsert, null);
+
+                IEnumerable<InsertIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<InsertIgnoreAttribute>(true);
+
+                if (value == null || ignoreAttributes.Any()) { continue; }
+                if (property.GetCustomAttribute<FieldAttribute>(true) != null)
+                {
+                    FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                    args.Add($"{attr.FieldName}", value);
+                    sql += $"@{attr.FieldName},";
+                }
+                else
+                {
+                    args.Add($"{property.Name}", value);
+                    sql += $"@{property.Name},";
+                }
             }
             sql = sql.Remove(sql.Length - 1, 1) + ")";
 
-            if (args.Count != fieldNames.Count) throw new ArgumentException("The specified fields don't match the number of values to insert");
+            if (args.Count != fieldNames.Count()) throw new ArgumentException("The specified fields don't match the number of values to insert");
         }
 
         private static IEnumerable<string> GetFieldNames<T>(T fieldObject, IEnumerable<PropertyInfo> propertyList)
         {
-            return propertyList.Where(x => x.GetValue(fieldObject, null) != null).Select(x => x.Name);
+            foreach (PropertyInfo property in propertyList)
+            {
+                if (property.GetValue(fieldObject, null) != null)
+                {
+                    string fieldName = property.Name;
+                    if (property.ReadAttribute<FieldAttribute>() != null)
+                    {
+                        fieldName = property.ReadAttribute<FieldAttribute>().FieldName;
+                    }
+
+                    IEnumerable<InsertIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<InsertIgnoreAttribute>(true);
+
+                    if (!ignoreAttributes.Any())
+                    {
+                        yield return fieldName;
+                    }
+                }
+            }
         }
 
         protected static void PrepareUpdateSql<T>(T table, string? where, Dictionary<string, object>? whereArgs, out string sql, out DbParams returnArgs)
@@ -174,16 +226,29 @@ namespace NpgsqlWrapper
             }
             IEnumerable<PropertyInfo?> propertyList = typeof(T).GetProperties()!;
 
-            sql = $"UPDATE {table.GetType().Name} SET ";
+            sql = $"UPDATE {GetTableName<T>()} SET ";
             returnArgs = new();
             foreach (var property in propertyList)
             {
                 if (property != null)
                 {
-                    if (property.GetValue(table, null) == null) { continue; }
+                    object value = property.GetValue(table, null)!;
 
-                    returnArgs.Add(property.Name, property.GetValue(table, null)!);
-                    sql += $"{property.Name} = @{property.Name},";
+                    IEnumerable<UpdateIgnoreAttribute> ignoreAttributes = property.GetCustomAttributes<UpdateIgnoreAttribute>(true);
+
+                    if (value == null || ignoreAttributes.Any()) { continue; }
+                    FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                    if (attr != null)
+                    {
+                        returnArgs.Add(attr.FieldName, value);
+                        sql += $"{attr.FieldName} = @{attr.FieldName},";
+                    }
+                    else
+                    {
+                        returnArgs.Add(property.Name, value);
+                        sql += $"{property.Name} = @{property.Name},";
+                    }
+
                 }
             }
 
@@ -212,22 +277,124 @@ namespace NpgsqlWrapper
             return sql;
         }
 
-        protected static string PrepareDeleteSql(string tableName, string? where) 
+        protected static string PrepareDeleteSql(string tableName, string? where)
             => AddWhereToQuery(where, $"DELETE FROM {tableName}");
 
         protected static void AddParameters(string sqlQuery, Dictionary<string, object>? parameters, NpgsqlCommand cmd)
         {
             if (parameters != null)
             {
-                if (GetSqlNumParams(sqlQuery) != parameters.Count)
-                {
-                    throw new ArgumentException("List of arguments don't match the sql query");
-                }
-
                 foreach (KeyValuePair<string, object> kvp in parameters)
                 {
                     cmd.Parameters.AddWithValue(kvp.Key, kvp.Value);
                 }
+            }
+        }
+
+        protected static string GetTableName<T>()
+        {
+            Type type = typeof(T);
+            string tableName;
+
+            var tableNameAttribute = type.GetCustomAttribute<TableNameAttribute>();
+
+            if (tableNameAttribute != null)
+            {
+                tableName = tableNameAttribute.TableName;
+            }
+            else
+            {
+                tableName = type.Name;
+            }
+
+            return tableName;
+        }
+
+        protected static string PrepareCreateSql<T>(IEnumerable<FieldAttribute> fieldAttributes)
+        {
+            string queryString = "";
+            List<string> primaryKey = new();
+            foreach (FieldAttribute attribute in fieldAttributes)
+            {
+                queryString += $"{attribute.FieldName} {attribute.FieldType}";
+
+                if (attribute.FieldNotNull)
+                {
+                    queryString += " NOT NULL";
+                }
+
+                if (attribute.FieldValue != null)
+                {
+                    if (attribute.FieldType.ToLower().StartsWith("char") ||
+                        attribute.FieldType.ToLower().StartsWith("var") ||
+                        attribute.FieldType.ToLower().StartsWith("text"))
+                    {
+                        queryString += $" DEFAULT '{attribute.FieldValue}'";
+                    }
+                    else
+                    {
+                        queryString += $" DEFAULT {attribute.FieldValue}".Replace(',', '.');
+                    }
+                }
+
+                if (attribute.FieldPrimaryKey)
+                {
+                    primaryKey.Add(attribute.FieldName);
+                }
+                queryString += ",";
+            }
+
+            if (primaryKey.Count > 0)
+            {
+                queryString += $"PRIMARY KEY({string.Join(",", primaryKey)}))";
+            }
+            else
+            {
+                queryString = queryString.Remove(queryString.Length - 1, 1) + ")";
+            }
+
+            return queryString;
+        }
+
+        protected static IEnumerable<FieldAttribute> PrepareCreateFields<T>(IEnumerable<PropertyInfo?> propertyList)
+        {
+            T item = Activator.CreateInstance<T>();
+
+            foreach (PropertyInfo property in propertyList)
+            {
+                object? defaultValue = property.GetValue(item, null)!;
+
+                if (defaultValue != null && defaultValue.GetType() == typeof(int?))
+                {
+                    defaultValue = null;
+                }
+
+                FieldAttribute attr = property.ReadAttribute<FieldAttribute>();
+                if (attr != null)
+                {
+                    if (attr.FieldType == null)
+                    {
+                        throw new ArgumentNullException(nameof(attr.FieldType));
+                    }
+
+                    if (defaultValue != null)
+                    {
+                        attr.SetValue(defaultValue);
+                    }
+                }
+                else
+                {
+                    string propertyType = property.PropertyType.ToString().Split('.')[1];
+
+                    propertyType = Regex.Replace(propertyType, "string", "TEXT", RegexOptions.IgnoreCase);
+
+                    attr = new(property.Name, propertyType);
+                    if (defaultValue != null)
+                    {
+                        attr.SetValue(defaultValue);
+                    }
+                }
+                yield return attr;
             }
         }
     }

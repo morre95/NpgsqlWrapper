@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['update_3c_20t_20_3e_0',['Update&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql.html#a45b69bb7486ee82bab592e544a174632',1,'NpgsqlWrapper::MyNpgsql']]],
-  ['updateasync_3c_20t_20_3e_1',['UpdateAsync&lt; T &gt;',['../class_npgsql_wrapper_1_1_my_npgsql_async.html#a216dbaf8c4f681dd21ff67cb87fd9f5c',1,'NpgsqlWrapper::MyNpgsqlAsync']]]
+  ['tablenameattribute_0',['TableNameAttribute',['../class_npgsql_wrapper_1_1_table_name_attribute.html#a9192842fa8612be0ad4ba941b9cec49c',1,'NpgsqlWrapper::TableNameAttribute']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['teachers_0',['Teachers',['../class_npgsql_wrapper_1_1_teachers.html',1,'NpgsqlWrapper']]]
+  ['insertignoreattribute_0',['InsertIgnoreAttribute',['../class_npgsql_wrapper_1_1_insert_ignore_attribute.html',1,'NpgsqlWrapper']]]
 ];

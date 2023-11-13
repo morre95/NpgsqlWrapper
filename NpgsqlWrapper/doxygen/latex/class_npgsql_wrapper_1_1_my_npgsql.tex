@@ -8,7 +8,7 @@ Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+:/
 Inheritance diagram for Npgsql\+Wrapper.\+My\+Npgsql\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_npgsql_wrapper_1_1_my_npgsql}
+\includegraphics[height=1.148718cm]{class_npgsql_wrapper_1_1_my_npgsql}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -20,12 +20,24 @@ void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a97b1c6e69e56f64a4e6a91
 \begin{DoxyCompactList}\small\item\em Builds the connection to the database. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae751870bc80e427774bf3c8dbcacce79}{Close}} ()
 \begin{DoxyCompactList}\small\item\em Closing database connection. \end{DoxyCompactList}\item 
+IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae35883f4faf59a88f46ff42b51aafcd4}{Execute$<$ T $>$}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_aa4e23097e0b5524cd078a90c239dd2e8}{Execute\+Non\+Query}} (string sql, Dictionary$<$ string, object $>$ parameters)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns number of effected rows. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af5160caf605ec67e8e7248847352d7cd}{Execute\+Non\+Query}} (string sql)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns number of effected rows. \end{DoxyCompactList}\item 
+IEnumerable$<$ Dictionary$<$ string, object $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d}{Dump}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
+\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a233c8e1d13d6b5bd46861942d8e7e44f}{Create$<$ T $>$}} (bool drop\+If\+Exists=false, bool is\+Temp\+Table=false)
+\begin{DoxyCompactList}\small\item\em Creates database table from class structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}{Delete}} (string table\+Name, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Deletes rows from a database table based on the specified conditions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60}{Delete$<$ T $>$}} (string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
+\begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database. \end{DoxyCompactList}\item 
 IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ad3f6f4783c4557f3e008db35f734c508}{Fetch$<$ T $>$}} (string? sql=null)
 \begin{DoxyCompactList}\small\item\em Fetching a result set from the database. \end{DoxyCompactList}\item 
 IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ac49800a85c48ccdbee71e360e9948c28}{Fetch$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$ parameters)
 \begin{DoxyCompactList}\small\item\em Fetching a result set from the database. \end{DoxyCompactList}\item 
-IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae35883f4faf59a88f46ff42b51aafcd4}{Execute$<$ T $>$}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
-\begin{DoxyCompactList}\small\item\em Executes a SQL query that returns a list of objects of type \textquotesingle{}T\textquotesingle{}. \end{DoxyCompactList}\item 
 T? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a6942202146760bccab8163b968f3ecec}{Fetch\+One$<$ T $>$}} (string? sql=null)
 \begin{DoxyCompactList}\small\item\em Fetches one result from the database. \end{DoxyCompactList}\item 
 T? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a031ed2895291c5c9752bad60d72bca09}{Execute\+One$<$ T $>$}} (string sql, Dictionary$<$ string, object $>$? parameters=null)
@@ -36,20 +48,10 @@ T? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_adeb58a77ab6bb1e803aa29ca
 \begin{DoxyCompactList}\small\item\em Inserts with returning statement. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af18c98c7790191315ea95a09699f413b}{Insert\+Many$<$ T $>$}} (List$<$ T $>$ obj\+To\+Insert)
 \begin{DoxyCompactList}\small\item\em Inserts many. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_aa4e23097e0b5524cd078a90c239dd2e8}{Execute\+Non\+Query}} (string sql, Dictionary$<$ string, object $>$ parameters)
-\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns number of effected rows. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af5160caf605ec67e8e7248847352d7cd}{Execute\+Non\+Query}} (string sql)
-\begin{DoxyCompactList}\small\item\em Executes a SQL command and returns number of effected rows. \end{DoxyCompactList}\item 
 IEnumerable$<$ T $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a78ae4e6313073dff3069e34fb3b06435}{Insert\+Many\+Returning$<$ T $>$}} (List$<$ T $>$ list\+To\+Insert)
 \begin{DoxyCompactList}\small\item\em Inserts many with returning statement. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_a45b69bb7486ee82bab592e544a174632}{Update$<$ T $>$}} (T table, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
-\begin{DoxyCompactList}\small\item\em Updates rows in a database table based on the provided object\textquotesingle{}s properties. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}{Delete}} (string table\+Name, string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
-\begin{DoxyCompactList}\small\item\em Deletes rows from a database table based on the specified conditions. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60}{Delete$<$ T $>$}} (string? where=null, Dictionary$<$ string, object $>$? where\+Parameters=null)
-\begin{DoxyCompactList}\small\item\em Executes a SQL command that deletes records from the database. \end{DoxyCompactList}\item 
-IEnumerable$<$ Dictionary$<$ string, object $>$ $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d}{Dump}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters=null)
-\begin{DoxyCompactList}\small\item\em Dumps a record set from the database into a List of Dictionarys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Updates rows in a database table based on the provided object\textquotesingle{}s properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,6 +76,12 @@ static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237
 static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}{Prepare\+Delete\+Sql}} (string table\+Name, string? where)
 \item 
 static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}{Add\+Parameters}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters, Npgsql\+Command cmd)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ad80295f6ba4a2ee4b106a7c0b4e58403}{Get\+Table\+Name$<$ T $>$}} ()
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ac78712e7a5f7c3b33c7be305170beb84}{Prepare\+Create\+Sql$<$ T $>$}} (IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ field\+Attributes)
+\item 
+static IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aed0d36d9316bc5f0cc17f5ec8eb2f48a}{Prepare\+Create\+Fields$<$ T $>$}} (IEnumerable$<$ Property\+Info?$>$ property\+List)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
@@ -85,7 +93,7 @@ Npgsql\+Connection? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a63
 \doxysubsection*{Properties inherited from \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base}{Npgsql\+Wrapper.\+My\+Npgsql\+Base}}}
 \begin{DoxyCompactItemize}
 \item 
-Int64 \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+long \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aa8cba64d090188aae079a2289f3dabf2}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Return the latest inserted id. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -162,7 +170,34 @@ Usage\+:
 \DoxyCodeLine{pgsql.Connect();}
 
 \end{DoxyCode}
- \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}\label{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6} 
+ \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_a233c8e1d13d6b5bd46861942d8e7e44f}\label{class_npgsql_wrapper_1_1_my_npgsql_a233c8e1d13d6b5bd46861942d8e7e44f} 
+\index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Create$<$ T $>$@{Create$<$ T $>$}}
+\index{Create$<$ T $>$@{Create$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
+\doxysubsubsection{\texorpdfstring{Create$<$ T $>$()}{Create< T >()}}
+{\footnotesize\ttfamily void Npgsql\+Wrapper.\+My\+Npgsql.\+Create$<$ T $>$ (\begin{DoxyParamCaption}\item[{bool}]{drop\+If\+Exists = {\ttfamily false},  }\item[{bool}]{is\+Temp\+Table = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates database table from class structure. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object to map table structure from.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em drop\+If\+Exists} & If true it adds DROP TABLE IF EXISTS statement.\\
+\hline
+{\em is\+Temp\+Table} & If true it creates a temporary table\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown if name of field is set via the attribute \mbox{[}Field("{}name\+\_\+of\+\_\+field"{})\mbox{]} but no Field\+Type.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6}\label{class_npgsql_wrapper_1_1_my_npgsql_af6904403918605ae067cde78041d55e6} 
 \index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Delete@{Delete}}
 \index{Delete@{Delete}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
@@ -198,6 +233,8 @@ The number of rows affected by the delete operation.
 
 \begin{DoxyExceptions}{Exceptions}
 {\em Argument\+Exception} & Throws if number of @field don\textquotesingle{}t correspond to the number of parameters.\\
+\hline
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
 \hline
 \end{DoxyExceptions}
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60}\label{class_npgsql_wrapper_1_1_my_npgsql_aa91f7724fbf4f13d402d93fd9b08af60} 
@@ -236,6 +273,11 @@ Usage\+:
 \begin{DoxyReturn}{Returns}
 The number of effected rows
 \end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d}\label{class_npgsql_wrapper_1_1_my_npgsql_ae7e0bc300b22a706bdcffffcf28a9c6d} 
 \index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Dump@{Dump}}
 \index{Dump@{Dump}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
@@ -269,6 +311,11 @@ Usage\+:
 \begin{DoxyReturn}{Returns}
 A list of objects of type \textquotesingle{}Dictionary$<$string, object$>$\textquotesingle{} retrieved from the database.
 \end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_ae35883f4faf59a88f46ff42b51aafcd4}\label{class_npgsql_wrapper_1_1_my_npgsql_ae35883f4faf59a88f46ff42b51aafcd4} 
 \index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!Execute$<$ T $>$@{Execute$<$ T $>$}}
 \index{Execute$<$ T $>$@{Execute$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
@@ -341,6 +388,11 @@ Usage\+:
 \begin{DoxyReturn}{Returns}
 The number of effected rows
 \end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_aa4e23097e0b5524cd078a90c239dd2e8}\label{class_npgsql_wrapper_1_1_my_npgsql_aa4e23097e0b5524cd078a90c239dd2e8} 
 \index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!ExecuteNonQuery@{ExecuteNonQuery}}
 \index{ExecuteNonQuery@{ExecuteNonQuery}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
@@ -696,6 +748,11 @@ Usage\+:
 \begin{DoxyReturn}{Returns}
 A IEnumerable$<$\+T$>$ objects containing the inserted records.
 \end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_adeb58a77ab6bb1e803aa29ca332fa053}\label{class_npgsql_wrapper_1_1_my_npgsql_adeb58a77ab6bb1e803aa29ca332fa053} 
 \index{NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}!InsertReturning$<$ T $>$@{InsertReturning$<$ T $>$}}
 \index{InsertReturning$<$ T $>$@{InsertReturning$<$ T $>$}!NpgsqlWrapper.MyNpgsql@{NpgsqlWrapper.MyNpgsql}}
@@ -786,7 +843,16 @@ Usage\+:
 The number of rows affected by the update operation.
 \end{DoxyReturn}
 
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Thrown when connection is null.\\
+\hline
+\end{DoxyExceptions}
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_my_npgsql_8cs}{My\+Npgsql.\+cs}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{_my_npgsql_8cs}{My\+Npgsql.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_8_delete_8cs}{My\+Npgsql.\+Delete.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_8_fetch_8cs}{My\+Npgsql.\+Fetch.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_8_insert_8cs}{My\+Npgsql.\+Insert.\+cs}}\item 
+\mbox{\hyperlink{_my_npgsql_8_update_8cs}{My\+Npgsql.\+Update.\+cs}}\end{DoxyCompactItemize}

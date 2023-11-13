@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lastinsertedid_0',['LastInsertedID',['../class_npgsql_wrapper_1_1_my_npgsql_base.html#af396807711d47807b35b73f35a419514',1,'NpgsqlWrapper::MyNpgsqlBase']]]
+  ['key_0',['Key',['../class_npgsql_wrapper_1_1_database_config.html#a0e55359de5853ddf3b765713e6331dcc',1,'NpgsqlWrapper::DatabaseConfig']]]
 ];

@@ -8,7 +8,7 @@ Wrapper for Npgsql\+: \href{https://github.com/npgsql/npgsql}{\texttt{ https\+:/
 Inheritance diagram for Npgsql\+Wrapper.\+My\+Npgsql\+Base\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_npgsql_wrapper_1_1_my_npgsql_base}
+\includegraphics[height=11.000000cm]{class_npgsql_wrapper_1_1_my_npgsql_base}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -34,6 +34,12 @@ static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_afb1fb237
 static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}{Prepare\+Delete\+Sql}} (string table\+Name, string? where)
 \item 
 static void \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a6bea49ef185f7b4cca0e077e73022313}{Add\+Parameters}} (string sql\+Query, Dictionary$<$ string, object $>$? parameters, Npgsql\+Command cmd)
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ad80295f6ba4a2ee4b106a7c0b4e58403}{Get\+Table\+Name$<$ T $>$}} ()
+\item 
+static string \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_ac78712e7a5f7c3b33c7be305170beb84}{Prepare\+Create\+Sql$<$ T $>$}} (IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ field\+Attributes)
+\item 
+static IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aed0d36d9316bc5f0cc17f5ec8eb2f48a}{Prepare\+Create\+Fields$<$ T $>$}} (IEnumerable$<$ Property\+Info?$>$ property\+List)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -45,7 +51,7 @@ Npgsql\+Connection? \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_a63
 \doxysubsubsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-Int64 \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+long \mbox{\hyperlink{class_npgsql_wrapper_1_1_my_npgsql_base_aa8cba64d090188aae079a2289f3dabf2}{Last\+Inserted\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Return the latest inserted id. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -107,6 +113,24 @@ Returns the number of times @field is in a sql query.
 \begin{DoxyReturn}{Returns}
 Number of escaped @field.
 \end{DoxyReturn}
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_ad80295f6ba4a2ee4b106a7c0b4e58403}\label{class_npgsql_wrapper_1_1_my_npgsql_base_ad80295f6ba4a2ee4b106a7c0b4e58403} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!GetTableName$<$ T $>$@{GetTableName$<$ T $>$}}
+\index{GetTableName$<$ T $>$@{GetTableName$<$ T $>$}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{GetTableName$<$ T $>$()}{GetTableName< T >()}}
+{\footnotesize\ttfamily static string Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Get\+Table\+Name$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_aed0d36d9316bc5f0cc17f5ec8eb2f48a}\label{class_npgsql_wrapper_1_1_my_npgsql_base_aed0d36d9316bc5f0cc17f5ec8eb2f48a} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!PrepareCreateFields$<$ T $>$@{PrepareCreateFields$<$ T $>$}}
+\index{PrepareCreateFields$<$ T $>$@{PrepareCreateFields$<$ T $>$}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{PrepareCreateFields$<$ T $>$()}{PrepareCreateFields< T >()}}
+{\footnotesize\ttfamily static IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$ Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Prepare\+Create\+Fields$<$ T $>$ (\begin{DoxyParamCaption}\item[{IEnumerable$<$ Property\+Info?$>$}]{property\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_ac78712e7a5f7c3b33c7be305170beb84}\label{class_npgsql_wrapper_1_1_my_npgsql_base_ac78712e7a5f7c3b33c7be305170beb84} 
+\index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!PrepareCreateSql$<$ T $>$@{PrepareCreateSql$<$ T $>$}}
+\index{PrepareCreateSql$<$ T $>$@{PrepareCreateSql$<$ T $>$}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
+\doxysubsubsection{\texorpdfstring{PrepareCreateSql$<$ T $>$()}{PrepareCreateSql< T >()}}
+{\footnotesize\ttfamily static string Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Prepare\+Create\+Sql$<$ T $>$ (\begin{DoxyParamCaption}\item[{IEnumerable$<$ \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute}{Field\+Attribute}} $>$}]{field\+Attributes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
 \Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c}\label{class_npgsql_wrapper_1_1_my_npgsql_base_ace60ced8effd0e8948067c97b169b75c} 
 \index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!PrepareDeleteSql@{PrepareDeleteSql}}
 \index{PrepareDeleteSql@{PrepareDeleteSql}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
@@ -184,11 +208,11 @@ The connection string provided by the user, including the password.
 
 
 \doxysubsection{Property Documentation}
-\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514}\label{class_npgsql_wrapper_1_1_my_npgsql_base_af396807711d47807b35b73f35a419514} 
+\Hypertarget{class_npgsql_wrapper_1_1_my_npgsql_base_aa8cba64d090188aae079a2289f3dabf2}\label{class_npgsql_wrapper_1_1_my_npgsql_base_aa8cba64d090188aae079a2289f3dabf2} 
 \index{NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}!LastInsertedID@{LastInsertedID}}
 \index{LastInsertedID@{LastInsertedID}!NpgsqlWrapper.MyNpgsqlBase@{NpgsqlWrapper.MyNpgsqlBase}}
 \doxysubsubsection{\texorpdfstring{LastInsertedID}{LastInsertedID}}
-{\footnotesize\ttfamily Int64 Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Last\+Inserted\+ID\hspace{0.3cm}{\ttfamily [get]}}
+{\footnotesize\ttfamily long Npgsql\+Wrapper.\+My\+Npgsql\+Base.\+Last\+Inserted\+ID\hspace{0.3cm}{\ttfamily [get]}}
 
 
 
