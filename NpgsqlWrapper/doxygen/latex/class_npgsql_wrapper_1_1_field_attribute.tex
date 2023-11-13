@@ -1,5 +1,10 @@
 \doxysection{Npgsql\+Wrapper.\+Field\+Attribute Class Reference}
 \hypertarget{class_npgsql_wrapper_1_1_field_attribute}{}\label{class_npgsql_wrapper_1_1_field_attribute}\index{NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}}
+
+
+Used to put custom names anf settings for fields.  
+
+
 Inheritance diagram for Npgsql\+Wrapper.\+Field\+Attribute\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,15 +15,15 @@ Inheritance diagram for Npgsql\+Wrapper.\+Field\+Attribute\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_a1844ad7da695d78e86fe612041c3b6d6}{Field\+Attribute}} (string name)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor to set field name. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_a6994f9c9d5ff676d8dc157270142ed1c}{Field\+Attribute}} (string name, string type)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor to set field name and field type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_ab4164487377458a544e19bf05d9a25c3}{Field\+Attribute}} (string name, string type, bool not\+Null)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor to set field name, field type and NOT NULL. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_a4a76b4d91b829d5787b5a2555d78d2ea}{Field\+Attribute}} (string name, string type, bool not\+Null, bool primary\+Key)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor to set field name, field type, NOT NULL and primary key. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_a4886023d31688e8004a3a5bfbcb1151b}{Set\+Value}} (object value)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Used to set default value internally. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,6 +42,9 @@ object \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_ad00ef2cae85935
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Used to put custom names anf settings for fields. 
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_npgsql_wrapper_1_1_field_attribute_a1844ad7da695d78e86fe612041c3b6d6}\label{class_npgsql_wrapper_1_1_field_attribute_a1844ad7da695d78e86fe612041c3b6d6} 
 \index{NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}!FieldAttribute@{FieldAttribute}}
@@ -44,24 +52,72 @@ object \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_ad00ef2cae85935
 \doxysubsubsection{\texorpdfstring{FieldAttribute()}{FieldAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
 {\footnotesize\ttfamily Npgsql\+Wrapper.\+Field\+Attribute.\+Field\+Attribute (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Constructor to set field name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Field name.\\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_npgsql_wrapper_1_1_field_attribute_a6994f9c9d5ff676d8dc157270142ed1c}\label{class_npgsql_wrapper_1_1_field_attribute_a6994f9c9d5ff676d8dc157270142ed1c} 
 \index{NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}!FieldAttribute@{FieldAttribute}}
 \index{FieldAttribute@{FieldAttribute}!NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}}
 \doxysubsubsection{\texorpdfstring{FieldAttribute()}{FieldAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily Npgsql\+Wrapper.\+Field\+Attribute.\+Field\+Attribute (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{string}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Constructor to set field name and field type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Field name.\\
+\hline
+{\em type} & Field type.\\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_npgsql_wrapper_1_1_field_attribute_ab4164487377458a544e19bf05d9a25c3}\label{class_npgsql_wrapper_1_1_field_attribute_ab4164487377458a544e19bf05d9a25c3} 
 \index{NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}!FieldAttribute@{FieldAttribute}}
 \index{FieldAttribute@{FieldAttribute}!NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}}
 \doxysubsubsection{\texorpdfstring{FieldAttribute()}{FieldAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily Npgsql\+Wrapper.\+Field\+Attribute.\+Field\+Attribute (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{string}]{type,  }\item[{bool}]{not\+Null }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Constructor to set field name, field type and NOT NULL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Field name.\\
+\hline
+{\em type} & Field type.\\
+\hline
+{\em not\+Null} & Bool to set a field NOT NULL.\\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_npgsql_wrapper_1_1_field_attribute_a4a76b4d91b829d5787b5a2555d78d2ea}\label{class_npgsql_wrapper_1_1_field_attribute_a4a76b4d91b829d5787b5a2555d78d2ea} 
 \index{NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}!FieldAttribute@{FieldAttribute}}
 \index{FieldAttribute@{FieldAttribute}!NpgsqlWrapper.FieldAttribute@{NpgsqlWrapper.FieldAttribute}}
 \doxysubsubsection{\texorpdfstring{FieldAttribute()}{FieldAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
 {\footnotesize\ttfamily Npgsql\+Wrapper.\+Field\+Attribute.\+Field\+Attribute (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{string}]{type,  }\item[{bool}]{not\+Null,  }\item[{bool}]{primary\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Constructor to set field name, field type, NOT NULL and primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Field name.\\
+\hline
+{\em type} & Field type.\\
+\hline
+{\em not\+Null} & Bool to set a field NOT NULL.\\
+\hline
+{\em primary\+Key} & Bool to set a field as primery key.\\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -71,6 +127,15 @@ object \mbox{\hyperlink{class_npgsql_wrapper_1_1_field_attribute_ad00ef2cae85935
 \doxysubsubsection{\texorpdfstring{SetValue()}{SetValue()}}
 {\footnotesize\ttfamily void Npgsql\+Wrapper.\+Field\+Attribute.\+Set\+Value (\begin{DoxyParamCaption}\item[{object}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Used to set default value internally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Default value\\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}
