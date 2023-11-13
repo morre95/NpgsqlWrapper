@@ -63,9 +63,30 @@ namespace NpgsqlWrapper.Tests
     [TestClass()]
     public class MyNpgsqlAsyncTests
     {
+
+        private const string TempSalesTable = "CREATE TEMP TABLE sales_temp"+
+                                        "("+
+                                            "sale_id serial NOT NULL,"+
+                                            "date date,"+
+                                            "customer_id integer,"+
+                                            "product_id integer,"+
+                                            "quantity integer, "+
+                                            "total_price numeric(15, 2),"+
+                                            "PRIMARY KEY (sale_id)"+
+                                        ");";
+
+        private const string TempSalesInsert = "INSERT INTO sales (date, customer_id, product_id, quantity, total_price) VALUES" +
+            "('2023-11-10', 1, 1, 3, 32.97)," +
+            "('2023-11-11', 2, 2, 2, 30.98)," +
+            "('2023-11-12', 4, 3, 4, 51.96)," +
+            "('2023-11-13', 5, 4, 5, 64.95)," +
+            "('2023-11-14', 6, 5, 2, 16.98)";
+
+
         private async Task<MyNpgsqlAsync?> ConnectAsync()
         {
             string configFile = "configTest.json";
+
 
             DatabaseConfig config = DatabaseConfig.Load(configFile);
 
@@ -150,14 +171,19 @@ namespace NpgsqlWrapper.Tests
             MyNpgsqlAsync? npgsql = await ConnectAsync();
             Assert.IsNotNull(npgsql);
 
+            await npgsql.ExecuteNonQueryAsync(TempSalesTable);
+
+            await npgsql.ExecuteNonQueryAsync(TempSalesInsert);
+
+
             var ts = new CancellationTokenSource();
             CancellationToken cts = ts.Token;
 
             DbParams param = new DbParams("pDate", DateTime.Parse("2023-11-10"));
-            List<Sales>? salesList = await npgsql.FetchAsync<Sales>("SELECT * FROM sales WHERE date=@pDate", param, cts);
+            List<Sales>? salesList = await npgsql.FetchAsync<Sales>("SELECT * FROM sales_temp WHERE date=@pDate", param, cts);
             Assert.IsNotNull(salesList);
 
-            Sales? sales = await npgsql.FetchOneAsync<Sales>("SELECT COUNT(*) num FROM sales WHERE date=@pDate", param, cts);
+            Sales? sales = await npgsql.FetchOneAsync<Sales>("SELECT COUNT(*) num FROM sales_temp WHERE date=@pDate", param, cts);
 
             Assert.IsNotNull(sales);
 
