@@ -460,9 +460,25 @@ namespace NpgsqlWrapper.Tests
         [TestMethod()]
         public void CreateTest()
         {
-            //await create.Create<Person>(true);
-            //await create.Create<Person>(true);
-            Assert.Fail();
+            MyNpgsql? npgsql = Connect();
+            Assert.IsNotNull(npgsql);
+
+            npgsql.Create<Person>(true, true);
+
+            const string firstName = "Test";
+            const string lastName = "Last Test";
+            Person person = new();
+            person.first_name = firstName;
+            person.last_name = lastName;
+
+            npgsql.Insert(person);
+
+
+            Person? p = npgsql.FetchOne<Person>();
+
+            Assert.IsNotNull(p);
+            Assert.AreEqual(firstName, p.first_name);
+            Assert.AreEqual(lastName, p.last_name);
         }
     }
 }

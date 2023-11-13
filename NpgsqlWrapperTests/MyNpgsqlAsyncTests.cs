@@ -31,7 +31,7 @@ namespace NpgsqlWrapper.Tests
         public int? Price { get; set; }
 
         [Field("my_numeric", "numeric(15, 2) CHECK (price >= 0)")]
-        public double MyNumric { get; set; } = 55.11;
+        public decimal MyNumric { get; set; } = 55.11m;
     }
 
     public class Sales
@@ -575,11 +575,27 @@ namespace NpgsqlWrapper.Tests
         }
 
         [TestMethod()]
-        public void CreateAsyncTest()
+        public async Task CreateAsyncTestAsync()
         {
-            //await create.CreateAsync<Person>(true);
-            //await create.CreateAsync<Person>(true);
-            Assert.Fail();
+            MyNpgsqlAsync? npgsql = await ConnectAsync();
+            Assert.IsNotNull(npgsql);
+
+            await npgsql.CreateAsync<Person>(true, true);
+
+            const string firstName = "Test";
+            const string lastName = "Last Test";
+            Person person = new();
+            person.first_name = firstName;
+            person.last_name = lastName;
+
+            await npgsql.InsertAsync(person);
+
+
+            Person? p = await npgsql.FetchOneAsync<Person>();
+            
+            Assert.IsNotNull(p);
+            Assert.AreEqual(firstName, p.first_name);
+            Assert.AreEqual(lastName, p.last_name);
         }
     }
 }
